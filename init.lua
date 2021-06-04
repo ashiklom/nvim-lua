@@ -64,6 +64,12 @@ vimp.bind('n', {'silent'}, '<leader> ', function() require('telescope.builtin').
 vimp.bind('n', {'silent'}, '<leader>ff', function() require('telescope.builtin').file_browser() end)
 vimp.bind('n', {'silent'}, '<leader>bb', function() require('telescope.builtin').buffers() end)
 
+vimp.bind('n', {'silent'}, '<leader>fs', [[:w<cr>]])
+
+-- Change directory to file directory
+vimp.bind('n', {'silent'}, '<leader>cd', [[:cd %:p:h<cr>]])
+
+-- Reload vimrc
 vimp.bind('n', '<leader>%r', function()
     vimp.unmap_all()
     vim.cmd [[luafile ~/.config/nvim/init.lua]]
