@@ -11,6 +11,8 @@ end
 require('plugins')
 vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 
+-- require('ans-telescope')
+
 -- Settings
 vim.cmd [[filetype plugin indent on]]
 vim.cmd [[syntax enable]]
@@ -38,6 +40,7 @@ vim.opt.hidden = true
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 2
 vim.opt.swapfile = false
+vim.opt.signcolumn = "yes"
 
 vim.opt.wildignore:append({'*.o', '*.so', '*.html'})
 -- vim.opt.isfname:remove('=')
@@ -60,11 +63,20 @@ vimp.bind('n', {'silent'}, '<leader>w-', [[:split<cr>]])
 vimp.bind('n', {'silent'}, '<leader>w\\', [[:vsplit<cr>]])
 vimp.bind('n', {'silent'}, '<leader>wd', [[:close<cr>]])
 
-vimp.bind('n', {'silent'}, '<leader> ', function() require('telescope.builtin').find_files() end)
-vimp.bind('n', {'silent'}, '<leader>ff', function() require('telescope.builtin').file_browser() end)
-vimp.bind('n', {'silent'}, '<leader>bb', function() require('telescope.builtin').buffers() end)
-
 vimp.bind('n', {'silent'}, '<leader>fs', [[:w<cr>]])
+
+-- Telescope mappings
+ans_tele = require("ans-telescope")
+vimp.bind('n', {'silent'}, '<leader> ', function() require('telescope.builtin').find_files() end)
+-- vimp.bind('n', {'silent'}, '<leader>ff', function() require('telescope.builtin').file_browser({hidden=true}) end)
+vimp.bind('n', {'silent'}, '<leader>ff', function() ans_tele.file_browser_cwd() end)
+-- vimp.bind('n', {'silent'}, '<leader>f`', function() require('telescope.builtin').file_browser({cwd="~", hidden=true}) end)
+vimp.bind('n', {'silent'}, '<leader>f`', function() ans_tele.file_browser_home() end)
+vimp.bind('n', {'silent'}, '<leader>bb', function() require('telescope.builtin').buffers() end)
+vimp.bind('n', {'silent'}, '<leader>ht', function() require('telescope.builtin').help_tags() end)
+vimp.bind('n', {'silent'}, '<leader>ss', function() require('telescope.builtin').current_buffer_fuzzy_find() end)
+vimp.bind('n', {'silent'}, '<leader>po', function() require('telescope').extensions.project.project{} end)
+vimp.bind('n', {'silent'}, '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]])
 
 -- Change directory to file directory
 vimp.bind('n', {'silent'}, '<leader>cd', [[:cd %:p:h<cr>]])
