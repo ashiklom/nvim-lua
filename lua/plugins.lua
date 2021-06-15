@@ -3,10 +3,16 @@ return require('packer').startup(function()
 	use 'svermeulen/vimpeccable'
 	use 'nvim-lua/plenary.nvim'
 
+	use 'freitass/todo.txt-vim'
+	use 'danro/rename.vim'
+
 	use 'tpope/vim-surround'
 	use 'wellle/targets.vim'
 
 	use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}
+
+	-- Python
+	use {'hkupty/iron.nvim'}
 
 	use {
 		'nvim-telescope/telescope.nvim',

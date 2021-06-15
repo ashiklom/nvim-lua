@@ -47,8 +47,8 @@ vim.opt.wildignore:append({'*.o', '*.so', '*.html'})
 -- Doesn't work for some reason; fall back on vim CMD
 vim.cmd [[set isfname-==]]
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " m"
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' m'
 
 local vimp = require('vimp')
 
@@ -73,8 +73,10 @@ vimp.bind('n', {'silent'}, '<leader>ff', function() ans_tele.file_browser_cwd() 
 -- vimp.bind('n', {'silent'}, '<leader>f`', function() require('telescope.builtin').file_browser({cwd="~", hidden=true}) end)
 vimp.bind('n', {'silent'}, '<leader>f`', function() ans_tele.file_browser_home() end)
 vimp.bind('n', {'silent'}, '<leader>bb', function() require('telescope.builtin').buffers() end)
+vimp.bind('n', {'silent'}, '<leader>bk', [[:b#|bd#<CR>]])
 vimp.bind('n', {'silent'}, '<leader>ht', function() require('telescope.builtin').help_tags() end)
 vimp.bind('n', {'silent'}, '<leader>ss', function() require('telescope.builtin').current_buffer_fuzzy_find() end)
+vimp.bind('n', {'silent'}, '<leader>sp', function() require('telescope.builtin').live_grep() end)
 vimp.bind('n', {'silent'}, '<leader>po', function() require('telescope').extensions.project.project{} end)
 vimp.bind('n', {'silent'}, '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]])
 
@@ -87,5 +89,8 @@ vimp.bind('n', '<leader>%r', function()
     vim.cmd [[luafile ~/.config/nvim/init.lua]]
     print("Reloaded vimrc!")
 end)
+
+-- Other configs
+require('ans-python')
 
 vimp.add_chord_cancellations('n', '<leader>')
