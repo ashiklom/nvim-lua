@@ -91,6 +91,7 @@ vimp.bind('n', '<leader>%r', function()
 end)
 
 -- Other configs
-require('ans-python')
+require('ans-iron')
+require('ans-jupytext')
 
 vimp.add_chord_cancellations('n', '<leader>')

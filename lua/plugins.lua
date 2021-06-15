@@ -13,6 +13,7 @@ return require('packer').startup(function()
 
 	-- Python
 	use {'hkupty/iron.nvim'}
+	use {'GCBallesteros/jupytext.vim'}
 
 	use {
 		'nvim-telescope/telescope.nvim',
