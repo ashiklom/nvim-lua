@@ -65,6 +65,8 @@ vimp.bind('n', {'silent'}, '<leader>wd', [[:close<cr>]])
 
 vimp.bind('n', {'silent'}, '<leader>fs', [[:w<cr>]])
 
+vimp.bind('n', {'silent'}, 'z.', [[:<C-u>normal! zszH<CR>]])
+
 -- Telescope mappings
 ans_tele = require("ans-telescope")
 vimp.bind('n', {'silent'}, '<leader> ', function() require('telescope.builtin').find_files() end)
