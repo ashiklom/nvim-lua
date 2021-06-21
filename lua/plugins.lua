@@ -22,6 +22,10 @@ return require('packer').startup(function()
 
 	use { 'nvim-telescope/telescope-project.nvim' }
 
+	-- Languageserver
+	use { 'neovim/nvim-lspconfig' }
+	use { 'kabouzeid/nvim-lspinstall' }
+
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
 	use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }

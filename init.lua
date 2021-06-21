@@ -50,7 +50,15 @@ vim.cmd [[set isfname-==]]
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' m'
 
+-- Load selected plugin configs
+require('ans-iron')
+require('ans-jupytext')
+require('ans-lsp')
+
 local vimp = require('vimp')
+local ans_tele = require('ans-telescope')
+local tele = require('telescope')
+local teleb = require('telescope.builtin')
 
 vimp.bind('i', 'jk', '<Esc>')
 vimp.bind('n', 'Q', '<Nop>')
@@ -68,18 +76,17 @@ vimp.bind('n', {'silent'}, '<leader>fs', [[:w<cr>]])
 vimp.bind('n', {'silent'}, 'z.', [[:<C-u>normal! zszH<CR>]])
 
 -- Telescope mappings
-ans_tele = require("ans-telescope")
-vimp.bind('n', {'silent'}, '<leader> ', function() require('telescope.builtin').find_files() end)
+vimp.bind('n', {'silent'}, '<leader> ', function() teleb.find_files() end)
 -- vimp.bind('n', {'silent'}, '<leader>ff', function() require('telescope.builtin').file_browser({hidden=true}) end)
 vimp.bind('n', {'silent'}, '<leader>ff', function() ans_tele.file_browser_cwd() end)
 -- vimp.bind('n', {'silent'}, '<leader>f`', function() require('telescope.builtin').file_browser({cwd="~", hidden=true}) end)
 vimp.bind('n', {'silent'}, '<leader>f`', function() ans_tele.file_browser_home() end)
-vimp.bind('n', {'silent'}, '<leader>bb', function() require('telescope.builtin').buffers() end)
+vimp.bind('n', {'silent'}, '<leader>bb', function() teleb.buffers() end)
 vimp.bind('n', {'silent'}, '<leader>bk', [[:b#|bd#<CR>]])
-vimp.bind('n', {'silent'}, '<leader>ht', function() require('telescope.builtin').help_tags() end)
-vimp.bind('n', {'silent'}, '<leader>ss', function() require('telescope.builtin').current_buffer_fuzzy_find() end)
-vimp.bind('n', {'silent'}, '<leader>sp', function() require('telescope.builtin').live_grep() end)
-vimp.bind('n', {'silent'}, '<leader>po', function() require('telescope').extensions.project.project{} end)
+vimp.bind('n', {'silent'}, '<leader>ht', function() teleb.help_tags() end)
+vimp.bind('n', {'silent'}, '<leader>ss', function() teleb.current_buffer_fuzzy_find() end)
+vimp.bind('n', {'silent'}, '<leader>sp', function() teleb.live_grep() end)
+vimp.bind('n', {'silent'}, '<leader>po', function() tele.extensions.project.project{} end)
 vimp.bind('n', {'silent'}, '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]])
 
 -- Change directory to file directory
@@ -91,9 +98,5 @@ vimp.bind('n', '<leader>%r', function()
     vim.cmd [[luafile ~/.config/nvim/init.lua]]
     print("Reloaded vimrc!")
 end)
-
--- Other configs
-require('ans-iron')
-require('ans-jupytext')
 
 vimp.add_chord_cancellations('n', '<leader>')
