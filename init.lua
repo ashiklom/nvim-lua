@@ -43,6 +43,7 @@ vim.opt.swapfile = false
 vim.opt.signcolumn = "yes"
 
 vim.opt.wildignore:append({'*.o', '*.so', '*.html'})
+vim.opt.completeopt:remove("preview")
 -- vim.opt.isfname:remove('=')
 -- Doesn't work for some reason; fall back on vim CMD
 vim.cmd [[set isfname-==]]

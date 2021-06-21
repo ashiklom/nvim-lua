@@ -1,7 +1,7 @@
 local lspinst = require("lspinstall")
 local lspconf = require("lspconfig")
 
-local on_attach = function(_client, bufnr)
+local on_attach = function(_, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     local nmap = function(lhs, rhs)
         local opts = { noremap=true, silent=true}
@@ -9,12 +9,6 @@ local on_attach = function(_client, bufnr)
     end
     nmap('gd', [[:lua vim.lsp.buf.definition()<CR>]])
     nmap('gD', [[:lua vim.lsp.buf.declaration()<CR>]])
-end
-
-local function merge(t1, t2)
-    if t2 == nil then return t1 end
-    for k,v in pairs(t2) do t1[k] = v end
-    return t1
 end
 
 local server_configs = {
@@ -30,7 +24,7 @@ local function setup_servers()
     table.insert(servers, "r_language_server")
     for _, server in pairs(servers) do
         local settings = server_configs[server]
-        if settings == nil then 
+        if settings == nil then
             settings = {on_attach = on_attach}
         end
         lspconf[server].setup(settings)
