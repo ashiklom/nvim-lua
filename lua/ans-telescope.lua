@@ -1,7 +1,7 @@
 require('telescope').load_extension('project')
 
 local tb = require('telescope.builtin')
-local path = require('plenary.path') 
+local path = require('plenary.path')
 
 local M = {}
 
