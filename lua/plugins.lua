@@ -3,8 +3,8 @@ return require('packer').startup(function()
 	use 'svermeulen/vimpeccable'
 	use 'nvim-lua/plenary.nvim'
 
-	use 'freitass/todo.txt-vim'
 	use 'danro/rename.vim'
+	use 'easymotion/vim-easymotion'
 
 	use 'tpope/vim-surround'
 	use 'wellle/targets.vim'
