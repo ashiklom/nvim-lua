@@ -90,6 +90,9 @@ vimp.bind('n', {'silent'}, '<leader>sp', function() teleb.live_grep() end)
 vimp.bind('n', {'silent'}, '<leader>po', function() tele.extensions.project.project{} end)
 vimp.bind('n', {'silent'}, '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]])
 
+local neogit = require('neogit')
+vimp.bind('n', {'silent'}, '<leader>gg', function() neogit.open({ kind="split"}) end)
+
 -- Change directory to file directory
 vimp.bind('n', {'silent'}, '<leader>cd', [[:cd %:p:h<cr>]])
 

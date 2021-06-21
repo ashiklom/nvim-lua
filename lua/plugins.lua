@@ -28,6 +28,7 @@ return require('packer').startup(function()
 
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
+	use { 'TimUntersberger/neogit', config = function() require('neogit').setup() end }
 	use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
 
 	use { 'steelsojka/pears.nvim', config = function() require('pears').setup() end }
@@ -41,8 +42,8 @@ return require('packer').startup(function()
             open_mapping = [[<c-\>]],
             direction = "float",
             hide_numbers = true
-        } end 
-    } 
+        } end
+    }
 
 	-- use 'joshdick/onedark.vim'
 	use 'sainnhe/sonokai'
