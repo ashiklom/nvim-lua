@@ -14,7 +14,7 @@ end
 local server_configs = {
     lua = {
         on_attach = on_attach,
-        settings = {Lua = {diagnostics = {globals = {"vim"}}}}
+        settings = {Lua = {diagnostics = {globals = {"vim", "use"}}}}
     }
 }
 

@@ -33,8 +33,8 @@ return require('packer').startup(function()
 
 	use { 'steelsojka/pears.nvim', config = function() require('pears').setup() end }
 
-	use 'editorconfig/editorconfig-vim' 
-	use 'b3nj5m1n/kommentary' 
+	use 'editorconfig/editorconfig-vim'
+	use 'b3nj5m1n/kommentary'
 
     use {
         'akinsho/nvim-toggleterm.lua',
