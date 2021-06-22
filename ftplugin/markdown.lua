@@ -1,6 +1,6 @@
 local function bbind(mode, map, command)
-    vim.api.nvim_buf_set_keymap(0, mode, map, command, {silent=true})
-end 
+  vim.api.nvim_buf_set_keymap(0, mode, map, command, {silent=true})
+end
 
 bbind("n", "<localleader>l", [[<Plug>(iron-send-line)]])
 bbind("n", "<localleader>s", [[<Plug>(iron-send-motion)]])

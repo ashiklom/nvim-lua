@@ -1,5 +1,5 @@
 local function cword()
-    return vim.fn["expand"]('<cword>')
+  return vim.fn["expand"]('<cword>')
 end
 
 -- Indentation rules
@@ -12,18 +12,18 @@ vim.g.R_clear_line = 1
 vim.g.R_setwidth = 2
 
 local function map(mode, lhs, rhs)
-    local opts = {silent=true, noremap=true}
-    vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
+  local opts = {silent=true, noremap=true}
+  vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
 end
 
 local function map_rcall(mode, lhs, rcall)
-    local rhs = string.format([[:call g:SendCmdToR("%s")<CR>]], rcall)
-    map(mode, lhs, rhs)
+  local rhs = string.format([[:call g:SendCmdToR("%s")<CR>]], rcall)
+  map(mode, lhs, rhs)
 end
 
 local function map_rcall_cword(mode, lhs, pattern)
-    local rcall2 = string.format(pattern, cword())
-    map_rcall(mode, lhs, rcall2)
+  local rcall2 = string.format(pattern, cword())
+  map_rcall(mode, lhs, rcall2)
 end
 
 vim.g.R_assign_map = '<M-->'

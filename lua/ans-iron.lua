@@ -5,16 +5,16 @@ vim.g.iron_map_defaults=0
 vim.g.iron_map_extended=0
 
 iron.core.add_repl_definitions {
-    markdown = {
-        ipython = {
-            command = {"ipython"}
-        }
+  markdown = {
+    ipython = {
+      command = {"ipython"}
     }
+  }
 }
 
 iron.core.set_config {
-    preferred = {
-        python = "ipython",
-        markdown = "ipython"
-    }
+  preferred = {
+    python = "ipython",
+    markdown = "ipython"
+  }
 }

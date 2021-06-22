@@ -103,9 +103,9 @@ vimp.bind('n', {'silent'}, '<leader>cd', [[:cd %:p:h<cr>]])
 
 -- Reload vimrc
 vimp.bind('n', '<leader>%r', function()
-    vimp.unmap_all()
-    vim.cmd [[luafile ~/.config/nvim/init.lua]]
-    print("Reloaded vimrc!")
+  vimp.unmap_all()
+  vim.cmd [[luafile ~/.config/nvim/init.lua]]
+  print("Reloaded vimrc!")
 end)
 
 vimp.add_chord_cancellations('n', '<leader>')
