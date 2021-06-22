@@ -16,7 +16,7 @@ vim.cmd [[filetype plugin indent on]]
 vim.cmd [[syntax enable]]
 vim.cmd [[colorscheme sonokai]]
 
-local indent = 4
+local indent = 2
 
 vim.opt.tabstop = indent
 vim.opt.shiftwidth = 0
