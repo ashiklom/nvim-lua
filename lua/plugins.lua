@@ -1,3 +1,6 @@
+local packer = require("packer")
+local use = packer.use
+
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'svermeulen/vimpeccable'
@@ -7,7 +10,6 @@ return require('packer').startup(function()
   use 'easymotion/vim-easymotion'
 
   use 'tpope/vim-surround'
-  -- use 'wellle/targets.vim'
 
   use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}
 
@@ -31,6 +33,9 @@ return require('packer').startup(function()
     'nvim-treesitter/nvim-treesitter-textobjects',
     requires = {{ 'nvim-treesitter/nvim-treesitter' }}
   }
+  -- Fallbacks for argument selection and exchange
+  use { 'wellle/targets.vim' }
+  use { 'tommcdo/vim-exchange' }
 
   use { 'TimUntersberger/neogit', config = function() require('neogit').setup() end }
   use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }

@@ -53,6 +53,7 @@ vim.g.maplocalleader = ' m'
 require('ans-iron')
 require('ans-jupytext')
 require('ans-lsp')
+require('ans-treesitter')
 
 local vimp = require('vimp')
 local ans_tele = require('ans-telescope')
@@ -94,6 +95,10 @@ vimp.rbind('n', {'silent'}, 'gSj', [[<Plug>(easymotion-overwin-line)]])
 vimp.rbind('n', {'silent'}, 'gSk', [[<Plug>(easymotion-overwin-line)]])
 vimp.rbind('n', {'silent'}, 'gSf', [[<Plug>(easymotion-overwin-f)]])
 vimp.rbind('n', {'silent'}, 'gSw', [[<Plug>(easymotion-overwin-w)]])
+
+-- Exchange
+vim.api.nvim_del_keymap('v', 'gx')
+vimp.rbind('v', {'silent'}, 'gx', [[<Plug>(Exchange)]])
 
 local neogit = require('neogit')
 vimp.bind('n', {'silent'}, '<leader>gg', function() neogit.open({ kind="split"}) end)

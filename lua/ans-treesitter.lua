@@ -1,10 +1,12 @@
 local tconfig = require('nvim-treesitter.configs')
 
 tconfig.setup{
-  highlight = {enable=true},
+  indent = {enable=true},
+  highlight = {enable=true, disable={"r"}},
   textobjects = {
     select = {
       enable = true,
+      disable = {"r"},
       keymaps = {
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
