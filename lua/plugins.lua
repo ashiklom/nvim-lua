@@ -28,6 +28,8 @@ return require('packer').startup(function()
   use { 'neovim/nvim-lspconfig' }
   use { 'kabouzeid/nvim-lspinstall' }
 
+  use { "hrsh7th/nvim-compe" }
+
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',

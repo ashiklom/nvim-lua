@@ -40,8 +40,9 @@ vim.opt.scrolloff = 2
 vim.opt.swapfile = false
 vim.opt.signcolumn = "yes"
 
-vim.opt.wildignore:append({'*.o', '*.so', '*.html'})
 vim.opt.completeopt:remove("preview")
+-- vim.opt.wildignore:append({'*.o', '*.so', '*.html'})
+
 -- vim.opt.isfname:remove('=')
 -- Doesn't work for some reason; fall back on vim CMD
 vim.cmd [[set isfname-==]]
@@ -54,6 +55,7 @@ require('ans-iron')
 require('ans-jupytext')
 require('ans-lsp')
 require('ans-treesitter')
+require('ans-compe')
 
 local vimp = require('vimp')
 local ans_tele = require('ans-telescope')
@@ -97,7 +99,6 @@ vimp.rbind('n', {'silent'}, 'gSf', [[<Plug>(easymotion-overwin-f)]])
 vimp.rbind('n', {'silent'}, 'gSw', [[<Plug>(easymotion-overwin-w)]])
 
 -- Exchange
-vim.api.nvim_del_keymap('v', 'gx')
 vimp.rbind('v', {'silent'}, 'gx', [[<Plug>(Exchange)]])
 
 local neogit = require('neogit')
