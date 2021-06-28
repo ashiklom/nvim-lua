@@ -13,6 +13,7 @@ vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 
 -- Load selected plugin configs
 require('ans-compe')
+require('ans-git')
 require('ans-iron')
 require('ans-jupytext')
 require('ans-lsp')
