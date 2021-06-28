@@ -11,6 +11,12 @@ return require('packer').startup(function()
 
   use 'tpope/vim-surround'
 
+  use {
+    "haya14busa/incsearch.vim",
+    disable = true
+    -- config = function() vim.command([[let g:incsearch#auto_nohlsearch=1]]) end
+  }
+
   use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}
 
   -- Python
