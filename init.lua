@@ -8,8 +8,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	execute 'packadd packer.nvim'
 end
 
-require('plugins')
 vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
+require('plugins')
 
 -- Load selected plugin configs
 require('ans-compe')
@@ -68,11 +68,14 @@ vimp.bind('i', 'jk', '<Esc>')
 vimp.bind('n', 'Q', '<Nop>')
 vimp.bind('n', {'silent'}, '<ESC>', [[:nohlsearch<CR>]])
 
-vimp.bind('n', {'silent'}, '<leader>wj', [[:wincmd j<cr>]])
-vimp.bind('n', {'silent'}, '<leader>wk', [[:wincmd k<cr>]])
-vimp.bind('n', {'silent'}, '<leader>wl', [[:wincmd l<cr>]])
-vimp.bind('n', {'silent'}, '<leader>wh', [[:wincmd h<cr>]])
-vimp.bind('n', {'silent'}, '<leader>ww', [[:wincmd w<cr>]])
+local winkeys = {"j","k","l","h","="}
+for _, key in ipairs(winkeys) do
+  vimp.bind('n', {'silent'}, '<leader>w'..key, string.format([[:wincmd %s<cr>]], key))
+end
+
+vimp.bind('n', {'silent'}, '<leader>ww', [[:wincmd p<cr>]])
+vimp.bind('n', {'silent'}, '<leader>w+', [[:5 wincmd +<cr>]])
+vimp.bind('n', {'silent'}, '<leader>w_', [[:5 wincmd -<cr>]])
 vimp.bind('n', {'silent'}, '<leader>w-', [[:split<cr>]])
 vimp.bind('n', {'silent'}, '<leader>w\\', [[:vsplit<cr>]])
 vimp.bind('n', {'silent'}, '<leader>wd', [[:close<cr>]])
