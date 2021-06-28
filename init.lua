@@ -93,6 +93,7 @@ vimp.bind('n', {'silent'}, '<leader>ss', function() teleb.current_buffer_fuzzy_f
 vimp.bind('n', {'silent'}, '<leader>sp', function() teleb.live_grep() end)
 vimp.bind('n', {'silent'}, '<leader>po', function() tele.extensions.project.project{} end)
 vimp.bind('n', {'silent'}, '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]])
+vimp.bind('n', {'silent'}, 'z=', function() teleb.spell_suggest() end)
 
 -- Easymotion
 -- vimp.rbind('nvo', {'silent'}, 'gs', [[<Plug>(easymotion-prefix)]])

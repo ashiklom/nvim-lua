@@ -87,7 +87,6 @@ return require('packer').startup(function()
     } end
   }
 
-  -- use 'joshdick/onedark.vim'
   use 'sainnhe/sonokai'
 
 end)
