@@ -11,6 +11,14 @@ end
 require('plugins')
 vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 
+-- Load selected plugin configs
+require('ans-compe')
+require('ans-iron')
+require('ans-jupytext')
+require('ans-lsp')
+require('ans-treesitter')
+require('ans-utils')
+
 -- Settings
 vim.cmd [[filetype plugin indent on]]
 vim.cmd [[syntax enable]]
@@ -50,14 +58,6 @@ vim.cmd [[set isfname-==]]
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' m'
 
--- Load selected plugin configs
-require('ans-compe')
-require('ans-iron')
-require('ans-jupytext')
-require('ans-lsp')
-require('ans-treesitter')
-require('ans-utils')
-
 local vimp = require('vimp')
 local ans_tele = require('ans-telescope')
 local tele = require('telescope')
@@ -95,6 +95,10 @@ vimp.bind('n', {'silent'}, '<leader>pL', [[:e ~/.local/share/nvim/telescope-proj
 
 -- Change directory to file directory
 vimp.bind('n', {'silent'}, '<leader>cd', [[:cd %:p:h<cr>]])
+
+-- Delete trailing whitespace
+vimp.bind('v', {'silent'}, '<leader>cw', [[:s/\s\+$//ge<CR>]])
+vimp.bind('n', {'silent'}, '<leader>cW', [[:%s/\s\+$//ge<CR>]])
 
 -- Reload vimrc
 vimp.bind('n', '<leader>%r', function()
