@@ -93,19 +93,6 @@ vimp.bind('n', {'silent'}, '<leader>sp', function() teleb.live_grep() end)
 vimp.bind('n', {'silent'}, '<leader>po', function() tele.extensions.project.project{} end)
 vimp.bind('n', {'silent'}, '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]])
 
--- Easymotion
-vimp.rbind('nvo', {'silent'}, 'gs', [[<Plug>(easymotion-prefix)]])
-vimp.rbind('n', {'silent'}, 'gSj', [[<Plug>(easymotion-overwin-line)]])
-vimp.rbind('n', {'silent'}, 'gSk', [[<Plug>(easymotion-overwin-line)]])
-vimp.rbind('n', {'silent'}, 'gSf', [[<Plug>(easymotion-overwin-f)]])
-vimp.rbind('n', {'silent'}, 'gSw', [[<Plug>(easymotion-overwin-w)]])
-
--- Exchange
-vimp.rbind('v', {'silent'}, 'gx', [[<Plug>(Exchange)]])
-
-local neogit = require('neogit')
-vimp.bind('n', {'silent'}, '<leader>gg', function() neogit.open({ kind="split"}) end)
-
 -- Change directory to file directory
 vimp.bind('n', {'silent'}, '<leader>cd', [[:cd %:p:h<cr>]])
 
