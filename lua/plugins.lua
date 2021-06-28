@@ -10,6 +10,13 @@ return require('packer').startup(function()
   use 'easymotion/vim-easymotion'
 
   use 'tpope/vim-surround'
+  use { 'AndrewRadev/splitjoin.vim', config = function()
+    vim.api.nvim_set_var('splitjoin_split_mapping', '')
+    vim.api.nvim_set_var('splitjoin_join_mapping', '')
+    vim.api.nvim_set_keymap('n', 'g[', [[:SplitjoinSplit<CR>]], {silent=true})
+    vim.api.nvim_set_keymap('n', 'gJ', [[:SplitjoinJoin<CR>]], {silent=true})
+    end
+  }
 
   use {
     'haya14busa/incsearch.vim',
