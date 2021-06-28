@@ -1,6 +1,5 @@
 local packer = require("packer")
 local use = packer.use
-local vimp = require('vimp')
 
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
@@ -9,17 +8,7 @@ return require('packer').startup(function()
 
   use 'danro/rename.vim'
 
-  use {
-    'easymotion/vim-easymotion',
-    disable = true,
-    config = function()
-      vimp.rbind('nvo', {'silent'}, 'gs', [[<Plug>(easymotion-prefix)]])
-      vimp.rbind('n', {'silent'}, 'gSj', [[<Plug>(easymotion-overwin-line)]])
-      vimp.rbind('n', {'silent'}, 'gSk', [[<Plug>(easymotion-overwin-line)]])
-      vimp.rbind('n', {'silent'}, 'gSf', [[<Plug>(easymotion-overwin-f)]])
-      vimp.rbind('n', {'silent'}, 'gSw', [[<Plug>(easymotion-overwin-w)]])
-    end
-  }
+  use { 'easymotion/vim-easymotion', disable = true }
   use { 'ggandor/lightspeed.nvim', config = function() require'lightspeed'.setup{} end }
 
   use 'tpope/vim-surround'
@@ -73,19 +62,9 @@ return require('packer').startup(function()
   }
   -- Fallbacks for argument selection and exchange
   use { 'wellle/targets.vim' }
-  use { 'tommcdo/vim-exchange', config = function()
-    vimp.rbind('v', {'silent'}, 'gx', [[<Plug>(Exchange)]])
-  end
-  }
+  use { 'tommcdo/vim-exchange' }
 
-  use {
-    'TimUntersberger/neogit',
-    config = function()
-      local neogit = require('neogit')
-      neogit.setup()
-      vimp.bind('n', {'silent'}, '<leader>gg', function() neogit.open({ kind="split"}) end)
-    end
-  }
+  use { 'TimUntersberger/neogit', config = function() require('neogit').setup() end }
   use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
 
   use { 'steelsojka/pears.nvim', config = function() require('pears').setup() end }
