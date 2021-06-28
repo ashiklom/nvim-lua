@@ -51,11 +51,12 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' m'
 
 -- Load selected plugin configs
+require('ans-compe')
 require('ans-iron')
 require('ans-jupytext')
 require('ans-lsp')
 require('ans-treesitter')
-require('ans-compe')
+require('ans-utils')
 
 local vimp = require('vimp')
 local ans_tele = require('ans-telescope')
