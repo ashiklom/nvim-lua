@@ -9,12 +9,18 @@ iron.core.add_repl_definitions {
     ipython = {
       command = {"ipython"}
     }
+  },
+  julia = {
+    julia = {
+      command = {"julia"}
+    }
   }
 }
 
 iron.core.set_config {
   preferred = {
     python = "ipython",
-    markdown = "ipython"
+    markdown = "ipython",
+    julia = "julia"
   }
 }

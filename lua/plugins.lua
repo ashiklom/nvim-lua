@@ -43,6 +43,9 @@ return require('packer').startup(function()
   use {'hkupty/iron.nvim'}
   use {'GCBallesteros/jupytext.vim'}
 
+  -- Julia
+  use { 'JuliaEditorSupport/julia-vim' }
+
   use {
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}

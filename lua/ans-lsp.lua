@@ -24,6 +24,7 @@ local function setup_servers()
   lspinst.setup()
   local servers = lspinst.installed_servers()
   table.insert(servers, "r_language_server")
+  table.insert(servers, "julials")
   for _, server in pairs(servers) do
     local settings = server_configs[server]
     if settings == nil then
