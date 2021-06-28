@@ -1,7 +1,3 @@
-local function cword()
-  return vim.fn["expand"]('<cword>')
-end
-
 -- Indentation rules
 vim.g.r_indent_align_args = 0
 vim.api.nvim_buf_set_option(0, "cinoptions", "(0,W2,m1")
@@ -21,9 +17,9 @@ local function map_rcall(mode, lhs, rcall)
   map(mode, lhs, rhs)
 end
 
-local function map_rcall_cword(mode, lhs, pattern)
-  local rcall2 = string.format(pattern, cword())
-  map_rcall(mode, lhs, rcall2)
+local function map_rcall_cword(mode, lhs, rcall)
+  local rhs = string.format([[:call g:SendCmdToR("%s(".expand("<cword>").")")<CR>]], rcall)
+  map(mode, lhs, rhs)
 end
 
 vim.g.R_assign_map = '<M-->'
@@ -33,3 +29,5 @@ map_rcall('n', '<localleader>vl', "devtools::load_all('.')")
 map_rcall('n', '<localleader>vd', "devtools::document('.')")
 map_rcall('n', '<localleader>vi', "devtools::install('.')")
 map_rcall('n', '<localleader>vt', "devtools::test('.')")
+
+map_rcall_cword('n', '<localleader>rg', 'dplyr::glimpse')
