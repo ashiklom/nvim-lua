@@ -9,6 +9,8 @@ local on_attach = function(_, bufnr)
   end
   nmap('gd', [[:lua vim.lsp.buf.definition()<CR>]])
   nmap('gD', [[:lua vim.lsp.buf.declaration()<CR>]])
+  nmap('gr', [[:lua vim.lsp.buf.rename()<CR>]])
+  nmap('K', [[:lua vim.lsp.buf.hover()<CR>]])
 end
 
 local server_configs = {
