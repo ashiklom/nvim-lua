@@ -1,42 +1,49 @@
 local icore = require('iron.core')
 local ill = require('iron.lowlevel')
 
-function _G.jl_send_print()
+function _G.jl_send_func(func)
   local ft = ill.get_buffer_ft(0)
-  local word = vim.fn.expand("<cword>")
-  icore.send(ft, string.format("print(%s)", word))
+  icore.send(ft, string.format("%s()", func))
 end
 
-local function bbind(mode, map, command)
+function _G.jl_send_func_word(func)
+  local ft = ill.get_buffer_ft(0)
+  local word = vim.fn.expand("<cword>")
+  icore.send(ft, string.format("%s(%s)", func, word))
+end
+
+local function fbind(mode, map, func)
+  local command = string.format("v:lua.jl_send_func('%s')", func)
+  vim.api.nvim_buf_set_keymap(0, mode, map, command, {silent=true, noremap=true, expr=true})
+end
+
+local function fwbind(mode, map, func)
+  local command = string.format("v:lua.jl_send_func_word('%s')", func)
+  vim.api.nvim_buf_set_keymap(0, mode, map, command, {silent=true, noremap=true, expr=true})
+end
+
+local function bind(mode, map, command)
   vim.api.nvim_buf_set_keymap(0, mode, map, command, {silent=true})
 end
 
-local function brbind(mode, map, command)
+local function rbind(mode, map, command)
   vim.api.nvim_buf_set_keymap(0, mode, map, command, {silent=true, noremap=true})
 end
 
-local function map_call(mode, map, call)
-  local rhs = string.format([[:IronSend! %s<CR>]], call)
-  bbind(mode, map, rhs)
-end
+bind("n", "<localleader>l", [[<Plug>(iron-send-line)]])
+bind("n", "<localleader>s", [[<Plug>(iron-send-motion)]])
+bind("n", "<localleader><CR>", [[<Plug>(iron-cr)]])
+bind("n", "<localleader>x", [[<Plug>(iron-interrupt)]])
+bind("v", "<localleader>ss", [[<Plug>(iron-visual-send)]])
 
-local function map_call_cword(mode, map, call)
-  local rhs = string.format([[:IronSend! "%s(".expand("<cword>").")"<CR>]], call)
-  bbind(mode, map, rhs)
-end
+rbind("n", "<localleader>rf", [[:IronRepl<CR>]])
+rbind("n", "<localleader>rr", [[:IronRestart<CR>]])
+rbind("n", "<localleader>rq", [[:IronSend! exit()<CR>:IronFocus<CR>:bd!<CR>]])
 
-bbind("n", "<localleader>l", [[<Plug>(iron-send-line)]])
-bbind("n", "<localleader>s", [[<Plug>(iron-send-motion)]])
-bbind("n", "<localleader><CR>", [[<Plug>(iron-cr)]])
-bbind("n", "<localleader>x", [[<Plug>(iron-interrupt)]])
+fwbind('n', '<localleader>rp', 'print')
+fbind('n', '<localleader>rz', 'isinteractive')
 
-brbind("n", "<localleader>rf", [[:IronRepl<CR>]])
-brbind("n", "<localleader>rr", [[:IronRestart<CR>]])
-brbind("n", "<localleader>rq", [[:IronSend! exit()<CR>:IronFocus<CR>:bd!<CR>]])
-
-bbind("v", "<localleader>ss", [[<Plug>(iron-visual-send)]])
-
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>rp', 'v:lua.jl_send_print()', {silent=true, noremap=true, expr=true})
+-- vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>rp', 'v:lua.jl_send_print()', {silent=true, noremap=true, expr=true})
 
 -- map_call('n', '<localleader>r.', 'import Pkg; Pkg.activate(".")')
 -- map_call_cword('n', '<localleader>rp', 'print')
