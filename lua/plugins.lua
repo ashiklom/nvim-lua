@@ -12,9 +12,19 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
 
   use {
-    "haya14busa/incsearch.vim",
-    disable = true
-    -- config = function() vim.command([[let g:incsearch#auto_nohlsearch=1]]) end
+    'haya14busa/incsearch.vim',
+    disable=true,
+    config = function()
+      vim.api.nvim_set_var('incsearch#auto_nohlsearch', 1)
+      vim.api.nvim_set_keymap('', '/', [[<Plug>(incsearch-forward)]], {silent=true})
+      vim.api.nvim_set_keymap('', '?', [[<Plug>(incsearch-backward)]], {silent=true})
+      vim.api.nvim_set_keymap('', 'g/', [[<Plug>(incsearch-stay)]], {silent=true})
+      local keys = {'n', 'N', '*', '#', 'g*', 'g#'}
+      for _, key in ipairs(keys) do
+        local rhs = string.format('<Plug>(incsearch-%s)', key)
+        vim.api.nvim_set_keymap('', key, rhs, {silent=true})
+      end
+    end
   }
 
   use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}

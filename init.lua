@@ -65,6 +65,7 @@ local teleb = require('telescope.builtin')
 
 vimp.bind('i', 'jk', '<Esc>')
 vimp.bind('n', 'Q', '<Nop>')
+vimp.bind('n', {'silent'}, '<ESC>', [[:nohlsearch<CR>]])
 
 vimp.bind('n', {'silent'}, '<leader>wj', [[:wincmd j<cr>]])
 vimp.bind('n', {'silent'}, '<leader>wk', [[:wincmd k<cr>]])
