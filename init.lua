@@ -17,7 +17,12 @@ require('ans-iron')
 require('ans-jupytext')
 require('ans-lsp')
 require('ans-treesitter')
-require('ans-utils')
+
+local utils = require('ans-utils')
+local vimp = require('vimp')
+local ans_tele = require('ans-telescope')
+local tele = require('telescope')
+local teleb = require('telescope.builtin')
 
 -- Settings
 vim.cmd [[filetype plugin indent on]]
@@ -57,11 +62,6 @@ vim.cmd [[set isfname-==]]
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' m'
-
-local vimp = require('vimp')
-local ans_tele = require('ans-telescope')
-local tele = require('telescope')
-local teleb = require('telescope.builtin')
 
 vimp.bind('i', 'jk', '<Esc>')
 vimp.bind('n', 'Q', '<Nop>')
@@ -121,5 +121,14 @@ vimp.bind('n', '<leader>%r', function()
   vim.cmd [[luafile ~/.config/nvim/init.lua]]
   print("Reloaded vimrc!")
 end)
+
+-- Completion mappings
+local vopts = {"silent", "expr"}
+vimp.bind("i", vopts, "<C-Space>", [[compe#complete()]])
+vimp.bind("i", vopts, "<CR>", [[compe#confirm('<CR>')]])
+
+utils.nvim_create_augroup('Spelling', {
+  {"FileType", "text,tex,markdown,plaintex", "setlocal spell"}
+})
 
 vimp.add_chord_cancellations('n', '<leader>')
