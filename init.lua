@@ -112,7 +112,8 @@ vimp.bind('n', {'silent'}, '<leader>cd', [[:cd %:p:h<cr>]])
 
 -- Delete trailing whitespace
 vimp.bind('v', {'silent'}, '<leader>cw', [[:s/\s\+$//ge<CR>]])
-vimp.bind('n', {'silent'}, '<leader>cW', [[:%s/\s\+$//ge<CR>]])
+vimp.bind('n', {'silent'}, '<leader>cw', [[:.s/\s\+$//ge<CR>]])  -- Current line only
+vimp.bind('n', {'silent'}, '<leader>cW', [[:%s/\s\+$//ge<CR>]])  -- Entire file
 
 -- Reload vimrc
 vimp.bind('n', '<leader>%r', function()
