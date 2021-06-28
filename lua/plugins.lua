@@ -70,7 +70,13 @@ return require('packer').startup(function()
   use { 'steelsojka/pears.nvim', config = function() require('pears').setup() end }
 
   use 'editorconfig/editorconfig-vim'
-  use 'b3nj5m1n/kommentary'
+  use { 'b3nj5m1n/kommentary', config = function()
+    local kc = require('kommentary.config')
+    kc.configure_language('default', {
+      prefer_single_line_comments = true
+    })
+    end
+  }
 
   use {
     'akinsho/nvim-toggleterm.lua',
