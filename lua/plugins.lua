@@ -65,7 +65,9 @@ return require('packer').startup(function()
   use { 'wellle/targets.vim' }
   use { 'tommcdo/vim-exchange' }
 
-  use { 'TimUntersberger/neogit', config = function() require('neogit').setup() end }
+  use { 'TimUntersberger/neogit', config = function() require('neogit').setup{
+    disable_commit_confirmation = true
+  } end }
   use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
 
   use { 'steelsojka/pears.nvim', config = function() require('pears').setup() end }
