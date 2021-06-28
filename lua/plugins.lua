@@ -15,9 +15,10 @@ return require('packer').startup(function()
   use { 'AndrewRadev/splitjoin.vim', config = function()
     vim.api.nvim_set_var('splitjoin_split_mapping', '')
     vim.api.nvim_set_var('splitjoin_join_mapping', '')
-    vim.api.nvim_set_keymap('n', 'g[', [[:SplitjoinSplit<CR>]], {silent=true})
-    vim.api.nvim_set_keymap('n', 'gJ', [[:SplitjoinJoin<CR>]], {silent=true})
-    end
+    local opts = {silent=true, noremap=true}
+    vim.api.nvim_set_keymap('n', 'g[', [[:SplitjoinSplit<CR>]], opts)
+    vim.api.nvim_set_keymap('n', 'g]', [[:SplitjoinJoin<CR>]], opts)
+  end
   }
 
   use {
