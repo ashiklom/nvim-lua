@@ -134,7 +134,7 @@ vimp.bind("i", vopts, "<C-Space>", [[compe#complete()]])
 -- vimp.bind("i", vopts, "<CR>", [[compe#confirm('<CR>')]])
 
 utils.nvim_create_augroup('Spelling', {
-  {"FileType", "text,tex,markdown,plaintex", "setlocal spell"}
+  {"FileType", "text,tex,markdown,plaintex,gitcommit", "setlocal spell"}
 })
 
 vimp.add_chord_cancellations('n', '<leader>')
