@@ -46,6 +46,8 @@ return require('packer').startup(function()
   -- Julia
   use { 'JuliaEditorSupport/julia-vim' }
 
+  use { 'bfredl/nvim-luadev' }
+
   use {
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
