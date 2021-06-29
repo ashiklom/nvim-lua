@@ -130,7 +130,8 @@ end)
 -- Completion mappings
 local vopts = {"silent", "expr"}
 vimp.bind("i", vopts, "<C-Space>", [[compe#complete()]])
-vimp.bind("i", vopts, "<CR>", [[compe#confirm('<CR>')]])
+-- NOTE: Can't use this b/c of interaction with `pears`. See lua/plugins.lua.
+-- vimp.bind("i", vopts, "<CR>", [[compe#confirm('<CR>')]])
 
 utils.nvim_create_augroup('Spelling', {
   {"FileType", "text,tex,markdown,plaintex", "setlocal spell"}

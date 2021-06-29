@@ -73,7 +73,20 @@ return require('packer').startup(function()
   use { 'TimUntersberger/neogit' }
   use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
 
-  use { 'steelsojka/pears.nvim', config = function() require('pears').setup() end }
+  use {
+    'steelsojka/pears.nvim',
+    config = function()
+      require('pears').setup(function(conf)
+        conf.on_enter(function(pears_handle)
+          if vim.fn.pumvisible() == 1 and vim.fn.complete_info().selected ~= 1 then
+            return vim.fn["compe#confirm"]("<CR>")
+          else
+            pears_handle()
+          end
+        end)
+      end)
+    end
+  }
 
   use 'editorconfig/editorconfig-vim'
   use { 'b3nj5m1n/kommentary', config = function()
