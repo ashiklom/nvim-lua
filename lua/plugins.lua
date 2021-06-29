@@ -53,6 +53,12 @@ return require('packer').startup(function()
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }
 
+  use { 'dkarter/bullets.vim' , config = function()
+    vim.g.bullets_set_mappings = 0
+    vim.api.nvim_set_keymap('i', '<M-CR>', '<C-O>:InsertNewBullet<CR>', {silent=true, noremap=true})
+    vim.api.nvim_set_keymap('n', '<C-C><C-C>', ':ToggleCheckbox<CR>', {silent=true, noremap=true})
+  end}
+
   use { 'nvim-telescope/telescope-project.nvim' }
 
   -- Languageserver
