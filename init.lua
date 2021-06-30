@@ -68,6 +68,12 @@ vimp.bind('i', 'jk', '<Esc>')
 vimp.bind('n', 'Q', '<Nop>')
 vimp.bind('n', {'silent'}, '<ESC>', [[:nohlsearch<CR>]])
 
+-- Visual line navigation
+vimp.bind('n', 'j', 'gj')
+vimp.bind('n', 'k', 'gk')
+vimp.bind('n', 'gj', 'j')
+vimp.bind('n', 'gk', 'k')
+
 local winkeys = {"j","k","l","h","="}
 for _, key in ipairs(winkeys) do
   vimp.bind('n', {'silent'}, '<leader>w'..key, string.format([[:wincmd %s<cr>]], key))
