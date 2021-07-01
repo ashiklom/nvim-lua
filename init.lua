@@ -117,7 +117,10 @@ local neogit = require('neogit')
 vimp.bind('n', {'silent'}, '<leader>gg', function() neogit.open({ kind="split"}) end)
 
 -- Change directory to file directory
-vimp.bind('n', {'silent'}, '<leader>cd', [[:cd %:p:h<cr>]])
+vimp.bind('n', {'silent'}, '<leader>cd', function()
+  vim.cmd(string.format("cd %s", utils.git_cwd()))
+end)
+vimp.bind('n', {'silent'}, '<leader>cD', [[:cd %:p:h<cr>]])
 
 -- Delete trailing whitespace
 vimp.bind('v', {'silent'}, '<leader>cw', [[:s/\s\+$//ge<CR>]])
