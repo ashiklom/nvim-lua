@@ -158,7 +158,7 @@ utils.nvim_create_augroup('Spelling', {
 
 -- Automatically change window directory on file enter
 utils.nvim_create_augroup("Chdir", {
-  {"BufEnter", "*", [[if !(exists("w:fix_wd")) | execute 'lcd '.v:lua.git_cwd() | endif]]}
+  {"BufEnter", "*", [[if !exists("w:fix_wd") && bufname() !~ "term:" | execute 'lcd '.v:lua.git_cwd() | endif]]}
 })
 
 vim.cmd [[iab <expr> tdy strftime("%Y-%m-%d")]]
