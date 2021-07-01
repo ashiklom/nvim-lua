@@ -155,4 +155,6 @@ utils.nvim_create_augroup("Chdir", {
   {"BufEnter", "*", "execute 'lcd '.v:lua.git_cwd()"}
 })
 
+vim.cmd [[iab <expr> tdy strftime("%Y-%m-%d")]]
+
 vimp.add_chord_cancellations('n', '<leader>')
