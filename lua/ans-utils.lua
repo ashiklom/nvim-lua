@@ -20,7 +20,7 @@ function utils.git_cwd()
   local bufname = utils.buf_name()
   local buffer = path:new(bufname)
   local cwd
-  if bufname == '' then
+  if bufname == '' or string.find(bufname, 'term:') then
     cwd = vim.fn["getcwd"]()
   elseif buffer:is_dir() then
     cwd = buffer
