@@ -124,9 +124,15 @@ vimp.bind('n', {'silent'}, '<leader>gg', function() neogit.open({ kind="split"})
 
 -- Change directory to file directory
 vimp.bind('n', {'silent'}, '<leader>cd', function()
-  vim.cmd(string.format("cd %s", utils.git_cwd()))
+  vim.w["fix_wd"] = true
+  vim.cmd(string.format("lcd %s", utils.git_cwd()))
 end)
-vimp.bind('n', {'silent'}, '<leader>cD', [[:cd %:p:h<cr>]])
+-- vimp.bind('n', {'silent'}, '<leader>cD', [[:cd %:p:h<cr>]])
+vimp.bind('n', {'silent'}, '<leader>cD', function()
+  vim.w["fix_wd"] = true
+  vim.cmd(string.format("lcd %s", utils.buf_cwd()))
+end)
+vimp.bind('n', {'silent'}, '<leader>c0', ':if exists("w:fix_wd")<CR>unlet w:fix_wd<CR>endif<CR>')
 
 -- Delete trailing whitespace
 vimp.bind('v', {'silent'}, '<leader>cw', [[:s/\s\+$//ge<CR>]])
@@ -152,7 +158,7 @@ utils.nvim_create_augroup('Spelling', {
 
 -- Automatically change window directory on file enter
 utils.nvim_create_augroup("Chdir", {
-  {"BufEnter", "*", "execute 'lcd '.v:lua.git_cwd()"}
+  {"BufEnter", "*", [[if !(exists("w:fix_wd")) | execute 'lcd '.v:lua.git_cwd() | endif]]}
 })
 
 vim.cmd [[iab <expr> tdy strftime("%Y-%m-%d")]]
