@@ -2,17 +2,30 @@ require('telescope').load_extension('project')
 
 local tb = require('telescope.builtin')
 local path = require('plenary.path')
+local utils = require('ans-utils')
 
 local M = {}
+
+function M.fd_files()
+  local opts = {find_command = {"fd", "--type", "file"}}
+  local hasgit = pcall(tb.git_files, opts)
+  if not hasgit then tb.find_files(opts) end
+end
 
 function M.file_browser_home()
   return tb.file_browser({cwd="~", hidden=true})
 end
 
 function M.file_browser_cwd()
-  local buffer = path:new(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()))
-  local cwd = buffer:parent()
+  local cwd = utils.buf_cwd()
   return tb.file_browser({cwd=cwd, hidden=true})
 end
+
+-- local snap = require('snap')
+-- snap.maps {
+--   {'<leader>fi', snap.config.file {producer='ripgrep.file', preview=false}, {command="snapfiles"}},
+--   {'<leader> ', snap.config.file {producer = 'fd.file', limit=1000}, {command="snapfd"}},
+--   {'<leader>sp', snap.config.vimgrep {consumer = 'fzf'}, {command="snaprg"} }
+-- }
 
 return M
