@@ -114,4 +114,12 @@ return require('packer').startup(function()
 
   use 'sainnhe/sonokai'
 
+  use {'alok/notational-fzf-vim', config = function()
+    vim.g["nv_search_paths"] = {"~/.deft"}
+    -- To match Telescope
+    vim.g["nv_create_note_key"] = "ctrl-e"
+    vim.api.nvim_set_keymap('n', '<leader>nd', ':NV<CR>', {silent=true, noremap=true})
+    vim.api.nvim_set_keymap('n', '<leader>nf', ':Files ~/.deft<CR>', {silent=true, noremap=true})
+  end }
+
 end)
