@@ -11,6 +11,3 @@ pushd $SRCDIR
 popd
 mkdir -p $HOME/.local/bin
 ln -fs $SRCDIR/squashfs-root/usr/bin/nvim $HOME/.local/bin/nvim
-
-# Start neovim
-nvim -u $HOME/.config/nvim/setup.lua
