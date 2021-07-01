@@ -43,8 +43,7 @@ return require('packer').startup(function()
   use {'hkupty/iron.nvim'}
   use {'GCBallesteros/jupytext.vim'}
 
-  -- Julia
-  use { 'JuliaEditorSupport/julia-vim', ft = {'julia'}, disable=true}
+  use { 'JuliaEditorSupport/julia-vim'}
 
   use { 'bfredl/nvim-luadev' }
 
