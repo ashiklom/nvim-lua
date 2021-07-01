@@ -86,16 +86,14 @@ vimp.bind('n', {'silent'}, '<leader>w-', [[:split<cr>]])
 vimp.bind('n', {'silent'}, '<leader>w\\', [[:vsplit<cr>]])
 vimp.bind('n', {'silent'}, '<leader>wd', [[:close<cr>]])
 
-vimp.bind('n', {'silent'}, '<leader>fs', [[:w<cr>]])
+vimp.bind('n', {'silent'}, '<leader>fs', [[:write<cr>]])
 
 vimp.bind('n', {'silent'}, 'z.', [[:<C-u>normal! zszH<CR>]])
 
 -- Telescope mappings
-vimp.bind('n', {'silent'}, '<leader> ', function() teleb.find_files() end)
--- vimp.bind('n', {'silent'}, '<leader>ff', function() require('telescope.builtin').file_browser({hidden=true}) end)
+vimp.bind('n', {'silent'}, '<leader> ', [[:Files<CR>]])
 vimp.bind('n', {'silent'}, '<leader>ff', function() ans_tele.file_browser_cwd() end)
--- vimp.bind('n', {'silent'}, '<leader>f`', function() require('telescope.builtin').file_browser({cwd="~", hidden=true}) end)
-vimp.bind('n', {'silent'}, '<leader>f`', function() ans_tele.file_browser_home() end)
+vimp.bind('n', {'silent'}, '<leader>fF', [[:Files ~<CR>]])
 vimp.bind('n', {'silent'}, '<leader>bb', function() teleb.buffers() end)
 vimp.bind('n', {'silent'}, '<leader>bk', [[:b#|bd#<CR>]])
 vimp.bind('n', {'silent'}, '<leader>ht', function() teleb.help_tags() end)
