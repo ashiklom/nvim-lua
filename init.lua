@@ -144,4 +144,9 @@ utils.nvim_create_augroup('Spelling', {
   {"FileType", "text,tex,markdown,plaintex,gitcommit", "setlocal spell wrap"}
 })
 
+-- Automatically change window directory on file enter
+utils.nvim_create_augroup("Chdir", {
+  {"BufEnter", "*", "execute 'lcd '.v:lua.git_cwd()"}
+})
+
 vimp.add_chord_cancellations('n', '<leader>')
