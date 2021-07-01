@@ -11,4 +11,6 @@ bbind("n", "<localleader>rf", [[:IronRepl<CR>]])
 bbind("n", "<localleader>rr", [[:IronRestart<CR>]])
 bbind("n", "<localleader>rq", [[:IronSend! exit()<CR>:IronFocus<CR>:bd!<CR>]])
 
+bbind("n", "<localleader>rp", [[:execute 'IronSend! print('.expand("<cword>").')'<CR>]])
+
 bbind("v", "<localleader>ss", [[<Plug>(iron-visual-send)]])
