@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Download latest neovim
+SRCDIR=$HOME/.local/src/neovim
+SRCFILE=$SRCDIR/nvim.appimage
+mkdir -p $SRCDIR
+curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -o $SRCFILE
+chmod +x $SRCFILE
+pushd $SRCDIR
+./nvim.appimage --appimage-extract
+popd
+mkdir -p $HOME/.local/bin
+ln -fs $SRCDIR/squashfs-root/usr/bin/nvim $HOME/.local/bin/nvim
+
+# Start neovim
+nvim -u $HOME/.config/nvim/setup.lua
