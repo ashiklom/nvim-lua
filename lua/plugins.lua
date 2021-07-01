@@ -44,7 +44,7 @@ return require('packer').startup(function()
   use {'GCBallesteros/jupytext.vim'}
 
   -- Julia
-  use { 'JuliaEditorSupport/julia-vim' }
+  use { 'JuliaEditorSupport/julia-vim', ft = {'julia'}, disable=true}
 
   use { 'bfredl/nvim-luadev' }
 
