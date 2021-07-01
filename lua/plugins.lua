@@ -122,4 +122,26 @@ return require('packer').startup(function()
     vim.api.nvim_set_keymap('n', '<leader>nf', ':Files ~/.deft<CR>', {silent=true, noremap=true})
   end }
 
+  use {'axvr/org.vim'}
+
+  use {
+    "vhyrro/neorg",
+    disable = true,
+    config = function()
+      require('neorg').setup {
+        -- Tell Neorg what modules to load
+        load = {
+          ["core.defaults"] = {}, -- Load all the default modules
+          ["core.norg.concealer"] = {}, -- Allows for use of icons
+          ["core.norg.dirman"] = { -- Manage your directories with Neorg
+          config = {
+            workspaces = {
+              my_workspace = "~/Dropbox/Notes"
+            }
+          }
+        }
+      },
+    }
+  end }
+
 end)
