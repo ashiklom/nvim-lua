@@ -74,8 +74,9 @@ vimp.bind('n', 'k', 'gk')
 vimp.bind('n', 'gj', 'j')
 vimp.bind('n', 'gk', 'k')
 
-local winkeys = {"j","k","l","h","="}
-for _, key in ipairs(winkeys) do
+local winkeys = "jklh=xrRT"
+for i = 1, #winkeys do
+  local key = winkeys:sub(i,i)
   vimp.bind('n', {'silent'}, '<leader>w'..key, string.format([[:wincmd %s<cr>]], key))
 end
 
@@ -85,8 +86,10 @@ vimp.bind('n', {'silent'}, '<leader>w_', [[:5 wincmd -<cr>]])
 vimp.bind('n', {'silent'}, '<leader>w-', [[:split<cr>]])
 vimp.bind('n', {'silent'}, '<leader>w\\', [[:vsplit<cr>]])
 vimp.bind('n', {'silent'}, '<leader>wd', [[:close<cr>]])
+vimp.bind('n', {'silent'}, '<leader>wo', [[:Windows<CR>]])
 
 vimp.bind('n', {'silent'}, '<leader>fs', [[:write<cr>]])
+vim.cmd([[cnoreabbrev W w]])
 
 vimp.bind('n', {'silent'}, 'z.', [[:<C-u>normal! zszH<CR>]])
 
