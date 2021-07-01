@@ -17,6 +17,10 @@ local server_configs = {
   lua = {
     on_attach = on_attach,
     settings = {Lua = {diagnostics = {globals = {"vim"}}}}
+  },
+  bash = {
+    on_attach = on_attach,
+    filetypes = { "sh", "zsh" }
   }
 }
 
