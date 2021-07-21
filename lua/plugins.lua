@@ -80,8 +80,10 @@ return require('packer').startup(function()
   use { 'TimUntersberger/neogit' }
   use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
 
+  use { 'jiangmiao/auto-pairs' }
   use {
     'steelsojka/pears.nvim',
+    disable = true,
     config = function()
       require('pears').setup(function(conf)
         conf.on_enter(function(pears_handle)
