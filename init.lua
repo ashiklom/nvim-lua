@@ -74,6 +74,12 @@ vimp.bind('n', 'k', 'gk')
 vimp.bind('n', 'gj', 'j')
 vimp.bind('n', 'gk', 'k')
 
+-- Most recent buffer
+vimp.bind('n', 'gb', '<C-^>')
+
+-- Toggle wrap long lines
+vimp.bind('n', {'silent'}, '<leader>$', [[:setlocal wrap!<CR>]])
+
 local winkeys = "jklh=xrRT"
 for i = 1, #winkeys do
   local key = winkeys:sub(i,i)
