@@ -37,6 +37,7 @@ return require('packer').startup(function()
     end
   }
 
+  use {'ashiklom/r-vim-runtime'}
   use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}
 
   -- Python

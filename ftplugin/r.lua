@@ -1,5 +1,6 @@
 -- Indentation rules
-vim.g.r_indent_align_args = 0
+vim.g.r_indent_align_args = 1
+vim.g.r_indent_rstudio = 1
 vim.api.nvim_buf_set_option(0, "cinoptions", "(0,W2,m1")
 vim.api.nvim_buf_set_option(0, "tabstop", 2)
 
