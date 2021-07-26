@@ -146,6 +146,9 @@ vimp.bind('v', {'silent'}, '<leader>cw', [[:s/\s\+$//ge<CR>]])
 vimp.bind('n', {'silent'}, '<leader>cw', [[:.s/\s\+$//ge<CR>]])  -- Current line only
 vimp.bind('n', {'silent'}, '<leader>cW', [[:%s/\s\+$//ge<CR>]])  -- Entire file
 
+vimp.rbind('n', {'silent'}, '<leader>nd', ':NV<CR>')
+vimp.rbind('n', '<leader>nf', ':Files ~/.deft<CR>')
+
 -- Reload vimrc
 vimp.bind('n', '<leader>%r', function()
   vimp.unmap_all()
