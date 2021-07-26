@@ -84,6 +84,7 @@ return require('packer').startup(function()
 
   use { 'TimUntersberger/neogit' }
   use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
+  use { 'samoshkin/vim-mergetool', config = function() require('configs.vim-mergetool') end }
 
   use { 'jiangmiao/auto-pairs' }
   use {
