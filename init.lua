@@ -115,13 +115,6 @@ vimp.bind('n', {'silent'}, '<leader>po', function() tele.extensions.project.proj
 vimp.bind('n', {'silent'}, '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]])
 vimp.bind('n', {'silent'}, 'z=', function() teleb.spell_suggest() end)
 
--- Easymotion
--- vimp.rbind('nvo', {'silent'}, 'gs', [[<Plug>(easymotion-prefix)]])
--- vimp.rbind('n', {'silent'}, 'gSj', [[<Plug>(easymotion-overwin-line)]])
--- vimp.rbind('n', {'silent'}, 'gSk', [[<Plug>(easymotion-overwin-line)]])
--- vimp.rbind('n', {'silent'}, 'gSf', [[<Plug>(easymotion-overwin-f)]])
--- vimp.rbind('n', {'silent'}, 'gSw', [[<Plug>(easymotion-overwin-w)]])
-
 -- Exchange
 vimp.rbind('v', {'silent'}, 'gx', [[<Plug>(Exchange)]])
 
