@@ -50,7 +50,12 @@ return require('packer').startup(function()
 
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    requires = {
+      {'nvim-lua/popup.nvim'},
+      {'nvim-lua/plenary.nvim'},
+      {'yamatsum/nvim-nonicons'},
+      {'kyazdani42/nvim-web-devicons'}
+    }
   }
   use { 'nvim-telescope/telescope-project.nvim' }
   use { 'camspiers/snap', disable=true}
