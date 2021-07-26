@@ -73,27 +73,11 @@ return require('packer').startup(function()
   use {
     'steelsojka/pears.nvim',
     disable = true,
-    config = function()
-      require('pears').setup(function(conf)
-        conf.on_enter(function(pears_handle)
-          if vim.fn.pumvisible() == 1 and vim.fn.complete_info().selected ~= 1 then
-            return vim.fn["compe#confirm"]("<CR>")
-          else
-            pears_handle()
-          end
-        end)
-      end)
-    end
+    config = function() require('configs.pears') end
   }
 
   use 'editorconfig/editorconfig-vim'
-  use { 'b3nj5m1n/kommentary', config = function()
-    local kc = require('kommentary.config')
-    kc.configure_language('default', {
-      prefer_single_line_comments = true
-    })
-  end
-  }
+  use { 'b3nj5m1n/kommentary', config = function() require('configs.kommentary') end }
 
   use {
     'dhruvasagar/vim-table-mode',
@@ -112,33 +96,15 @@ return require('packer').startup(function()
 
   use {
     'alok/notational-fzf-vim',
-    config = function()
-      vim.g["nv_search_paths"] = {"~/.deft"}
-      -- To match Telescope
-      vim.g["nv_create_note_key"] = "ctrl-e"
-    end
-}
+    config = function() require('configs.notational-fzf-vim') end
+  }
 
   use {'axvr/org.vim'}
 
   use {
     "vhyrro/neorg",
     disable = true,
-    config = function()
-      require('neorg').setup {
-        -- Tell Neorg what modules to load
-        load = {
-          ["core.defaults"] = {}, -- Load all the default modules
-          ["core.norg.concealer"] = {}, -- Allows for use of icons
-          ["core.norg.dirman"] = { -- Manage your directories with Neorg
-          config = {
-            workspaces = {
-              my_workspace = "~/Dropbox/Notes"
-            }
-          }
-        }
-      },
-    }
-  end }
+    config = function() require('configs.neorg') end
+  }
 
 end)
