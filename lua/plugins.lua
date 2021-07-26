@@ -12,29 +12,12 @@ return require('packer').startup(function()
   use { 'ggandor/lightspeed.nvim', config = function() require'lightspeed'.setup{} end }
 
   use 'tpope/vim-surround'
-  use { 'AndrewRadev/splitjoin.vim', config = function()
-    vim.api.nvim_set_var('splitjoin_split_mapping', '')
-    vim.api.nvim_set_var('splitjoin_join_mapping', '')
-    local opts = {silent=true, noremap=true}
-    vim.api.nvim_set_keymap('n', 'g[', [[:SplitjoinSplit<CR>]], opts)
-    vim.api.nvim_set_keymap('n', 'g]', [[:SplitjoinJoin<CR>]], opts)
-  end
-  }
+  use { 'AndrewRadev/splitjoin.vim', config = function() require('configs.splitjoin') end }
 
   use {
     'haya14busa/incsearch.vim',
     disable=true,
-    config = function()
-      vim.api.nvim_set_var('incsearch#auto_nohlsearch', 1)
-      vim.api.nvim_set_keymap('', '/', [[<Plug>(incsearch-forward)]], {silent=true})
-      vim.api.nvim_set_keymap('', '?', [[<Plug>(incsearch-backward)]], {silent=true})
-      vim.api.nvim_set_keymap('', 'g/', [[<Plug>(incsearch-stay)]], {silent=true})
-      local keys = {'n', 'N', '*', '#', 'g*', 'g#'}
-      for _, key in ipairs(keys) do
-        local rhs = string.format('<Plug>(incsearch-%s)', key)
-        vim.api.nvim_set_keymap('', key, rhs, {silent=true})
-      end
-    end
+    config = function() require('configs.incsearch') end
   }
 
   use {'ashiklom/r-vim-runtime'}
@@ -61,11 +44,11 @@ return require('packer').startup(function()
   use { 'camspiers/snap', disable=true}
   use {'junegunn/fzf.vim', requires = {{'junegunn/fzf'}}}
 
-  use { 'dkarter/bullets.vim' , config = function()
-    vim.g.bullets_set_mappings = 0
-    vim.api.nvim_set_keymap('i', '<M-CR>', '<C-O>:InsertNewBullet<CR>', {silent=true, noremap=true})
-    vim.api.nvim_set_keymap('n', '<C-C><C-C>', ':ToggleCheckbox<CR>', {silent=true, noremap=true})
-  end}
+  use {
+    'dkarter/bullets.vim',
+    setup = function() require('setups.bullets') end,
+    config = function() require('configs.bullets') end
+  }
 
   -- Languageserver
   use { 'neovim/nvim-lspconfig' }
@@ -113,12 +96,16 @@ return require('packer').startup(function()
   }
 
   use {
+    'dhruvasagar/vim-table-mode',
+    ft = {'markdown'},
+    -- NOTE: Setup to run before
+    setup = function() require('setups.vim-table-mode') end,
+    config = function() require('configs.vim-table-mode') end
+  }
+
+  use {
     'akinsho/nvim-toggleterm.lua',
-    config = function() require('toggleterm').setup{
-      open_mapping = [[<c-\>]],
-      direction = "float",
-      hide_numbers = true
-    } end
+    config = function() require('configs.nvim-toggleterm') end
   }
 
   use 'sainnhe/sonokai'
