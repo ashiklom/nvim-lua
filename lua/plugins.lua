@@ -107,4 +107,10 @@ return require('packer').startup(function()
     config = function() require('configs.neorg') end
   }
 
+  use {
+    'mtth/scratch.vim',
+    setup = function() require('setups.scratch') end,
+    config = function() require('configs.scratch') end
+  }
+
 end)
