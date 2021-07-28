@@ -99,7 +99,11 @@ return require('packer').startup(function()
     config = function() require('configs.notational-fzf-vim') end
   }
 
-  use {'axvr/org.vim'}
+  use {'axvr/org.vim', disable=true}
+  use {
+    'kristijanhusak/orgmode.nvim',
+    config = function() require('configs.orgmode') end
+  }
 
   use {
     "vhyrro/neorg",
