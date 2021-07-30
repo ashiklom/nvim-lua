@@ -43,6 +43,10 @@ return require('packer').startup(function()
   use { 'nvim-telescope/telescope-project.nvim' }
   use { 'camspiers/snap', disable=true}
   use {'junegunn/fzf.vim', requires = {{'junegunn/fzf'}}}
+  use {
+    'mcchrish/nnn.vim',
+    config = function() require('configs.nnn') end
+  }
 
   use {
     'dkarter/bullets.vim',
