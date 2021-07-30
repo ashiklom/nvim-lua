@@ -1,7 +1,14 @@
-local packer = require("packer")
-local use = packer.use
+-- Bootstrap packer.nvim
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if vim.fn.empty(fn.glob(install_path)) > 0 then
+	vim.fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
+	vim.api.nvim_command 'packadd packer.nvim'
+end
+vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 
-return require('packer').startup(function()
+local packer = require("packer")
+
+return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'svermeulen/vimpeccable'
   use 'nvim-lua/plenary.nvim'
