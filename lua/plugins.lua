@@ -9,14 +9,20 @@ return require('packer').startup(function()
   use 'danro/rename.vim'
 
   use { 'easymotion/vim-easymotion', disable = true }
-  use { 'ggandor/lightspeed.nvim', config = function() require'lightspeed'.setup{} end }
+  use {
+    'ggandor/lightspeed.nvim',
+    config = function() require'lightspeed'.setup{} end
+  }
 
   use 'tpope/vim-surround'
-  use { 'AndrewRadev/splitjoin.vim', config = function() require('configs.splitjoin') end }
+  use {
+    'AndrewRadev/splitjoin.vim',
+    config = function() require('configs.splitjoin') end
+  }
 
   use {
     'haya14busa/incsearch.vim',
-    disable=true,
+    disable = true,
     config = function() require('configs.incsearch') end
   }
 
@@ -24,8 +30,14 @@ return require('packer').startup(function()
   use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}
 
   -- Python
-  use {'hkupty/iron.nvim'}
-  use {'GCBallesteros/jupytext.vim'}
+  use {
+    'hkupty/iron.nvim',
+    config = function() require('configs.iron') end
+  }
+  use {
+    'GCBallesteros/jupytext.vim',
+    config = function() require('configs.jupytext') end
+  }
 
   use { 'JuliaEditorSupport/julia-vim'}
 
@@ -55,12 +67,22 @@ return require('packer').startup(function()
   }
 
   -- Languageserver
-  use { 'neovim/nvim-lspconfig' }
+  use {
+    'neovim/nvim-lspconfig',
+    config = function() require('configs.lsp') end
+  }
   use { 'kabouzeid/nvim-lspinstall' }
 
-  use { "hrsh7th/nvim-compe" }
+  use {
+    "hrsh7th/nvim-compe",
+    config = function() require('configs.compe') end
+  }
 
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function() require('configs.treesitter') end
+  }
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
     requires = {{ 'nvim-treesitter/nvim-treesitter' }}
@@ -69,7 +91,10 @@ return require('packer').startup(function()
   use { 'wellle/targets.vim' }
   use { 'tommcdo/vim-exchange' }
 
-  use { 'TimUntersberger/neogit' }
+  use {
+    'TimUntersberger/neogit',
+    config = function() require('configs.neogit') end
+  }
   use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
   use { 'samoshkin/vim-mergetool', config = function() require('configs.vim-mergetool') end }
 

@@ -11,14 +11,6 @@ end
 vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 require('plugins')
 
--- Load selected plugin configs
-require('ans-compe')
-require('ans-git')
-require('ans-iron')
-require('ans-jupytext')
-require('ans-lsp')
-require('ans-treesitter')
-
 local utils = require('ans-utils')
 local vimp = require('vimp')
 local ans_tele = require('ans-telescope')
