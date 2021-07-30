@@ -48,6 +48,18 @@ function utils.buf_cwd()
   return tostring(cwd)
 end
 
+function utils.reload_vimrc()
+  -- Reset 'require' cache
+  package.loaded["ans-keys"] = nil
+  package.loaded["ans-utils"] = nil
+  package.loaded["ans-opt"] = nil
+  package.loaded["ans-event"] = nil
+  package.loaded["plugins"] = nil
+  require('vimp').unmap_all()
+  vim.cmd [[luafile ~/.config/nvim/init.lua]]
+  print("Reloaded vimrc!")
+end
+
 _G.buf_cwd = utils.buf_cwd
 _G.git_cwd = utils.git_cwd
 

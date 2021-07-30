@@ -2,6 +2,7 @@ local vimp = require('vimp')
 local ans_tele = require('ans-telescope')
 local tele = require('telescope')
 local teleb = require('telescope.builtin')
+local utils = require('ans-utils')
 
 vimp.bind('i', 'jk', '<Esc>')
 vimp.bind('n', 'Q', '<Nop>')
@@ -82,22 +83,11 @@ vimp.rbind('n', {'silent'}, '<leader>nd', ':NV<CR>')
 vimp.rbind('n', '<leader>nf', ':Files ~/.deft<CR>')
 
 -- Reload vimrc
-vimp.bind('n', '<leader>%r', function()
-  -- Reset 'require' cache
-  package.loaded["ans-keys"] = nil
-  package.loaded["ans-utils"] = nil
-  package.loaded["ans-opt"] = nil
-  package.loaded["ans-event"] = nil
-  package.loaded["plugins"] = nil
-  vimp.unmap_all()
-  vim.cmd [[luafile ~/.config/nvim/init.lua]]
-  print("Reloaded vimrc!")
-end)
+vimp.bind('n', '<leader>%r', function() utils.reload_vimrc() end)
+vimp.bind('n', {'silent'}, '<leader>%s', [[:PackerSync<CR>]])
 
 -- Completion mappings
 local vopts = {"silent", "expr"}
 vimp.bind("i", vopts, "<C-Space>", [[compe#complete()]])
--- NOTE: Can't use this b/c of interaction with `pears`. See lua/plugins.lua.
--- vimp.bind("i", vopts, "<CR>", [[compe#confirm('<CR>')]])
 
 vimp.add_chord_cancellations('n', '<leader>')
