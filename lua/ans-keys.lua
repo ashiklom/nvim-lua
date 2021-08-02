@@ -9,10 +9,10 @@ vimp.bind('n', 'Q', '<Nop>')
 vimp.bind('n', {'silent'}, '<ESC>', [[:nohlsearch<CR>]])
 
 -- Visual line navigation
-vimp.bind('n', 'j', 'gj')
-vimp.bind('n', 'k', 'gk')
-vimp.bind('n', 'gj', 'j')
-vimp.bind('n', 'gk', 'k')
+vimp.bind('nv', 'j', 'gj')
+vimp.bind('nv', 'k', 'gk')
+vimp.bind('nv', 'gj', 'j')
+vimp.bind('nv', 'gk', 'k')
 
 -- Most recent buffer
 vimp.bind('n', 'gb', '<C-^>')
