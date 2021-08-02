@@ -21,11 +21,11 @@ function utils.git_cwd()
   local buffer = path:new(bufname)
   local cwd
   if bufname == '' or string.find(bufname, 'term:') then
-    cwd = vim.fn["getcwd"]()
+    cwd = tostring(vim.fn["getcwd"]())
   elseif buffer:is_dir() then
-    cwd = buffer
+    cwd = tostring(buffer)
   else
-    cwd = buffer:parent()
+    cwd = tostring(buffer:parent())
   end
   local result = vim.fn.systemlist(string.format("git -C %s rev-parse --show-toplevel", cwd))[1]
   if string.find(result, "fatal") then
