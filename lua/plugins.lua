@@ -37,15 +37,17 @@ return packer.startup(function(use)
   use {'ashiklom/r-vim-runtime'}
   use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}
 
-  -- Python
   use {
     'hkupty/iron.nvim',
     config = function() require('configs.iron') end
   }
+
+  -- Python
   use {
     'GCBallesteros/jupytext.vim',
     config = function() require('configs.jupytext') end
   }
+  use { 'Vimjas/vim-python-pep8-indent', ft = {"python"} }
 
   use { 'JuliaEditorSupport/julia-vim'}
 
