@@ -80,7 +80,7 @@ vimp.bind('n', {'silent'}, '<leader>cw', [[:.s/\s\+$//ge<CR>]])  -- Current line
 vimp.bind('n', {'silent'}, '<leader>cW', [[:%s/\s\+$//ge<CR>]])  -- Entire file
 
 vimp.rbind('n', {'silent'}, '<leader>nd', ':NV<CR>')
-vimp.rbind('n', '<leader>nf', ':Files ~/.deft<CR>')
+vimp.rbind('n', '<leader>nf', ':Files ~/notes<CR>')
 
 -- Reload vimrc
 vimp.bind('n', '<leader>%r', function() utils.reload_vimrc() end)
