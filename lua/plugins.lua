@@ -135,7 +135,8 @@ return packer.startup(function(use)
 
   use {
     'alok/notational-fzf-vim',
-    config = function() require('configs.notational-fzf-vim') end
+    config = function() require('configs.notational-fzf-vim') end,
+    cond = function() vim.fn.isdirectory(vim.fn.expand("~/notes"))  end
   }
 
   use {'axvr/org.vim', disable=true}
