@@ -19,7 +19,12 @@ return packer.startup(function(use)
   use { 'easymotion/vim-easymotion', disable = true }
   use {
     'ggandor/lightspeed.nvim',
-    config = function() require'lightspeed'.setup{} end
+    config = function() require'lightspeed'.setup{} end,
+    disable = true
+  }
+  use {
+    'phaazon/hop.nvim',
+    config = function() require('configs.hop') end
   }
 
   use 'tpope/vim-surround'
