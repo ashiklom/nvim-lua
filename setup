@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 # Download latest neovim
-SRCDIR=$HOME/.local/src/neovim
+SRCROOT=$HOME/.local/src
+SRCDIR=$SRCROOT/neovim
 SRCFILE=$SRCDIR/nvim.appimage
+
 mkdir -p $SRCDIR
 curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -o $SRCFILE
 chmod +x $SRCFILE
@@ -11,3 +13,34 @@ pushd $SRCDIR
 popd
 mkdir -p $HOME/.local/bin
 ln -fs $SRCDIR/squashfs-root/usr/bin/nvim $HOME/.local/bin/nvim
+
+# Install additional binaries if they're missing
+if !(rg --version &> /dev/null); then
+  case $(uname) in
+    "Darwin") URL=https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-apple-darwin.tar.gz ;;
+    "Linux")  URL=https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz ;;
+    *)        URL=https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz ;;
+  esac
+  pushd $SRCROOT
+  TGZ=ripgrep.tar.gz
+  curl -L $URL -o $TGZ
+  TARTARGET=$(tar --exclude='*/*' --list -f $TGZ)
+  tar -xf $TGZ
+  ln -fs $(pwd -P)/$TGZ/rg $HOME/.local/bin/rg
+  rm $TGZ
+fi
+
+if !(fd --version &> /dev/null); then
+  case $(uname) in
+    "Darwin") URL=https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-x86_64-apple-darwin.tar.gz ;;
+    "Linux")  URL=https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-x86_64-unknown-linux-musl.tar.gz ;;
+    *)        URL=https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-x86_64-unknown-linux-musl.tar.gz ;;
+  esac
+  pushd $SRCROOT
+  TGZ=fd.tar.gz
+  curl -L $URL -o $TGZ
+  TARTARGET=$(tar --exclude='*/*' --list -f $TGZ)
+  tar -xf $TGZ
+  ln -fs $(pwd -P)/$TGZ/fd $HOME/.local/bin/fd
+  rm $TGZ
+fi
