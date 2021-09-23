@@ -72,7 +72,13 @@ return packer.startup(function(use)
   use {'junegunn/fzf.vim', requires = {{'junegunn/fzf'}}}
   use {
     'mcchrish/nnn.vim',
-    config = function() require('configs.nnn') end
+    config = function() require('configs.nnn') end,
+    disable = true
+  }
+  use {
+      'kyazdani42/nvim-tree.lua',
+      requires = 'kyazdani42/nvim-web-devicons',
+      config = function() require("configs.nvim-tree") end
   }
 
   use {
