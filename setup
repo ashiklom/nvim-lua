@@ -24,10 +24,11 @@ if !(rg --version &> /dev/null); then
   pushd $SRCROOT
   TGZ=ripgrep.tar.gz
   curl -L $URL -o $TGZ
-  TARTARGET=$(tar --exclude='*/*' --list -f $TGZ)
+  TARTARGET=$(tar --list -f $TGZ | grep '/rg$')
   tar -xf $TGZ
-  ln -fs $(pwd -P)/$TGZ/rg $HOME/.local/bin/rg
+  ln -fs $(pwd -P)/$TARTARGET $HOME/.local/bin/rg
   rm $TGZ
+  popd
 fi
 
 if !(fd --version &> /dev/null); then
@@ -39,8 +40,9 @@ if !(fd --version &> /dev/null); then
   pushd $SRCROOT
   TGZ=fd.tar.gz
   curl -L $URL -o $TGZ
-  TARTARGET=$(tar --exclude='*/*' --list -f $TGZ)
+  TARTARGET=$(tar --list -f $TGZ | grep '/fd$')
   tar -xf $TGZ
-  ln -fs $(pwd -P)/$TGZ/fd $HOME/.local/bin/fd
+  ln -fs $(pwd -P)/$TARTARGET $HOME/.local/bin/fd
   rm $TGZ
+  popd
 fi
