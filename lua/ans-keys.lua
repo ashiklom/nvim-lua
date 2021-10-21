@@ -87,8 +87,4 @@ vimp.bind('n', '<leader>%r', function() utils.reload_vimrc() end)
 vimp.bind('n', {'silent'}, '<leader>%s', [[:PackerSync<CR>]])
 vimp.bind('n', {'silent'}, '<leader>%c', [[:PackerCompile<CR>]])
 
--- Completion mappings
-local vopts = {"silent", "expr"}
-vimp.bind("i", vopts, "<C-Space>", [[compe#complete()]])
-
 vimp.add_chord_cancellations('n', '<leader>')

@@ -24,6 +24,13 @@ local server_configs = {
   }
 }
 
+-- Update capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local ok, cmp_nl = pcall(require, 'cmp_nvim_lsp')
+if ok then
+  capabilities = cmp_nl.update_capabilities(capabilities)
+end
+
 local function setup_servers()
   lspinst.setup()
   local servers = lspinst.installed_servers()
@@ -32,7 +39,10 @@ local function setup_servers()
   for _, server in pairs(servers) do
     local settings = server_configs[server]
     if settings == nil then
-      settings = {on_attach = on_attach}
+      settings = {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      }
     end
     lspconf[server].setup(settings)
   end

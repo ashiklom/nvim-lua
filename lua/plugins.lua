@@ -96,7 +96,20 @@ return packer.startup(function(use)
 
   use {
     "hrsh7th/nvim-compe",
-    config = function() require('configs.compe') end
+    config = function() require('configs.compe') end,
+    disable = true
+  }
+
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-calc',
+      'hrsh7th/cmp-nvim-lua'
+    },
+    config = function() require('configs.cmp') end
   }
 
   use {
