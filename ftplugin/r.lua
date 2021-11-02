@@ -32,3 +32,21 @@ map_rcall('n', '<localleader>vi', "devtools::install('.')")
 map_rcall('n', '<localleader>vt', "devtools::test('.')")
 
 map_rcall_cword('n', '<localleader>rg', 'dplyr::glimpse')
+
+local cmp = require('cmp')
+
+cmp.setup {
+  completion = { autocomplete = false },
+  mapping = {
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true})
+  },
+  sources = {
+    {name = 'nvim_lsp'},
+    {name = 'buffer'},
+    {name = 'path'},
+    {name = 'calc'},
+    {name = 'nvim_lua'},
+    {name = 'omni'}
+  }
+}
