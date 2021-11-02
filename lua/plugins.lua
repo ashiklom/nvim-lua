@@ -170,6 +170,7 @@ return packer.startup(function(use)
   use {'axvr/org.vim', disable=true}
   use {
     'kristijanhusak/orgmode.nvim',
+    branch = 'tree-sitter',
     config = function() require('configs.orgmode') end
   }
 
