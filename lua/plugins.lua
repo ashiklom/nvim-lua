@@ -93,6 +93,10 @@ return packer.startup(function(use)
     config = function() require('configs.lsp') end
   }
   use { 'kabouzeid/nvim-lspinstall' }
+  use {
+    'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim',
+    config = function() require('configs.toggle_lsp_diagnostics') end
+  }
 
   use {
     "hrsh7th/nvim-compe",
