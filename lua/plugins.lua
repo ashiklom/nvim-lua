@@ -41,6 +41,7 @@ return packer.startup(function(use)
 
   use {'ashiklom/r-vim-runtime'}
   use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}
+  -- use {'gaalcaras/ncm-R', ft = {"r", "rmd", "rnw"}}
 
   use {
     'hkupty/iron.nvim',
@@ -92,7 +93,7 @@ return packer.startup(function(use)
     'neovim/nvim-lspconfig',
     config = function() require('configs.lsp') end
   }
-  use { 'kabouzeid/nvim-lspinstall' }
+  use { 'williamboman/nvim-lsp-installer' }
   use {
     'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim',
     config = function() require('configs.toggle_lsp_diagnostics') end

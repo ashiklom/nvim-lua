@@ -8,11 +8,13 @@ cmp.setup {
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true})
   },
-  sources = {
+  sources = cmp.config.sources({
     {name = 'nvim_lsp'},
-    {name = 'buffer'},
     {name = 'path'},
     {name = 'calc'},
-    {name = 'nvim_lua'}
-  }
+    {name = 'nvim_lua'},
+    {name = 'omni'}
+  }, {
+    { name = "buffer" }
+  })
 }

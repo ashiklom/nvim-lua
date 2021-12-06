@@ -1,5 +1,8 @@
-local lspinst = require("lspinstall")
 local lspconf = require("lspconfig")
+local configs = require("lspconfig.configs")
+
+local lsp_installer = require("nvim-lsp-installer")
+-- local lsp_insatller_servers = require('nvim-lsp-installer.servers')
 
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -13,17 +16,6 @@ local on_attach = function(_, bufnr)
   nmap('K', [[:lua vim.lsp.buf.hover()<CR>]])
 end
 
-local server_configs = {
-  lua = {
-    on_attach = on_attach,
-    settings = {Lua = {diagnostics = {globals = {"vim"}}}}
-  },
-  bash = {
-    on_attach = on_attach,
-    filetypes = { "sh", "zsh" }
-  }
-}
-
 -- Update capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local ok, cmp_nl = pcall(require, 'cmp_nvim_lsp')
@@ -31,25 +23,38 @@ if ok then
   capabilities = cmp_nl.update_capabilities(capabilities)
 end
 
-local function setup_servers()
-  lspinst.setup()
-  local servers = lspinst.installed_servers()
-  table.insert(servers, "r_language_server")
-  table.insert(servers, "julials")
-  for _, server in pairs(servers) do
-    local settings = server_configs[server]
-    if settings == nil then
-      settings = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-      }
-    end
-    lspconf[server].setup(settings)
+lsp_installer.on_server_ready(function(server)
+  local opts = {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+  if server.name == "sumneko_lua" then
+    opts.settings = {Lua = {diagnostics = {globals = {"vim"}}}}
+  elseif server.name == "bashls" then
+    opts.filetypes = {"sh", "zsh"}
   end
-end
+  server:setup(opts)
+end)
 
-setup_servers()
-lspinst.post_install_hook = function()
-  setup_servers()
-  vim.cmd("bufdo e")
-end
+-- local function setup_servers()
+--   lspinst.setup()
+--   local servers = lspinst.installed_servers()
+--   table.insert(servers, "r_language_server")
+--   table.insert(servers, "julials")
+--   for _, server in pairs(servers) do
+--     local settings = server_configs[server]
+--     if settings == nil then
+--       settings = {
+--         on_attach = on_attach,
+--         capabilities = capabilities,
+--       }
+--     end
+--     lspconf[server].setup(settings)
+--   end
+-- end
+
+-- setup_servers()
+-- lspinst.post_install_hook = function()
+--   setup_servers()
+--   vim.cmd("bufdo e")
+-- end
