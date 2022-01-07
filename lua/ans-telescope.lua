@@ -1,6 +1,9 @@
-require('telescope').load_extension('project')
+local telescope = require('telescope')
+telescope.load_extension('project')
+telescope.load_extension('file_browser')
 
 local tb = require('telescope.builtin')
+local tfb = telescope.extensions.file_browser
 local path = require('plenary.path')
 local utils = require('ans-utils')
 
@@ -12,13 +15,9 @@ function M.fd_files()
   if not hasgit then tb.find_files(opts) end
 end
 
-function M.file_browser_home()
-  return tb.file_browser({cwd="~", hidden=true})
-end
-
 function M.file_browser_cwd()
   local cwd = utils.buf_cwd()
-  return tb.file_browser({cwd=cwd, hidden=true})
+  return tfb.file_browser({cwd=cwd})
 end
 
 -- local snap = require('snap')

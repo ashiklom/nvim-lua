@@ -68,8 +68,9 @@ return packer.startup(function(use)
       {'kyazdani42/nvim-web-devicons'}
     }
   }
-  use { 'nvim-telescope/telescope-project.nvim' }
-  use { 'camspiers/snap', disable=true}
+  use {'nvim-telescope/telescope-project.nvim'}
+  use {'nvim-telescope/telescope-file-browser.nvim'}
+  use {'camspiers/snap', disable=true}
   use {'junegunn/fzf.vim', requires = {{'junegunn/fzf'}}}
   use {
     'mcchrish/nnn.vim',

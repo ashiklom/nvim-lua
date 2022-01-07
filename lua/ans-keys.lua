@@ -1,6 +1,7 @@
 local vimp = require('vimp')
 local ans_tele = require('ans-telescope')
 local tele = require('telescope')
+local telef = tele.extensions.file_browser
 local teleb = require('telescope.builtin')
 local utils = require('ans-utils')
 
@@ -44,7 +45,7 @@ vimp.bind('n', {'silent'}, 'z.', [[:<C-u>normal! zszH<CR>]])
 vimp.bind('n', {'silent'}, '<leader> ', [[:Files<CR>]])
 vimp.bind('n', {'silent'}, '<leader>ff', function() ans_tele.file_browser_cwd() end)
 vimp.bind('n', {'silent'}, '<leader>fF', [[:Files ~<CR>]])
-vimp.bind('n', {'silent'}, '<leader>fn', function() teleb.file_browser({cwd="~/.deft"}) end)
+vimp.bind('n', {'silent'}, '<leader>fn', function() telef.file_browser({cwd="~/.deft"}) end)
 vimp.bind('n', {'silent'}, '<leader>fp', [[:Files ~/.config/nvim<CR>]])
 vimp.bind('n', {'silent'}, '<leader>bb', function() teleb.buffers() end)
 vimp.bind('n', {'silent'}, '<leader>bk', [[:b#|bd#<CR>]])
