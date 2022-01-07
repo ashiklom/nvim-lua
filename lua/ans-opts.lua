@@ -28,6 +28,7 @@ vim.opt.swapfile = false
 vim.opt.signcolumn = "yes"
 
 vim.opt.completeopt:remove("preview")
+vim.opt.listchars = "tab:>-,trail:-,nbsp:+"
 -- vim.opt.wildignore:append({'*.o', '*.so', '*.html'})
 
 -- vim.opt.isfname:remove('=')
