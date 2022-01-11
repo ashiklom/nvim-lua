@@ -14,7 +14,7 @@ tconfig.setup{
   indent = {enable=true, disable = {"r"}},
   ensure_installed = {"org"},
   highlight = {
-    enable=true,
+    enable=false,
     disable={"r", "org"},
     additional_vim_regex_highlighting = {"org"}
   },
