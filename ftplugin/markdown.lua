@@ -3,6 +3,7 @@ local function bbind(mode, map, command)
 end
 
 vim.g.markdown_folding = true
+vim.opt_local.foldlevel = 20
 
 bbind("n", "<localleader>l", [[<Plug>(iron-send-line)]])
 bbind("n", "<localleader>s", [[<Plug>(iron-send-motion)]])
