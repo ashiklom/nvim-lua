@@ -1,6 +1,3 @@
-local lspconf = require("lspconfig")
-local configs = require("lspconfig.configs")
-
 local lsp_installer = require("nvim-lsp-installer")
 -- local lsp_insatller_servers = require('nvim-lsp-installer.servers')
 
@@ -35,26 +32,3 @@ lsp_installer.on_server_ready(function(server)
   end
   server:setup(opts)
 end)
-
--- local function setup_servers()
---   lspinst.setup()
---   local servers = lspinst.installed_servers()
---   table.insert(servers, "r_language_server")
---   table.insert(servers, "julials")
---   for _, server in pairs(servers) do
---     local settings = server_configs[server]
---     if settings == nil then
---       settings = {
---         on_attach = on_attach,
---         capabilities = capabilities,
---       }
---     end
---     lspconf[server].setup(settings)
---   end
--- end
-
--- setup_servers()
--- lspinst.post_install_hook = function()
---   setup_servers()
---   vim.cmd("bufdo e")
--- end
