@@ -1,6 +1,10 @@
 local icore = require('iron.core')
 local ill = require('iron.lowlevel')
 
+vim.g.julia_indent_align_funcargs = 0
+vim.g.julia_indent_align_brackets = 0
+vim.g.julia_indent_align_import = 1
+
 function _G.jl_send_func(func)
   local ft = ill.get_buffer_ft(0)
   icore.send(ft, string.format("%s()", func))

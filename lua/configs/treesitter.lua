@@ -11,7 +11,7 @@ parser_config.org = {
 }
 
 tconfig.setup{
-  indent = {enable=true, disable = {"r"}},
+  indent = {enable=true, disable = {"r", "julia"}},
   ensure_installed = {"org"},
   highlight = {
     enable=false,
