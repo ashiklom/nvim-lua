@@ -44,7 +44,10 @@ rbind("n", "<localleader>rf", [[:IronRepl<CR>]])
 rbind("n", "<localleader>rr", [[:IronRestart<CR>]])
 rbind("n", "<localleader>rq", [[:IronSend! exit()<CR>:IronFocus<CR>:bd!<CR>]])
 
-fwbind('n', '<localleader>rp', 'print')
+-- Send current word (produces better formatting than "print")
+bind('n', '<localleader>rp', '<localleader>siw')
+
+fwbind('n', '<localleader>rP', 'print')
 fbind('n', '<localleader>rz', 'isinteractive')
 
 -- vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>rp', 'v:lua.jl_send_print()', {silent=true, noremap=true, expr=true})
