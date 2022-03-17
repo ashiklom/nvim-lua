@@ -1,4 +1,6 @@
-require'orgmode'.setup({
+local org = require('orgmode')
+
+org.setup({
   org_agenda_files = {'~/Dropbox/Notes/**/*'},
   org_default_notes_file = '~/Dropbox/Notes/unsorted.org',
   mappings = {
@@ -11,3 +13,5 @@ require'orgmode'.setup({
     }
   }
 })
+
+org.setup_ts_grammar()
