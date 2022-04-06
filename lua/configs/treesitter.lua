@@ -11,10 +11,13 @@ parser_config.org = {
 }
 
 tconfig.setup{
-  indent = {enable=true, disable = {"r", "julia"}},
   ensure_installed = {"org"},
-  highlight = {
+  indent = {
     enable=true,
+    disable = {"r", "python", "yaml"},
+  },
+  highlight = {
+    enable=false,
     disable={"r", "org"},
     additional_vim_regex_highlighting = {"org"}
   },
