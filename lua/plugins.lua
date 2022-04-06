@@ -178,6 +178,7 @@ return packer.startup(function(use)
 
   use {
     "nvim-neorg/neorg",
+    disable=true,
     config = function() require('configs.neorg') end
   }
 
