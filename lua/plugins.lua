@@ -177,8 +177,7 @@ return packer.startup(function(use)
   }
 
   use {
-    "vhyrro/neorg",
-    disable = true,
+    "nvim-neorg/neorg",
     config = function() require('configs.neorg') end
   }
 
