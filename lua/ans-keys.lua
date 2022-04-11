@@ -36,7 +36,8 @@ vimp.bind('n', {'silent'}, '<leader>wd', [[:close<cr>]])
 vimp.bind('n', {'silent'}, '<leader>wo', [[:Windows<CR>]])
 
 vimp.bind('n', {'silent'}, '<leader>fs', [[:write<cr>]])
-vimp.bind('n', '<leader>fR', [[:Rename ]])
+vimp.bind('n', '<leader>fR', [[:Rename <C-r>=expand('%:t')<cr>]])
+vimp.bind('n', '<leader>fK', [[:call delete(expand('%')) | bdelete!<cr>]])
 vim.cmd([[cnoreabbrev W w]])
 
 vimp.bind('n', {'silent'}, 'z.', [[:<C-u>normal! zszH<CR>]])
