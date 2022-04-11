@@ -16,15 +16,14 @@ return packer.startup(function(use)
 
   use 'danro/rename.vim'
 
-  use { 'easymotion/vim-easymotion', disable = true }
   use {
     'ggandor/lightspeed.nvim',
-    config = function() require'lightspeed'.setup{} end,
-    disable = true
+    config = function() require'lightspeed'.setup{} end
   }
   use {
     'phaazon/hop.nvim',
-    config = function() require('configs.hop') end
+    config = function() require('configs.hop') end,
+    disable = true
   }
 
   use 'tpope/vim-surround'
@@ -186,6 +185,11 @@ return packer.startup(function(use)
     'mtth/scratch.vim',
     setup = function() require('setups.scratch') end,
     config = function() require('configs.scratch') end
+  }
+
+  use {
+    'L3MON4D3/LuaSnip',
+    config = function() require('configs.luasnip') end
   }
 
 end)
