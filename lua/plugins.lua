@@ -69,7 +69,6 @@ return packer.startup(function(use)
   }
   use {'nvim-telescope/telescope-project.nvim'}
   use {'nvim-telescope/telescope-file-browser.nvim'}
-  use {'camspiers/snap', disable=true}
   use {'junegunn/fzf.vim', requires = {{'junegunn/fzf'}}}
   use {
     'mcchrish/nnn.vim',
@@ -97,12 +96,6 @@ return packer.startup(function(use)
   use {
     'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim',
     config = function() require('configs.toggle_lsp_diagnostics') end
-  }
-
-  use {
-    "hrsh7th/nvim-compe",
-    config = function() require('configs.compe') end,
-    disable = true
   }
 
   use {
