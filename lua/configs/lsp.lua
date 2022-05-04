@@ -4,13 +4,16 @@ local lsp_installer = require("nvim-lsp-installer")
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   local nmap = function(lhs, rhs)
-    local opts = { noremap=true, silent=true}
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', lhs, rhs, opts)
+    local opts = { noremap=true, silent=true, buffer=bufnr }
+    vim.keymap.set('n', lhs, rhs, opts)
   end
-  nmap('gd', [[:lua vim.lsp.buf.definition()<CR>]])
-  nmap('gD', [[:lua vim.lsp.buf.declaration()<CR>]])
-  nmap('gr', [[:lua vim.lsp.buf.rename()<CR>]])
-  nmap('K', [[:lua vim.lsp.buf.hover()<CR>]])
+  nmap('gd', vim.lsp.buf.definition)
+  nmap('gD', vim.lsp.buf.declaration)
+  nmap('gr', vim.lsp.buf.rename)
+  nmap('K', vim.lsp.buf.hover)
+  nmap('<C-k>', vim.lsp.buf.signature_help)
+  nmap('gm', vim.lsp.buf.implementation)
+  nmap('<leader>so', require('telescope.builtin').lsp_document_symbols)
 end
 
 -- Update capabilities
