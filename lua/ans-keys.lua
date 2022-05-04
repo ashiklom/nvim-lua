@@ -90,6 +90,6 @@ vimp.bind('n', '<leader>%r', function() utils.reload_vimrc() end)
 vimp.bind('n', {'silent'}, '<leader>%s', [[:PackerSync<CR>]])
 vimp.bind('n', {'silent'}, '<leader>%c', [[:PackerCompile<CR>]])
 
-vimp.bind('n', '<leader>^', [[:setlocal list!]])
+vimp.bind('n', '<leader>^', [[:setlocal list!<CR>]])
 
 vimp.add_chord_cancellations('n', '<leader>')
