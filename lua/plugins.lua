@@ -66,6 +66,7 @@ return packer.startup(function(use)
       {'kyazdani42/nvim-web-devicons'}
     }
   }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {'nvim-telescope/telescope-project.nvim'}
   use {'nvim-telescope/telescope-file-browser.nvim'}
   use {'junegunn/fzf.vim', requires = {{'junegunn/fzf'}}}
