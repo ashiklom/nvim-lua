@@ -68,7 +68,7 @@ local neogit = require('neogit')
 vim.keymap.set('n', '<leader>gg', function() neogit.open({ kind="split"}) end, {silent=true})
 
 -- Change directory to file directory
-vim.keymap.set('n', {'silent'}, '<leader>cd', function()
+vim.keymap.set('n', '<leader>cd', function()
   vim.cmd(string.format("cd %s", utils.git_cwd()))
 end, {silent=true})
 vim.keymap.set('n', '<leader>cD', function()
