@@ -6,6 +6,7 @@ vim.keymap.set('n', 'bc', [[:Git checkout ]], {buffer=true})
 vim.keymap.set('n', 'm', [[:Git merge ]], {buffer=true})
 
 vim.keymap.set('n', 'pp', [[:Git push<CR>]], {buffer=true})
+vim.keymap.set('n', 'pfp', [[:Git push --force-with-lease<CR>]], {buffer=true})
 vim.keymap.set('n', 'pu', [[:Git push upstream<CR>]], {buffer=true})
 
 vim.keymap.set('n', 'Fm', [[:Git pull<CR>]], {buffer=true})
