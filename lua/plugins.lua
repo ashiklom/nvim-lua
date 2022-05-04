@@ -2,10 +2,15 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-	fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-	vim.api.nvim_command 'packadd packer.nvim'
+	vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
-vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
+
+local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+  command = 'source <afile> | PackerCompile',
+  group = packer_group,
+  pattern = 'plugins.lua',
+})
 
 local packer = require("packer")
 
@@ -39,7 +44,6 @@ return packer.startup(function(use)
 
   use {'ashiklom/r-vim-runtime'}
   use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}
-  -- use {'gaalcaras/ncm-R', ft = {"r", "rmd", "rnw"}}
 
   use {
     'hkupty/iron.nvim',
@@ -66,15 +70,10 @@ return packer.startup(function(use)
       {'kyazdani42/nvim-web-devicons'}
     }
   }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
   use {'nvim-telescope/telescope-project.nvim'}
   use {'nvim-telescope/telescope-file-browser.nvim'}
   use {'junegunn/fzf.vim', requires = {{'junegunn/fzf'}}}
-  use {
-    'mcchrish/nnn.vim',
-    config = function() require('configs.nnn') end,
-    disable = true
-  }
   use {
       'kyazdani42/nvim-tree.lua',
       requires = 'kyazdani42/nvim-web-devicons',
