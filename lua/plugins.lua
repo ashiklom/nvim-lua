@@ -157,6 +157,7 @@ return packer.startup(function(use)
   }
 
   use 'sainnhe/sonokai'
+  use {'nvim-lualine/lualine.nvim', config = function() require('configs.lualine') end}
 
   use {
     'alok/notational-fzf-vim',
