@@ -5,7 +5,7 @@ utils.nvim_create_augroup('Spelling', {
 })
 
 -- Automatically change window directory on file enter
-utils.nvim_create_augroup("Chdir", {
-  {"BufEnter", "*", [[if g:fix_wd == 0 | execute 'lcd '.v:lua.git_cwd() | endif]]}
-})
+-- utils.nvim_create_augroup("Chdir", {
+--   {"BufEnter", "*", [[if g:fix_wd == 0 | execute 'lcd '.v:lua.git_cwd() | endif]]}
+-- })
 
