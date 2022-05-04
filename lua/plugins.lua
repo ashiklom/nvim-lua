@@ -11,7 +11,6 @@ local packer = require("packer")
 
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
-  use 'svermeulen/vimpeccable'
   use 'nvim-lua/plenary.nvim'
 
   use 'danro/rename.vim'

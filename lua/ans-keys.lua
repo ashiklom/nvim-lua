@@ -1,95 +1,91 @@
-local vimp = require('vimp')
 local ans_tele = require('ans-telescope')
 local tele = require('telescope')
 local telef = tele.extensions.file_browser
 local teleb = require('telescope.builtin')
 local utils = require('ans-utils')
 
-vimp.bind('i', 'jk', '<Esc>')
-vimp.bind('n', 'Q', '<Nop>')
-vimp.bind('n', {'silent'}, '<ESC>', [[:nohlsearch<CR>]])
+vim.keymap.set('i', 'jk', '<Esc>')
+vim.keymap.set('n', 'Q', '<Nop>')
+vim.keymap.set('n', '<ESC>', [[:nohlsearch<CR>]], {silent=true})
 
 -- Visual line navigation
-vimp.bind('nv', 'j', 'gj')
-vimp.bind('nv', 'k', 'gk')
-vimp.bind('nv', 'gj', 'j')
-vimp.bind('nv', 'gk', 'k')
+vim.keymap.set({'n', 'v'}, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({'n', 'v'}, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({'n', 'v'}, 'gk', "v:count == 0 ? 'k' : 'gk'", { expr = true, silent = true })
+vim.keymap.set({'n', 'v'}, 'gj', "v:count == 0 ? 'j' : 'gj'", { expr = true, silent = true })
 
 -- Most recent buffer
-vimp.bind('n', 'gb', '<C-^>')
+vim.keymap.set('n', 'gb', '<C-^>')
 
 -- Toggle wrap long lines
-vimp.bind('n', {'silent'}, '<leader>$', [[:setlocal wrap!<CR>]])
+vim.keymap.set('n', '<leader>$', [[:setlocal wrap!<CR>]], {silent=true})
 
 local winkeys = "jklh=xrRT"
 for i = 1, #winkeys do
   local key = winkeys:sub(i,i)
-  vimp.bind('n', {'silent'}, '<leader>w'..key, string.format([[:wincmd %s<cr>]], key))
+  vim.keymap.set('n', '<leader>w'..key, string.format([[:wincmd %s<cr>]], key), {silent=true})
 end
 
-vimp.bind('n', {'silent'}, '<leader>ww', [[:wincmd p<cr>]])
-vimp.bind('n', {'silent'}, '<leader>w+', [[:5 wincmd +<cr>]])
-vimp.bind('n', {'silent'}, '<leader>w_', [[:5 wincmd -<cr>]])
-vimp.bind('n', {'silent'}, '<leader>w-', [[:split<cr>]])
-vimp.bind('n', {'silent'}, '<leader>w\\', [[:vsplit<cr>]])
-vimp.bind('n', {'silent'}, '<leader>wd', [[:close<cr>]])
-vimp.bind('n', {'silent'}, '<leader>wo', [[:Windows<CR>]])
+vim.keymap.set('n', '<leader>ww', [[:wincmd p<cr>]], {silent=true})
+vim.keymap.set('n', '<leader>w+', [[:5 wincmd +<cr>]], {silent=true})
+vim.keymap.set('n', '<leader>w_', [[:5 wincmd -<cr>]], {silent=true})
+vim.keymap.set('n', '<leader>w-', [[:split<cr>]], {silent=true})
+vim.keymap.set('n', '<leader>w\\', [[:vsplit<cr>]], {silent=true})
+vim.keymap.set('n', '<leader>wd', [[:close<cr>]], {silent=true})
+vim.keymap.set('n', '<leader>wo', [[:Windows<CR>]], {silent=true})
 
-vimp.bind('n', {'silent'}, '<leader>fs', [[:write<cr>]])
-vimp.bind('n', '<leader>fR', [[:Rename <C-r>=expand('%:t')<cr>]])
-vimp.bind('n', '<leader>fK', [[:call delete(expand('%')) | bdelete!<cr>]])
+vim.keymap.set('n', '<leader>fs', [[:write<cr>]], {silent=true})
+vim.keymap.set('n', '<leader>fR', [[:Rename <C-r>=expand('%:t')<cr>]])
+vim.keymap.set('n', '<leader>fK', [[:call delete(expand('%')) | bdelete!<cr>]])
 vim.cmd([[cnoreabbrev W w]])
 
-vimp.bind('n', {'silent'}, 'z.', [[:<C-u>normal! zszH<CR>]])
+vim.keymap.set('n', 'z.', [[:<C-u>normal! zszH<CR>]], {silent=true})
 
 -- Telescope mappings
-vimp.bind('n', {'silent'}, '<leader> ', [[:Files<CR>]])
-vimp.bind('n', {'silent'}, '<leader>ff', function() ans_tele.file_browser_cwd() end)
-vimp.bind('n', {'silent'}, '<leader>fF', [[:Files ~<CR>]])
-vimp.bind('n', {'silent'}, '<leader>fn', function() telef.file_browser({cwd="~/.deft"}) end)
-vimp.bind('n', {'silent'}, '<leader>fp', [[:Files ~/.config/nvim<CR>]])
-vimp.bind('n', {'silent'}, '<leader>bb', function() teleb.buffers() end)
-vimp.bind('n', {'silent'}, '<leader>bk', [[:b#|bd#<CR>]])
-vimp.bind('n', {'silent'}, '<leader>ht', function() teleb.help_tags() end)
-vimp.bind('n', {'silent'}, '<leader>hk', function() teleb.keymaps() end)
-vimp.bind('n', {'silent'}, '<leader>ss', function() teleb.current_buffer_fuzzy_find() end)
-vimp.bind('n', {'silent'}, '<leader>sp', [[:Rg<CR>]])
-vimp.bind('n', {'silent'}, '<leader>s"', function() teleb.registers() end)
-vimp.bind('n', {'silent'}, '<leader>po', function() tele.extensions.project.project{} end)
-vimp.bind('n', {'silent'}, '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]])
-vimp.bind('n', {'silent'}, 'z=', function() teleb.spell_suggest() end)
+vim.keymap.set('n', '<leader> ', teleb.find_files)
+vim.keymap.set('n', '<leader>ff', ans_tele.file_browser_cwd)
+vim.keymap.set('n', '<leader>fF', function() teleb.find_files{cwd='~'} end)
+vim.keymap.set('n', '<leader>fn', function() telef.file_browser{cwd="~/.deft"} end)
+vim.keymap.set('n', '<leader>fp', function() teleb.find_files{cwd="~/.config/nvim"}end)
+vim.keymap.set('n', '<leader>f?', teleb.oldfiles)
+vim.keymap.set('n', '<leader>bb', teleb.buffers)
+vim.keymap.set('n', '<leader>bk', [[:b#|bd#<CR>]], {silent=true})
+vim.keymap.set('n', '<leader>ht', teleb.help_tags)
+vim.keymap.set('n', '<leader>hk', teleb.keymaps)
+vim.keymap.set('n', '<leader>ss', teleb.current_buffer_fuzzy_find)
+vim.keymap.set('n', '<leader>sd', teleb.grep_string)
+vim.keymap.set('n', '<leader>sp', teleb.live_grep)
+vim.keymap.set('n', '<leader>s"', teleb.registers)
+vim.keymap.set('n', 'z=', teleb.spell_suggest)
+
+vim.keymap.set('n', '<leader>po', tele.extensions.project.project)
+vim.keymap.set('n', '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]], {silent=true})
 
 -- Exchange
-vimp.rbind('v', {'silent'}, 'gx', [[<Plug>(Exchange)]])
+vim.keymap.set('v', 'gx', [[<Plug>(Exchange)]], {silent=true})
 
 local neogit = require('neogit')
-vimp.bind('n', {'silent'}, '<leader>gg', function() neogit.open({ kind="split"}) end)
+vim.keymap.set('n', '<leader>gg', function() neogit.open({ kind="split"}) end, {silent=true})
 
 -- Change directory to file directory
-vim.g["fix_wd"] = false
-vimp.bind('n', {'silent'}, '<leader>cd', function()
-  vim.g["fix_wd"] = true
+vim.keymap.set('n', {'silent'}, '<leader>cd', function()
   vim.cmd(string.format("cd %s", utils.git_cwd()))
-end)
-vimp.bind('n', {'silent'}, '<leader>cD', function()
-  vim.g["fix_wd"] = true
+end, {silent=true})
+vim.keymap.set('n', '<leader>cD', function()
   vim.cmd(string.format("cd %s", utils.buf_cwd()))
-end)
-vimp.bind('n', {'silent'}, '<leader>c0', function() vim.g["fix_wd"] = not vim.g["fix_wd"] end)
+end, {silent=true})
 
 -- Delete trailing whitespace
-vimp.bind('v', {'silent'}, '<leader>cw', [[:s/\s\+$//ge<CR>]])
-vimp.bind('n', {'silent'}, '<leader>cw', [[:.s/\s\+$//ge<CR>]])  -- Current line only
-vimp.bind('n', {'silent'}, '<leader>cW', [[:%s/\s\+$//ge<CR>]])  -- Entire file
+vim.keymap.set('v', '<leader>cw', [[:s/\s\+$//ge<CR>]], {silent=true})
+vim.keymap.set('n', '<leader>cw', [[:.s/\s\+$//ge<CR>]], {silent=true})  -- Current line only
+vim.keymap.set('n', '<leader>cW', [[:%s/\s\+$//ge<CR>]], {silent=true})  -- Entire file
 
-vimp.rbind('n', {'silent'}, '<leader>nd', ':NV<CR>')
-vimp.rbind('n', '<leader>nf', ':Files ~/notes<CR>')
+vim.keymap.set('n', '<leader>nd', ':NV<CR>', {silent=true})
+vim.keymap.set('n', '<leader>nf', function() teleb.find_files{cwd="~/notes"} end)
 
 -- Reload vimrc
-vimp.bind('n', '<leader>%r', function() utils.reload_vimrc() end)
-vimp.bind('n', {'silent'}, '<leader>%s', [[:PackerSync<CR>]])
-vimp.bind('n', {'silent'}, '<leader>%c', [[:PackerCompile<CR>]])
+vim.keymap.set('n', '<leader>%r', utils.reload_vimrc, {silent=true})
+vim.keymap.set('n', '<leader>%s', [[:PackerSync<CR>]], {silent=true})
+vim.keymap.set('n', '<leader>%c', [[:PackerCompile<CR>]], {silent=true})
 
-vimp.bind('n', '<leader>^', [[:setlocal list!<CR>]])
-
-vimp.add_chord_cancellations('n', '<leader>')
+vim.keymap.set('n', '<leader>^', [[:setlocal list!<CR>]])

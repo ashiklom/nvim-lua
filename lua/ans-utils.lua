@@ -55,7 +55,6 @@ function utils.reload_vimrc()
   package.loaded["ans-opt"] = nil
   package.loaded["ans-event"] = nil
   package.loaded["plugins"] = nil
-  require('vimp').unmap_all()
   vim.cmd [[luafile ~/.config/nvim/init.lua]]
   print("Reloaded vimrc!")
 end

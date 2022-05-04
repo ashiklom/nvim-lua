@@ -1,6 +1,7 @@
 local telescope = require('telescope')
 telescope.load_extension('project')
 telescope.load_extension('file_browser')
+telescope.load_extension('fzf')
 
 local tb = require('telescope.builtin')
 local tfb = telescope.extensions.file_browser
@@ -19,12 +20,5 @@ function M.file_browser_cwd()
   local cwd = utils.buf_cwd()
   return tfb.file_browser({cwd=cwd})
 end
-
--- local snap = require('snap')
--- snap.maps {
---   {'<leader>fi', snap.config.file {producer='ripgrep.file', preview=false}, {command="snapfiles"}},
---   {'<leader> ', snap.config.file {producer = 'fd.file', limit=1000}, {command="snapfd"}},
---   {'<leader>sp', snap.config.vimgrep {consumer = 'fzf'}, {command="snaprg"} }
--- }
 
 return M
