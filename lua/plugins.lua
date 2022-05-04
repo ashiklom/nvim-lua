@@ -186,4 +186,9 @@ return packer.startup(function(use)
     config = function() require('configs.luasnip') end
   }
 
+  use {
+    'chrisbra/csv.vim',
+    ft = {'csv'}
+  }
+
 end)
