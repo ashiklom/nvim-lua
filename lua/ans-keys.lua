@@ -64,9 +64,6 @@ vim.keymap.set('n', '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.tx
 -- Exchange
 vim.keymap.set('v', 'gx', [[<Plug>(Exchange)]], {silent=true})
 
-local neogit = require('neogit')
-vim.keymap.set('n', '<leader>gg', function() neogit.open({ kind="split"}) end, {silent=true})
-
 -- Change directory to file directory
 vim.keymap.set('n', '<leader>cd', function()
   vim.cmd(string.format("cd %s", utils.git_cwd()))

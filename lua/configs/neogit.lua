@@ -1,6 +1,8 @@
-local ng = require('neogit')
+local neogit = require('neogit')
 
-ng.setup{
+vim.keymap.set('n', '<leader>gg', function() neogit.open({ kind="split"}) end, {silent=true})
+
+neogit.setup{
   disable_commit_confirmation = true,
   mappings = {
     status = {
