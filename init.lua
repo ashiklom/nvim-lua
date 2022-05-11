@@ -8,3 +8,9 @@ require('ans-opts')
 require('ans-event')
 
 vim.cmd [[iab <expr> tdy strftime("%Y-%m-%d")]]
+
+vim.cmd([[
+if exists('g:vv')
+  VVset fontfamily=JuliaMono,nonicons,Hack\ Nerd\ Font
+endif
+]])
