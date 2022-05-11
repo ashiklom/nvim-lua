@@ -11,3 +11,5 @@ vim.keymap.set('n', 'pu', [[:Git push upstream<CR>]], {buffer=true})
 
 vim.keymap.set('n', 'Fm', [[:Git pull<CR>]], {buffer=true})
 vim.keymap.set('n', 'Fu', [[:Git pull upstream<CR>]], {buffer=true})
+
+vim.keymap.set('n', 'q', [[:quit<CR>]], {buffer=true, silent=true})
