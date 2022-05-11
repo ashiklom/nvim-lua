@@ -199,4 +199,6 @@ return packer.startup(function(use)
     ft = {'csv'}
   }
 
+  use { 'jxnblk/vim-mdx-js' }
+
 end)
