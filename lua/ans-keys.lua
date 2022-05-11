@@ -86,3 +86,5 @@ vim.keymap.set('n', '<leader>%s', [[:PackerSync<CR>]], {silent=true})
 vim.keymap.set('n', '<leader>%c', [[:PackerCompile<CR>]], {silent=true})
 
 vim.keymap.set('n', '<leader>^', [[:setlocal list!<CR>]])
+
+vim.cmd [[iab <expr> tdy strftime("%Y-%m-%d")]]

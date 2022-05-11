@@ -34,3 +34,9 @@ vim.opt.listchars = "tab:>-,trail:-,nbsp:+"
 -- vim.opt.isfname:remove('=')
 -- Doesn't work for some reason; fall back on vim CMD
 vim.cmd [[set isfname-==]]
+
+vim.cmd([[
+if exists('g:vv')
+  VVset fontfamily=JuliaMono,nonicons,Hack\ Nerd\ Font
+endif
+]])
