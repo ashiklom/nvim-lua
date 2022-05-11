@@ -21,8 +21,13 @@ return packer.startup(function(use)
   use 'danro/rename.vim'
 
   use {
+    'ggandor/leap.nvim',
+    config = function() require('configs.leap') end
+  }
+  use {
     'ggandor/lightspeed.nvim',
-    config = function() require'lightspeed'.setup{} end
+    config = function() require'lightspeed'.setup{} end,
+    disable = true
   }
   use {
     'phaazon/hop.nvim',
