@@ -65,11 +65,15 @@ vim.keymap.set('v', 'gx', [[<Plug>(Exchange)]], {silent=true})
 
 -- Change directory to file directory
 vim.keymap.set('n', '<leader>cd', function()
-  vim.cmd(string.format("cd %s", utils.git_cwd()))
-end, {silent=true})
+  local cmd = string.format("cd %s", utils.git_cwd())
+  vim.cmd(cmd)
+  print(cmd)
+end)
 vim.keymap.set('n', '<leader>cD', function()
-  vim.cmd(string.format("cd %s", utils.buf_cwd()))
-end, {silent=true})
+  local cmd = string.format("cd %s", utils.buf_cwd())
+  vim.cmd(cmd)
+  print(cmd)
+end)
 
 -- Delete trailing whitespace
 vim.keymap.set('v', '<leader>cw', [[:s/\s\+$//ge<CR>]], {silent=true})
