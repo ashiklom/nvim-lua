@@ -170,12 +170,6 @@ return packer.startup(function(use)
   use {'nvim-lualine/lualine.nvim', config = function() require('configs.lualine') end}
   use {'lukas-reineke/indent-blankline.nvim', config = function() require('configs.indent-blankline') end}
 
-  use {
-    'alok/notational-fzf-vim',
-    config = function() require('configs.notational-fzf-vim') end,
-    cond = function() vim.fn.isdirectory(vim.fn.expand("~/notes"))  end
-  }
-
   use {'axvr/org.vim', disable=true}
   use {
     'kristijanhusak/orgmode.nvim',
