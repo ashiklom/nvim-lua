@@ -78,6 +78,11 @@ return packer.startup(function(use)
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
   use {'nvim-telescope/telescope-project.nvim'}
   use {'nvim-telescope/telescope-file-browser.nvim'}
+  use {
+    'renerocksai/telekasten.nvim',
+    requires = {{ 'renerocksai/calendar-vim' }},
+    config = function() require('configs.telekasten') end
+  }
   use {'junegunn/fzf.vim', requires = {{'junegunn/fzf'}}}
   use {
       'kyazdani42/nvim-tree.lua',

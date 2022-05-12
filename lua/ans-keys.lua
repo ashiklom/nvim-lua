@@ -77,9 +77,6 @@ vim.keymap.set('v', '<leader>cw', [[:s/\s\+$//ge<CR>]], {silent=true})
 vim.keymap.set('n', '<leader>cw', [[:.s/\s\+$//ge<CR>]], {silent=true})  -- Current line only
 vim.keymap.set('n', '<leader>cW', [[:%s/\s\+$//ge<CR>]], {silent=true})  -- Entire file
 
-vim.keymap.set('n', '<leader>nd', ':NV<CR>', {silent=true})
-vim.keymap.set('n', '<leader>nf', function() teleb.find_files{cwd="~/notes"} end)
-
 -- Reload vimrc
 vim.keymap.set('n', '<leader>%r', utils.reload_vimrc, {silent=true})
 vim.keymap.set('n', '<leader>%s', [[:PackerSync<CR>]], {silent=true})
