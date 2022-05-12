@@ -18,7 +18,7 @@ tk.setup({
   extension = ".md",
   uuid_type = "%Y-%m-%d-%H%M",
   uuid_sep = " ",
-  tag_notation = "yaml-bare",
+  tag_notation = "#tag",
 })
 
 vim.keymap.set('n', '<leader>nf', tk.find_notes)
