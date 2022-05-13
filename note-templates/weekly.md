@@ -1,6 +1,5 @@
 ---
 title: {{year}}-W{{week}}
-date: {{hdate}}
 ---
 
 # Review Week {{week}} / {{year}}
@@ -13,8 +12,8 @@ date: {{hdate}}
 
 ----------
 
-## Monday     .........  [[{{monday}}]]
-## Tuesday    .........  [[{{tuesday}}]]
-## Wednesday  .........  [[{{wednesday}}]]
-## Thursday   .........  [[{{thursday}}]]
-## Friday     .........  [[{{friday}}]]
+- Monday     .........  [[{{monday}}]]
+- Tuesday    .........  [[{{tuesday}}]]
+- Wednesday  .........  [[{{wednesday}}]]
+- Thursday   .........  [[{{thursday}}]]
+- Friday     .........  [[{{friday}}]]
