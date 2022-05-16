@@ -17,6 +17,6 @@ bbind("n", "<localleader>rq", [[:IronSend! exit()<CR>:IronFocus<CR>:bd!<CR>]])
 bbind("v", "<localleader>ss", [[<Plug>(iron-visual-send)]])
 
 -- Pandoc compilation bindings
-bbind("n", "<localleader>ph", [[:!pandoc % -o %:r.html<CR>]])
-bbind("n", "<localleader>pl", [[:!pandoc % -o %:r.pdf<CR>]])
-bbind("n", "<localleader>pd", [[:!pandoc % -o %:r.docx<CR>]])
+bbind("n", "<localleader>ph", [[:!pandoc "%" -o "%:r.html"<CR>]])
+bbind("n", "<localleader>pl", [[:!pandoc "%" -o "%:r.pdf"<CR>]])
+bbind("n", "<localleader>pd", [[:!pandoc "%" -o "%:r.docx"<CR>]])
