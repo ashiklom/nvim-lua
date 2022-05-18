@@ -24,14 +24,15 @@ tk.setup({
 vim.keymap.set('n', '<leader>nf', tk.find_notes)
 vim.keymap.set('n', '<leader>nn', tk.new_note)
 vim.keymap.set('n', '<leader>nN', tk.new_templated_note)
-vim.keymap.set('n', '<leader>nd', tk.find_daily_notes)
 vim.keymap.set('n', '<leader>ng', tk.search_notes)
 vim.keymap.set('n', '<leader>nz', tk.follow_link)
 vim.keymap.set('n', '<leader>nr', tk.rename_note)
 vim.keymap.set('n', '<leader>nc', tk.show_calendar)
 vim.keymap.set('n', '<leader>na', tk.show_tags)
 
-vim.keymap.set('n', '<leader>nT', tk.goto_today)
+vim.keymap.set('n', '<leader>nd', tk.find_daily_notes)
+vim.keymap.set('n', '<leader>nD', tk.goto_today)
+vim.keymap.set('n', '<leader>nw', tk.find_weekly_notes)
 vim.keymap.set('n', '<leader>nW', tk.goto_thisweek)
 
 
