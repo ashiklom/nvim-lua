@@ -20,4 +20,4 @@ vim.opt_local.foldlevel = 20
 -- Pandoc compilation bindings
 bbind("n", "<localleader>ph", [[:!pandoc "%" -o "%:r.html"<CR>]])
 bbind("n", "<localleader>pl", [[:!pandoc "%" -o "%:r.pdf"<CR>]])
-bbind("n", "<localleader>pd", [[:!pandoc "%" -o "%:r.docx" --reference-doc=~/projects/other/pandoc-reference.docx<CR>]])
+bbind("n", "<localleader>pd", [[:!pandoc "%" -o "%:r.docx"<CR>]])
