@@ -1,4 +1,3 @@
-local ans_tele = require('ans-telescope')
 local tele = require('telescope')
 local telef = tele.extensions.file_browser
 local teleb = require('telescope.builtin')
@@ -43,7 +42,8 @@ vim.keymap.set('n', 'z.', [[:<C-u>normal! zszH<CR>]], {silent=true})
 
 -- Telescope mappings
 vim.keymap.set('n', '<leader> ', teleb.find_files)
-vim.keymap.set('n', '<leader>ff', ans_tele.file_browser_cwd)
+vim.keymap.set('n', '<leader>ff', telef.file_browser)
+vim.keymap.set('n', '<leader>fF', function() telef.file_browser{hidden=true, respect_gitignore=false} end)
 vim.keymap.set('n', '<leader>f~', function() telef.file_browser{cwd='~'} end)
 vim.keymap.set('n', '<leader>fp', function() teleb.find_files{cwd="~/.config/nvim"}end)
 vim.keymap.set('n', '<leader>f?', teleb.oldfiles)
