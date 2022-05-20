@@ -1,8 +1,8 @@
 local ok, luasnip = pcall(require, 'luasnip')
 
 if ok then
-  -- require("luasnip.loaders.from_snipmate").lazy_load()
-  require("luasnip.loaders.from_lua").load()
+  require("luasnip.loaders.from_lua").lazy_load()
+  require("luasnip.loaders.from_snipmate").lazy_load()
 
   local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)

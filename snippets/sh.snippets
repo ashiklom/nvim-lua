@@ -1,0 +1,11 @@
+snippet #!
+	#!/usr/bin/env bash
+
+snippet sbatch Pre-configure script for SLURM
+	#SBATCH --account=s3673
+	#SBATCH --constraint='sky|hasw'
+	#SBATCH --time=01:00
+	#SBATCH --output=slurm-%j-%a.log
+
+snippet modpy Load Discover Python module
+	module load python/GEOSpyD/Min4.10.3_py3.9
