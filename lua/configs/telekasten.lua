@@ -16,6 +16,7 @@ tk.setup({
   template_new_daily = config .. '/note-templates/daily.md',
   template_new_weekly = config .. '/note-templates/weekly.md',
   extension = ".md",
+  new_note_filename = "uuid-title",
   uuid_type = "%Y-%m-%d-%H%M",
   uuid_sep = " ",
   tag_notation = "#tag",
