@@ -52,8 +52,7 @@ return packer.startup(function(use)
 
   use {
     'hkupty/iron.nvim',
-    config = function() require('configs.iron') end,
-    disable = true
+    config = function() require('configs.iron') end
   }
 
   use { 'kassio/neoterm' }
