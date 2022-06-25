@@ -11,7 +11,7 @@ parser_config.org = {
 }
 
 tconfig.setup{
-  ensure_installed = {"org"},
+  -- ensure_installed = {"org"},
   indent = {
     enable=true,
     disable = {"r", "python", "yaml"},
