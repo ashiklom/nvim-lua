@@ -35,7 +35,11 @@ return packer.startup(function(use)
     disable = true
   }
 
-  use 'tpope/vim-surround'
+  use { 'tpope/vim-surround' , disable = true}
+  use {
+    vim.fn.getenv('HOME') .. '/src/vim-sandwich',
+    config = function() require('configs.vim-sandwich') end
+  }
   use {
     'ashiklom/splitjoin.vim',
     config = function() require('configs.splitjoin') end
