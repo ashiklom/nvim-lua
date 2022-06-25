@@ -21,17 +21,14 @@ cmp.setup {
       select = true,
     })
   }),
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' }
-  }
-  -- sources = cmp.config.sources({
-  --   {name = 'nvim_lsp'},
-  --   {name = 'path'},
-  --   {name = 'calc'},
-  --   {name = 'nvim_lua'},
-  --   {name = 'omni'}
-  -- }, {
-  --   { name = "buffer" }
-  -- })
+  sources = cmp.config.sources({
+    {name = 'nvim_lsp'},
+    {name = 'path'},
+    {name = 'calc'},
+    {name = 'nvim_lua'},
+    {name = 'omni'},
+    {name = 'luasnip'}
+  }, {
+    { name = "buffer" }
+  })
 }
