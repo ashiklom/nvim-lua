@@ -28,6 +28,8 @@ end
 vim.keymap.set('n', '<leader>ww', [[:wincmd p<cr>]], {silent=true})
 vim.keymap.set('n', '<leader>w+', [[:5 wincmd +<cr>]], {silent=true})
 vim.keymap.set('n', '<leader>w_', [[:5 wincmd -<cr>]], {silent=true})
+vim.keymap.set('n', '<leader>w]', [[:vertical resize +5<cr>]], {silent=true})
+vim.keymap.set('n', '<leader>w[', [[:vertical resize -5<cr>]], {silent=true})
 vim.keymap.set('n', '<leader>w-', [[:split<cr>]], {silent=true})
 vim.keymap.set('n', '<leader>w\\', [[:vsplit<cr>]], {silent=true})
 vim.keymap.set('n', '<leader>wd', [[:close<cr>]], {silent=true})
