@@ -28,7 +28,6 @@ end
 local servers = {
   "bashls",
   "pyright",
-  "r_language_server",
   "sumneko_lua"
 }
 

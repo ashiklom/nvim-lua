@@ -52,7 +52,7 @@ return packer.startup(function(use)
   }
 
   use {'ashiklom/r-vim-runtime'}
-  -- use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}
+  use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}
 
   use {
     'hkupty/iron.nvim',
