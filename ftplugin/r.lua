@@ -26,6 +26,7 @@ if packer_plugins['nvim-r'] then
   vim.g.R_assign_map = '<M-->'
 
   map('i', "<M-m>", " %>%")
+  map('i', "<M-.>", " |>")
   map('n', 'K', [[:call RAction('help')<CR>]])
   map_rcall('n', '<localleader>vl', "devtools::load_all('.')")
   map_rcall('n', '<localleader>vd', "devtools::document('.')")
