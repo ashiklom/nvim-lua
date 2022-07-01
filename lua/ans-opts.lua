@@ -1,7 +1,8 @@
 -- Settings
 vim.cmd [[filetype plugin indent on]]
 vim.cmd [[syntax enable]]
-vim.cmd [[colorscheme sonokai]]
+
+pcall(vim.cmd, [[colorscheme sonokai]])
 
 local indent = 2
 
