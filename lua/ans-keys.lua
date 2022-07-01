@@ -1,6 +1,3 @@
-local tele = require('telescope')
-local telef = tele.extensions.file_browser
-local teleb = require('telescope.builtin')
 local utils = require('ans-utils')
 
 vim.keymap.set('i', 'jk', '<Esc>')
@@ -43,25 +40,30 @@ vim.cmd([[cnoreabbrev W w]])
 vim.keymap.set('n', 'z.', [[:<C-u>normal! zszH<CR>]], {silent=true})
 
 -- Telescope mappings
-vim.keymap.set('n', '<leader> ', teleb.find_files)
-vim.keymap.set('n', '<leader>ff', telef.file_browser)
-vim.keymap.set('n', '<leader>fF', function() telef.file_browser{hidden=true, respect_gitignore=false} end)
-vim.keymap.set('n', '<leader>f~', function() telef.file_browser{cwd='~'} end)
-vim.keymap.set('n', '<leader>fc', function() teleb.find_files{cwd="~/.config/nvim"}end)
-vim.keymap.set('n', '<leader>fp', function() teleb.find_files{cwd="~/.local/share/nvim/site/pack/packer/"}end)
-vim.keymap.set('n', '<leader>f?', teleb.oldfiles)
-vim.keymap.set('n', '<leader>bb', teleb.buffers)
-vim.keymap.set('n', '<leader>bk', [[:b#|bd#<CR>]], {silent=true})
-vim.keymap.set('n', '<leader>ht', teleb.help_tags)
-vim.keymap.set('n', '<leader>hk', teleb.keymaps)
-vim.keymap.set('n', '<leader>ss', teleb.current_buffer_fuzzy_find)
-vim.keymap.set('n', '<leader>sd', teleb.grep_string)
-vim.keymap.set('n', '<leader>sp', teleb.live_grep)
-vim.keymap.set('n', '<leader>s"', teleb.registers)
-vim.keymap.set('n', 'z=', teleb.spell_suggest)
+local tele_ok, tele = pcall(require, 'telescope')
+if tele_ok then
+  local telef = tele.extensions.file_browser
+  local teleb = require('telescope.builtin')
+  vim.keymap.set('n', '<leader> ', teleb.find_files)
+  vim.keymap.set('n', '<leader>ff', telef.file_browser)
+  vim.keymap.set('n', '<leader>fF', function() telef.file_browser{hidden=true, respect_gitignore=false} end)
+  vim.keymap.set('n', '<leader>f~', function() telef.file_browser{cwd='~'} end)
+  vim.keymap.set('n', '<leader>fc', function() teleb.find_files{cwd="~/.config/nvim"}end)
+  vim.keymap.set('n', '<leader>fp', function() teleb.find_files{cwd="~/.local/share/nvim/site/pack/packer/"}end)
+  vim.keymap.set('n', '<leader>f?', teleb.oldfiles)
+  vim.keymap.set('n', '<leader>bb', teleb.buffers)
+  vim.keymap.set('n', '<leader>bk', [[:b#|bd#<CR>]], {silent=true})
+  vim.keymap.set('n', '<leader>ht', teleb.help_tags)
+  vim.keymap.set('n', '<leader>hk', teleb.keymaps)
+  vim.keymap.set('n', '<leader>ss', teleb.current_buffer_fuzzy_find)
+  vim.keymap.set('n', '<leader>sd', teleb.grep_string)
+  vim.keymap.set('n', '<leader>sp', teleb.live_grep)
+  vim.keymap.set('n', '<leader>s"', teleb.registers)
+  vim.keymap.set('n', 'z=', teleb.spell_suggest)
 
-vim.keymap.set('n', '<leader>po', tele.extensions.project.project)
-vim.keymap.set('n', '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]], {silent=true})
+  vim.keymap.set('n', '<leader>po', tele.extensions.project.project)
+  vim.keymap.set('n', '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]], {silent=true})
+end
 
 -- Exchange
 vim.keymap.set('v', 'gx', [[<Plug>(Exchange)]], {silent=true})
