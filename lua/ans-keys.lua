@@ -16,7 +16,7 @@ vim.keymap.set('n', 'gb', '<C-^>')
 -- Toggle wrap long lines
 vim.keymap.set('n', '<leader>$', [[:setlocal wrap!<CR>]], {silent=true})
 
-local winkeys = "jklh=xrRT"
+local winkeys = "jklh=xrRTJKLH"
 for i = 1, #winkeys do
   local key = winkeys:sub(i,i)
   vim.keymap.set('n', '<leader>w'..key, string.format([[:wincmd %s<cr>]], key), {silent=true})
