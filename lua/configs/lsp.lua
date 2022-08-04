@@ -29,18 +29,22 @@ end
 local servers = {
   "bashls",
   "pyright",
-  "sumneko_lua"
+  "sumneko_lua",
+  "r_language_server"
 }
 
 for _, server in pairs(servers) do
-  local opts = {
-    on_attach = on_attach,
-    capabilities = capabilities
-  }
-  if server == "sumneko_lua" then
-    opts.settings = {Lua = {diagnostics = {globals = {"vim"}}}}
-  elseif server == "bashls" then
-    opts.filetypes = {"sh", "zsh"}
+  local has, _ = lsp_installer.get_server(server)
+  if has then
+    local opts = {
+      on_attach = on_attach,
+      capabilities = capabilities
+    }
+    if server == "sumneko_lua" then
+      opts.settings = {Lua = {diagnostics = {globals = {"vim"}}}}
+    elseif server == "bashls" then
+      opts.filetypes = {"sh", "zsh"}
+    end
+    lspconfig[server].setup(opts)
   end
-  lspconfig[server].setup(opts)
 end
