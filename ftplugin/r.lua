@@ -34,6 +34,8 @@ if packer_plugins['nvim-r'] then
   map_rcall('n', '<localleader>vt', "devtools::test('.')")
 
   map_rcall_cword('n', '<localleader>rg', 'dplyr::glimpse')
+  map_rcall_cword('n', '<localleader>rs', 'str')
+  map_rcall_cword('n', '<localleader>rS', 'summary')
 
 -- require('cmp').setup.buffer { enabled = false }
 -- map('i', "<C-Space>", "<C-x><C-o>")
