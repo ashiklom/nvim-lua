@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+if [ $# -gt 1 ]; then
+  COMMAND="rg -l0 --smart-case '$1' $HOME/notes"
+  while [ $# -gt 0 ]; do
+    if [ $# -gt 1 ]; then
+      ADDITION="xargs -0 rg --smart-case -l0 $1"
+    else
+      # Last one
+      ADDITION="xargs -0 rg --smart-case -l $1"
+    fi
+    COMMAND="$COMMAND | $ADDITION"
+    shift 1
+  done
+elif [ $# -eq 1 ]; then
+  COMMAND="rg --smart-case -l $1 $HOME/notes"
+else
+  COMMAND="rg --files $HOME/notes"
+fi
+
+eval "$COMMAND"

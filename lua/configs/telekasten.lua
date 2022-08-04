@@ -1,5 +1,7 @@
 local tk = require('telekasten')
 
+local mt = require('ans-tele')
+
 local notedir = vim.fn.expand('~/notes')
 local config = vim.fn.stdpath('config')
 
@@ -36,5 +38,6 @@ vim.keymap.set('n', '<leader>nD', tk.goto_today)
 vim.keymap.set('n', '<leader>nw', tk.find_weekly_notes)
 vim.keymap.set('n', '<leader>nW', tk.goto_thisweek)
 
+vim.keymap.set('n', '<leader>ns', mt.nsearch)
 
 vim.keymap.set('i', '<C-l>', function() tk.insert_link({i=true}) end, {silent=true})
