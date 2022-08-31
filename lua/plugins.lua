@@ -130,11 +130,9 @@ return packer.startup(function(use)
   use { 'lewis6991/gitsigns.nvim', config = function() require('configs.conf_gitsigns') end }
   use { 'samoshkin/vim-mergetool', config = function() require('configs.vim-mergetool') end }
 
-  use { 'jiangmiao/auto-pairs' }
   use {
-    'steelsojka/pears.nvim',
-    disable = true,
-    config = function() require('configs.pears') end
+    'windwp/nvim-autopairs',
+    config = function() require('configs.nvim-autopairs') end
   }
 
   use 'editorconfig/editorconfig-vim'

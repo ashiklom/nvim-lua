@@ -40,4 +40,4 @@ vim.keymap.set('n', '<leader>nW', tk.goto_thisweek)
 
 vim.keymap.set('n', '<leader>ns', mt.nsearch)
 
-vim.keymap.set('i', '<C-l>', function() tk.insert_link({i=true}) end, {silent=true})
+vim.keymap.set('i', '<C-z>', function() tk.insert_link({i=true}) end, {silent=true})
