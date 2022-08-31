@@ -6,7 +6,7 @@ gs.setup{
     vim.keymap.set("n", "[h", gs.prev_hunk)
     vim.keymap.set({"n", "v"}, "<leader>hh", gs.preview_hunk)
     vim.keymap.set({"n", "v"}, "<leader>hs", gs.stage_hunk)
-    vim.keymap.set({"n", "v"}, "<leader>hu", gs.reset_hunk)
+    vim.keymap.set({"n", "v"}, "<leader>hx", gs.reset_hunk)
     vim.keymap.set({"n", "v"}, "<leader>hz", gs.undo_stage_hunk)
     vim.keymap.set("n", "<leader>hb", gs.blame_line)
   end
