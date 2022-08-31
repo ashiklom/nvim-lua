@@ -54,8 +54,7 @@ return packer.startup(function(use)
   use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}
 
   use {
-    -- 'hkupty/iron.nvim',
-    'ashiklom/iron.nvim', branch="fix-close",
+    'hkupty/iron.nvim',
     config = function() require('configs.iron') end
   }
 
