@@ -24,16 +24,6 @@ return packer.startup(function(use)
     'ggandor/leap.nvim',
     config = function() require('configs.leap') end
   }
-  use {
-    'ggandor/lightspeed.nvim',
-    config = function() require'lightspeed'.setup{} end,
-    disable = true
-  }
-  use {
-    'phaazon/hop.nvim',
-    config = function() require('configs.hop') end,
-    disable = true
-  }
 
   use {
     'kylechui/nvim-surround',
@@ -42,12 +32,6 @@ return packer.startup(function(use)
   use {
     'ashiklom/splitjoin.vim',
     config = function() require('configs.splitjoin') end
-  }
-
-  use {
-    'haya14busa/incsearch.vim',
-    disable = true,
-    config = function() require('configs.incsearch') end
   }
 
   use {'ashiklom/r-vim-runtime', branch="update"}
@@ -142,11 +126,6 @@ return packer.startup(function(use)
   use {
     'TimUntersberger/neogit',
     config = function() require('configs.neogit') end
-  }
-  use {
-    'tpope/vim-fugitive',
-    config = function() require('configs.fugitive') end,
-    disable = true
   }
   use { 'lewis6991/gitsigns.nvim', config = function() require('configs.conf_gitsigns') end }
   use { 'samoshkin/vim-mergetool', config = function() require('configs.vim-mergetool') end }
