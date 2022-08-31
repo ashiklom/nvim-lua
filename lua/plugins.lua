@@ -35,10 +35,9 @@ return packer.startup(function(use)
     disable = true
   }
 
-  use { 'tpope/vim-surround' , disable = true}
   use {
-    "machakann/vim-sandwich",
-    config = function() require('configs.vim-sandwich') end
+    'kylechui/nvim-surround',
+    config = function() require('configs.nvim_surround') end
   }
   use {
     'ashiklom/splitjoin.vim',
