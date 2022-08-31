@@ -1,13 +1,9 @@
 local utils = {}
 
-function utils.nvim_create_augroup(group_name, definition)
-  vim.api.nvim_command('augroup '..group_name)
-  vim.api.nvim_command('autocmd!')
-  for _, def in ipairs(definition) do
-    local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
-    vim.api.nvim_command(command)
-  end
-  vim.api.nvim_command('augroup END')
+function utils.augroup(group_name, event, definition)
+  local grp = vim.api.nvim_create_augroup(group_name, {clear = true})
+  definition["group"] = grp
+  vim.api.nvim_create_autocmd(event, definition)
 end
 
 function utils.buf_name()
