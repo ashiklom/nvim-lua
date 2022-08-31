@@ -51,7 +51,7 @@ return packer.startup(function(use)
     config = function() require('configs.incsearch') end
   }
 
-  use {'ashiklom/r-vim-runtime'}
+  use {'ashiklom/r-vim-runtime', branch="update"}
   use {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}}
 
   use {
