@@ -24,7 +24,6 @@ tconfig.setup{
   textobjects = {
     select = {
       enable = true,
-      disable = {"r"},
       keymaps = {
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
