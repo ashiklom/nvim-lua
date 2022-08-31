@@ -151,6 +151,9 @@ return packer.startup(function(use)
     config = function() require('configs.nvim-toggleterm') end
   }
 
+  use { 'vim-pandoc/vim-pandoc' }
+  use { 'vim-pandoc/vim-pandoc-syntax' }
+
   use 'sainnhe/sonokai'
   use {'nvim-lualine/lualine.nvim', config = function() require('configs.lualine') end}
   use {'lukas-reineke/indent-blankline.nvim', config = function() require('configs.indent-blankline') end}
