@@ -1,6 +1,6 @@
 local neogit = require('neogit')
 
-vim.keymap.set('n', '<leader>gg', function() neogit.open({ kind="split_above"}) end, {silent=true})
+vim.keymap.set('n', '<leader>gg', neogit.open)
 
 neogit.setup{
   disable_commit_confirmation = true,
@@ -9,5 +9,7 @@ neogit.setup{
       ["F"] = "PullPopup",
       ["p"] = "PushPopup"
     }
-  }
+  },
+  kind = "split_above",
+  commit_popup = {kind = "split_above"}
 }
