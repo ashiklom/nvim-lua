@@ -23,6 +23,18 @@ bbind('n', '<localleader>pp', function()
   vim.api.nvim_feedkeys('`0', 'n', false)
 end)
 
+-- Send entire file
+bbind('n', '<localleader>aa', function()
+  -- Save the current view...
+  local view = vim.fn.winsaveview()
+  vim.api.nvim_feedkeys('m0', 'n', false)
+  vim.api.nvim_feedkeys('ggVG', 'n', false)
+  iron.visual_send()
+  vim.api.nvim_feedkeys('`0', 'n', false)
+  -- ...and restore it after running the command.
+  vim.fn.winrestview(view)
+end)
+
 bbind("n", "<localleader>rp", function()
   local cmd = string.format('print(%s)', vim.fn.expand('<cword>'))
   iron.send(nil, {cmd})
