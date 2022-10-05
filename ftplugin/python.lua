@@ -35,6 +35,26 @@ bbind('n', '<localleader>aa', function()
   vim.fn.winrestview(view)
 end)
 
+-- Send all lines before current
+bbind('n', '<localleader>ak', function()
+  local view = vim.fn.winsaveview()
+  vim.api.nvim_feedkeys('m0', 'n', false)
+  vim.api.nvim_feedkeys('vgg', 'n', false)
+  iron.visual_send()
+  vim.api.nvim_feedkeys('`0', 'n', false)
+  vim.fn.winrestview(view)
+end)
+
+-- Send all lines after current
+bbind('n', '<localleader>aj', function()
+  local view = vim.fn.winsaveview()
+  vim.api.nvim_feedkeys('m0', 'n', false)
+  vim.api.nvim_feedkeys('vG', 'n', false)
+  iron.visual_send()
+  vim.api.nvim_feedkeys('`0', 'n', false)
+  vim.fn.winrestview(view)
+end)
+
 bbind("n", "<localleader>rp", function()
   local cmd = string.format('print(%s)', vim.fn.expand('<cword>'))
   iron.send(nil, {cmd})
