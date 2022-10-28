@@ -23,7 +23,8 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local ok, cmp_nl = pcall(require, 'cmp_nvim_lsp')
 if ok then
-  capabilities = cmp_nl.update_capabilities(capabilities)
+  -- capabilities = cmp_nl.update_capabilities(capabilities)
+  capabilities = cmp_nl.default_capabilities()
 end
 
 local servers = {
