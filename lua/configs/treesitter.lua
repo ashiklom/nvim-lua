@@ -1,3 +1,5 @@
+require('nvim-treesitter.install').compilers = { "gcc-12" }
+
 local tconfig = require('nvim-treesitter.configs')
 
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
@@ -16,8 +18,13 @@ tconfig.setup{
     disable = {"r", "python", "yaml"},
   },
   highlight = {
-    enable=false,
-    disable={"r", "org"},
+    enable=true,
+    -- disable={"r", "org"},
+    disable = function(lang, buf)
+      if not lang == "norg" then
+        return true
+      end
+    end,
     additional_vim_regex_highlighting = {"org"}
   },
   textobjects = {

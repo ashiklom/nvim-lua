@@ -166,7 +166,8 @@ return packer.startup(function(use)
 
   use {
     "nvim-neorg/neorg",
-    disable=true,
+    ft = "norg",
+    after = "nvim-treesitter",
     config = function() require('configs.neorg') end
   }
 
