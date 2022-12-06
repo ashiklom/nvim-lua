@@ -13,6 +13,18 @@ vim.keymap.set({'n', 'v'}, 'gj', "v:count == 0 ? 'j' : 'gj'", { expr = true, sil
 -- Most recent buffer
 vim.keymap.set('n', 'gb', '<C-^>')
 
+-- Open current file
+vim.keymap.set('n', 'g<CR>', [[:!open <cWORD><CR>]], {silent=true})
+vim.keymap.set('v', 'g<CR>', [[:w !xargs -0 open<CR>]], {silent=true})
+-- vim.keymap.set('v', 'g<CR>', function()
+--   local path = require('plenary.path')
+--   local cword = vim.fn.expand('<cWORD>')
+--   print(vim.inspect(cword))
+--   local abspath = path:new(cword):expand()
+--   print(vim.inspect(abspath))
+--   -- vim.fn.system("open " .. abspath)
+-- end)
+
 -- Toggle wrap long lines
 vim.keymap.set('n', '<leader>$', [[:setlocal wrap!<CR>]], {silent=true})
 
