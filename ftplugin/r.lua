@@ -1,3 +1,8 @@
+require 'dep' {
+  {'ashiklom/r-vim-runtime', branch="update"},
+  {'jalvesaq/nvim-r'}
+}
+
 -- Indentation rules
 vim.g.r_indent_align_args = 1
 vim.g.r_indent_rstudio = 1
