@@ -1,9 +1,16 @@
 -- Bootstrap packer.nvim
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-	vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
+
+local packer_bootstrap = ensure_packer()
 
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
@@ -12,9 +19,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = 'plugins.lua',
 })
 
-local packer = require("packer")
-
-return packer.startup(function(use)
+return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/plenary.nvim'
 
@@ -27,7 +32,7 @@ return packer.startup(function(use)
 
   use {
     'kylechui/nvim-surround',
-    config = function() require('configs.nvim_surround') end
+    config = function() require('nvim-surround').setup{} end
   }
   use {
     'ashiklom/splitjoin.vim',
@@ -112,7 +117,11 @@ return packer.startup(function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
+    -- https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation#packernvim
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
     config = function() require('configs.treesitter') end
   }
   use {
@@ -187,5 +196,9 @@ return packer.startup(function(use)
   }
 
   use { 'jxnblk/vim-mdx-js' }
+
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 
 end)
