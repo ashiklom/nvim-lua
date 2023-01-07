@@ -61,7 +61,7 @@ if tele_ok then
   vim.keymap.set('n', '<leader>fF', function() telef.file_browser{hidden=true, respect_gitignore=false} end)
   vim.keymap.set('n', '<leader>f~', function() telef.file_browser{cwd='~'} end)
   vim.keymap.set('n', '<leader>fc', function() teleb.find_files{cwd="~/.config/nvim"}end)
-  vim.keymap.set('n', '<leader>fp', function() teleb.find_files{cwd="~/.local/share/nvim/site/pack/packer/"}end)
+  vim.keymap.set('n', '<leader>fp', function() teleb.find_files{cwd="~/.local/share/nvim/lazy/"}end)
   vim.keymap.set('n', '<leader>f?', teleb.oldfiles)
   vim.keymap.set('n', '<leader>bb', teleb.buffers)
   vim.keymap.set('n', '<leader>bk', [[:b#|bd#<CR>]], {silent=true})
@@ -99,8 +99,6 @@ vim.keymap.set('n', '<leader>cW', [[:%s/\s\+$//ge<CR>]], {silent=true})  -- Enti
 
 -- Reload vimrc
 vim.keymap.set('n', '<leader>%r', utils.reload_vimrc, {silent=true})
-vim.keymap.set('n', '<leader>%s', [[:PackerSync<CR>]], {silent=true})
-vim.keymap.set('n', '<leader>%c', [[:PackerCompile<CR>]], {silent=true})
 
 vim.keymap.set('n', '<leader>^', [[:setlocal list!<CR>]])
 
