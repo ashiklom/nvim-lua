@@ -181,5 +181,6 @@ return require('lazy').setup{
   },
 
   { 'jxnblk/vim-mdx-js' },
+  { 'mracos/mermaid.vim', ft = {"mermaid"} }
 
 }
