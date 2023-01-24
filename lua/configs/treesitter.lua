@@ -13,7 +13,7 @@ parser_config.org = {
 tconfig.setup{
   indent = {
     enable=true,
-    disable = {"r", "python", "yaml"},
+    disable = {"r", "python", "yaml", "org"},
   },
   highlight = {
     enable=false,

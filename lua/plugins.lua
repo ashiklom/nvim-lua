@@ -159,10 +159,10 @@ return require('lazy').setup{
   {'nvim-lualine/lualine.nvim', config = function() require('configs.lualine') end},
   {'lukas-reineke/indent-blankline.nvim', config = function() require('configs.indent-blankline') end},
 
-  {
-    'kristijanhusak/orgmode.nvim',
-    config = function() require('configs.orgmode') end
-  },
+  -- {
+  --   'kristijanhusak/orgmode.nvim',
+  --   config = function() require('configs.orgmode') end
+  -- },
 
   {
     'mtth/scratch.vim',
