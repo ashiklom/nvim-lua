@@ -16,7 +16,7 @@ tconfig.setup{
     disable = {"r", "python", "yaml", "org"},
   },
   highlight = {
-    enable=false,
+    enable=true,
     disable={"r", "org"},
     additional_vim_regex_highlighting = {"org"}
   },
