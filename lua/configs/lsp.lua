@@ -1,7 +1,10 @@
-local lsp_installer = require("nvim-lsp-installer")
+-- local lsp_installer = require("nvim-lsp-installer")
+
+local mason = require('mason').setup()
+local mason_lsp = require('mason-lspconfig').setup()
 local lspconfig = require('lspconfig')
 
-lsp_installer.setup{}
+-- lsp_installer.setup{}
 
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -29,22 +32,19 @@ end
 local servers = {
   "bashls",
   "pyright",
-  "sumneko_lua",
+  "lua_ls",
   "r_language_server"
 }
 
 for _, server in pairs(servers) do
-  local has, _ = lsp_installer.get_server(server)
-  if has then
-    local opts = {
-      on_attach = on_attach,
-      capabilities = capabilities
-    }
-    if server == "sumneko_lua" then
-      opts.settings = {Lua = {diagnostics = {globals = {"vim"}}}}
-    elseif server == "bashls" then
-      opts.filetypes = {"sh", "zsh"}
-    end
-    lspconfig[server].setup(opts)
+  local opts = {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+  if server == "lua_ls" then
+    opts.settings = {Lua = {diagnostics = {globals = {"vim"}}}}
+  elseif server == "bashls" then
+    opts.filetypes = {"sh", "zsh"}
   end
+  lspconfig[server].setup(opts)
 end

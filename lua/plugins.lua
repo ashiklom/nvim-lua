@@ -84,10 +84,13 @@ return require('lazy').setup{
 
   -- Languageserver
   {
-    'neovim/nvim-lspconfig',
+    'williamboman/mason-lspconfig.nvim',
+    dependencies = {
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig"
+    },
     config = function() require('configs.lsp') end
   },
-  { 'williamboman/nvim-lsp-installer' },
   {
     'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim',
     config = function() require('configs.toggle_lsp_diagnostics') end
