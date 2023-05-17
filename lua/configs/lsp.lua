@@ -33,7 +33,8 @@ local servers = {
   "bashls",
   "pyright",
   "lua_ls",
-  "r_language_server"
+  "r_language_server",
+  "julials"
 }
 
 for _, server in pairs(servers) do
