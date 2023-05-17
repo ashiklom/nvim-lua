@@ -26,9 +26,7 @@ cmp.setup {
     {name = 'path'},
     {name = 'calc'},
     {name = 'nvim_lua'},
-    {name = 'omni'},
-    {name = 'luasnip'}
-  }, {
-    { name = "buffer" }
+    {name = 'luasnip'},
+    {name = "buffer"}
   })
 }
