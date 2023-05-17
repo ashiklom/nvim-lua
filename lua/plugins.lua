@@ -32,7 +32,11 @@ return require('lazy').setup{
   },
 
   {'ashiklom/r-vim-runtime', branch="update"},
-  {'jalvesaq/nvim-r', ft = {"r", "rmd", "rnw"}},
+  {
+    'jalvesaq/nvim-r',
+    ft = {"r", "rmd", "rnw"},
+    dependencies = {'jalvesaq/cmp-nvim-r'}
+  },
 
   {
     'hkupty/iron.nvim',
