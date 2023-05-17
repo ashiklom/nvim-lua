@@ -29,20 +29,6 @@ return {
   },
 
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-calc',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/cmp-omni',
-      'saadparwaiz1/cmp_luasnip'
-    },
-    config = function() require('configs.cmp') end
-  },
-
-  {
     'nvim-treesitter/nvim-treesitter',
     -- https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation#packernvim
     run = function()
