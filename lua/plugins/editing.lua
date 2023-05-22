@@ -17,7 +17,12 @@ return {
     config = function() require('configs.nvim-autopairs') end
   },
   { 'editorconfig/editorconfig-vim' },
-  { 'b3nj5m1n/kommentary', config = function() require('configs.kommentary') end },
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup{}
+    end
+  },
   {
     'dhruvasagar/vim-table-mode',
     ft = {'markdown'},
