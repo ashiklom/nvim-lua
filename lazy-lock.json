@@ -50,6 +50,7 @@
   "splitjoin.vim": { "branch": "main", "commit": "cecfb0e13524e8609b7fbff6d924f652d2f301f3" },
   "targets.vim": { "branch": "master", "commit": "642d3a4ce306264b05ea3219920b13ea80931767" },
   "telekasten.nvim": { "branch": "main", "commit": "617469cd0690c84264f7d472cf1fe860ccfc0832" },
+  "telescope-bibtex.nvim": { "branch": "master", "commit": "9def411c88b6ff6c9eb93dedd315e7f80391da91" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "1aa7f12ce797bb5b548c96f38b2c93911e97c543" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "580b6c48651cabb63455e97d7e131ed557b8c7e2" },
   "telescope-project.nvim": { "branch": "master", "commit": "7c64b181dd4e72deddcf6f319e3bf1e95b2a2f30" },
