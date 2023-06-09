@@ -26,7 +26,7 @@ return {
           end
         },
         mapping = cmp.mapping.preset.insert({
-          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-Insert>'] = cmp.mapping.complete(),
           ['<C-p>'] = cmp.mapping.select_prev_item(),
           ['<C-n>'] = cmp.mapping.select_next_item(),
           ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -42,8 +42,9 @@ return {
           {name = 'calc'},
           {name = 'nvim_lua'},
           {name = 'luasnip'},
-          {name = "buffer"},
           {name = "pandoc_references"}
+        }, {
+          {name = "buffer"},
         })
       }
 
