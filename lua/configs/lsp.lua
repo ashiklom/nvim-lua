@@ -8,6 +8,7 @@ local lspconfig = require('lspconfig')
 
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr')
   local nmap = function(lhs, rhs)
     local opts = { silent=true, buffer=bufnr }
     vim.keymap.set('n', lhs, rhs, opts)
