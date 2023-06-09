@@ -21,12 +21,14 @@ end
 bind('n', '<localleader>rf', [[:IronRepl<CR>]])
 bind('n', '<localleader>rr', iron.repl_restart)
 bind('n', '<localleader>rq', iron.close_repl)
+bind('n', '<localleader>r.', function() iron.send(nil, 'import Pkg; Pkg.activate(".")') end)
 
 bind("n", "<localleader>l", iron.send_line)
 -- bind("n", "<localleader>s", [[<Plug>(iron-send-motion)]])
 local ctrlc = string.char(03)
 bind('n', '<localleader>x', function() iron.send(nil, ctrlc) end)
 bind('v', '<localleader>ss', iron.visual_send)
+bind('n', '<localleader>aa', iron.send_file)
 
 -- Send current word (produces better formatting than "print")
 bind('n', '<localleader>rp', function()
@@ -37,6 +39,3 @@ bind('n', '<localleader>rP', function()
   iron.send(nil, {cmd})
 end)
 bind('n', '<localleader>rz', function() iron.send(nil, 'isinteractive()') end)
-
--- map_call('n', '<localleader>r.', 'import Pkg; Pkg.activate(".")')
--- map_call_cword('n', '<localleader>rp', 'print')
