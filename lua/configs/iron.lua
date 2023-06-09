@@ -6,12 +6,12 @@ local pyrepl = {
 }
 
 iron.setup{config = {
-  repl_open_cmd = 'belowright 15 split',
+  repl_open_cmd = 'botright 15 split',
   buflisted = true,
   repl_definition = {
     -- python = require('iron.fts.python').ipython,
     python = pyrepl,
     r = {command = {"R"}},
-    julia = {command = {"julia"}}
+    julia = {command = {"julia", "--project"}}
   }
 }}
