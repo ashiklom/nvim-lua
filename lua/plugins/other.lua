@@ -71,6 +71,7 @@ return {
   },
 
   { 'jxnblk/vim-mdx-js' },
-  { 'mracos/mermaid.vim', ft = {"mermaid"} }
+  { 'mracos/mermaid.vim', ft = {"mermaid"} },
+  { 'eigenfoo/stan-vim' }
 
 }
