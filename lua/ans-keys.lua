@@ -69,7 +69,7 @@ if tele_ok then
   vim.keymap.set('n', '<leader>fp', function() teleb.find_files{cwd="~/.local/share/nvim/lazy/"}end, {desc="Telescope Nvim package files"})
   vim.keymap.set('n', '<leader>f?', teleb.oldfiles, {desc="Telescope recent files"})
   vim.keymap.set('n', '<leader>bb', teleb.buffers, {desc="Telescope buffers"})
-  vim.keymap.set('n', '<leader>bk', [[:b#|bd#<CR>]], {silent=true, desc="Delete buffer"})
+  vim.keymap.set('n', '<leader>bk', [[:bp|bd #<CR>]], {silent=true, desc="Delete buffer"})
   vim.keymap.set('n', '<leader>ht', teleb.help_tags, {desc="Telescope help tags"})
   vim.keymap.set('n', '<leader>hk', teleb.keymaps, {desc="Telescope keymaps"})
   vim.keymap.set('n', '<leader>ss', teleb.current_buffer_fuzzy_find, {desc="Telescope search buffer"})
