@@ -1,0 +1,4 @@
+# Completion
+
+- Markdown citations 
+- Fix long delay on tab key in Julia
