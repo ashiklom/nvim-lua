@@ -14,9 +14,9 @@ return {
       local ms = require('mini.splitjoin')
       ms.setup{
         mappings = {
-          toggle = 'gS',
-          split = 'g[',
-          join = 'g]'
+          toggle = 'g[',
+          split = 'g{',
+          join = 'g}'
         }
       }
       vim.keymap.set('i', '<C-e>', ms.toggle, {desc="Toggle splitjoin"})

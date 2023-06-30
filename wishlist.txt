@@ -1,8 +1,3 @@
 # Completion
 
 - Markdown citations 
-
-# Julia
-
-- Fix long delay on tab key in Julia
-- Fix splitjoin in Julia
