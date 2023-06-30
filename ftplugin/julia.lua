@@ -4,16 +4,6 @@ vim.g.julia_indent_align_funcargs = 0
 vim.g.julia_indent_align_brackets = 0
 vim.g.julia_indent_align_import = 1
 
-local function fbind(mode, map, func)
-  local command = string.format("v:lua.jl_send_func('%s')", func)
-  vim.api.nvim_buf_set_keymap(0, mode, map, command, {silent=true, noremap=true, expr=true})
-end
-
-local function fwbind(mode, map, func)
-  local command = string.format("v:lua.jl_send_func_word('%s')", func)
-  vim.api.nvim_buf_set_keymap(0, mode, map, command, {silent=true, noremap=true, expr=true})
-end
-
 local function bind(mode, map, command)
   vim.keymap.set(mode, map, command, {silent=true, buffer=true})
 end
