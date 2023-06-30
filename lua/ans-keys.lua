@@ -44,9 +44,10 @@ vim.keymap.set('n', '<leader>w\\', [[:vsplit<cr>]], {silent=true})
 vim.keymap.set('n', '<leader>wd', [[:close<cr>]], {silent=true})
 vim.keymap.set('n', '<leader>wo', [[:Windows<CR>]], {silent=true})
 
-vim.keymap.set('n', '<leader>fs', [[:write<cr>]], {silent=true})
-vim.keymap.set('n', '<leader>fR', [[:Rename <C-r>=expand('%:t')<cr>]])
-vim.keymap.set('n', '<leader>fK', [[:call delete(expand('%')) | bdelete!<cr>]])
+vim.keymap.set('n', '<leader>fo', [[:edit .<CR>]], {silent=true, desc="Edit current directory"})
+vim.keymap.set('n', '<leader>fs', [[:write<cr>]], {silent=true, desc="Save"})
+vim.keymap.set('n', '<leader>fR', [[:Rename <C-r>=expand('%:t')<cr>]], {desc="Rename current buffer"})
+vim.keymap.set('n', '<leader>fK', [[:call delete(expand('%')) | bdelete!<cr>]], {desc="Delete buffer and file"})
 vim.cmd([[cnoreabbrev W w]])
 
 vim.keymap.set('n', 'z.', [[:<C-u>normal! zszH<CR>]], {silent=true})

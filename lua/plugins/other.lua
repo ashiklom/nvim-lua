@@ -22,10 +22,11 @@ return {
   { 'bfredl/nvim-luadev' },
 
   {'junegunn/fzf.vim', dependencies = {{'junegunn/fzf'}}},
+  
   {
-      'kyazdani42/nvim-tree.lua',
-      dependencies = 'kyazdani42/nvim-web-devicons',
-      config = function() require("configs.nvim-tree") end
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
 
   {

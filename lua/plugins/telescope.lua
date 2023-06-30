@@ -5,7 +5,7 @@ return {
       {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'},
       {'yamatsum/nvim-nonicons'},
-      {'kyazdani42/nvim-web-devicons'}
+      {'nvim-tree/nvim-web-devicons'}
     }
   },
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
