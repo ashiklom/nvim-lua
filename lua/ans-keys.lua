@@ -103,6 +103,11 @@ vim.keymap.set('v', '<leader>cw', [[:s/\s\+$//ge<CR>]], {silent=true})
 vim.keymap.set('n', '<leader>cw', [[:.s/\s\+$//ge<CR>]], {silent=true})  -- Current line only
 vim.keymap.set('n', '<leader>cW', [[:%s/\s\+$//ge<CR>]], {silent=true})  -- Entire file
 
+-- Toggle autoformat
+vim.keymap.set('n', '<leader>ga',
+[[:if &fo=~'a' | setlocal fo-=a | echo "Autoformat disabled" | else | setlocal fo+=a | echo "Autoformat enabled" | endif <CR>]]
+)
+
 -- Reload vimrc
 vim.keymap.set('n', '<leader>%r', utils.reload_vimrc, {silent=true})
 

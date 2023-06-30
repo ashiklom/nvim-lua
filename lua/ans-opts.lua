@@ -32,6 +32,8 @@ vim.opt.completeopt:remove("preview")
 vim.opt.listchars = "tab:>-,trail:-,nbsp:+"
 -- vim.opt.wildignore:append({'*.o', '*.so', '*.html'})
 
+vim.opt.formatoptions = 'crqwj'
+
 -- vim.opt.isfname:remove('=')
 -- Doesn't work for some reason; fall back on vim CMD
 vim.cmd [[set isfname-==]]
