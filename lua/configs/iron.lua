@@ -12,6 +12,7 @@ iron.setup{config = {
     -- python = require('iron.fts.python').ipython,
     python = pyrepl,
     r = {command = {"R"}},
-    julia = {command = {"julia"}}
+    julia = {command = {"julia"}},
+    sh = {command = {"bash"}}
   }
 }}
