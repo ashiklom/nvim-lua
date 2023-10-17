@@ -13,6 +13,7 @@ iron.setup{config = {
     python = pyrepl,
     r = {command = {"R"}},
     julia = {command = {"julia"}},
-    sh = {command = {"bash"}}
+    sh = {command = {"bash"}},
+    ps1 = {command = {"/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"}}
   }
 }}
