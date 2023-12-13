@@ -40,7 +40,9 @@ return {
     init = function() require('setups.vim-table-mode') end,
     config = function() require('configs.vim-table-mode') end
   },
-  {'lukas-reineke/indent-blankline.nvim', config = function() require('configs.indent-blankline') end},
+  {'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {
+    indent = {char = "┊"}
+  }},
 
   {
     'dkarter/bullets.vim',
