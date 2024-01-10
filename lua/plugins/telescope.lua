@@ -24,10 +24,5 @@ return {
         }
       }
     end
-  },
-  {
-    'renerocksai/telekasten.nvim',
-    dependencies = {{ 'renerocksai/calendar-vim' }},
-    config = function() require('configs.telekasten') end
   }
 }
