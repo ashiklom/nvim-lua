@@ -22,7 +22,7 @@ return {
   { 'bfredl/nvim-luadev' },
 
   {'junegunn/fzf.vim', dependencies = {{'junegunn/fzf'}}},
-  
+
   {
     'stevearc/oil.nvim',
     opts = {},
