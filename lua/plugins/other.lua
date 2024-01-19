@@ -71,7 +71,13 @@ return {
       {
         "<tab>",
         function()
-          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+          -- return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+          local lsp = require('luasnip')
+          if lsp.expand_or_jumpable() then
+            return "<Plug>luasnip-expand-or-jump"
+          else
+            return "<tab>"
+          end
         end,
         expr = true, silent = true, mode = "i",
       },
