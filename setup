@@ -3,16 +3,29 @@
 # Download latest neovim
 SRCROOT=$HOME/.local/src
 SRCDIR=$SRCROOT/neovim
-SRCFILE=$SRCDIR/nvim.appimage
 
 mkdir -p $SRCDIR
-curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -o $SRCFILE
-chmod +x $SRCFILE
-pushd $SRCDIR
-./nvim.appimage --appimage-extract
-popd
 mkdir -p $HOME/.local/bin
-ln -fs $SRCDIR/squashfs-root/usr/bin/nvim $HOME/.local/bin/nvim
+
+if [ $1 == "unsupported" ]; then
+  echo "Using unsupported release"
+  URL="https://github.com/neovim/neovim-releases/releases/download/nightly/nvim-linux64.tar.gz"
+  SRCFILE=$SRCDIR/nvim-linux64.tar.gz
+  curl -L $URL -o $SRCFILE
+  tar -zxvf $SRCFILE
+  ln -fs $SRCDIR/nvim-linux64/bin/nvim $HOME/.local/bin/nvim
+else
+  echo "Using official release"
+  SRCFILE=$SRCDIR/nvim.appimage
+  URL="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
+  curl -L $URL -o $SRCFILE
+  chmod +x $SRCFILE
+  pushd $SRCDIR
+  ./nvim.appimage --appimage-extract
+  popd
+  ln -fs $SRCDIR/squashfs-root/usr/bin/nvim $HOME/.local/bin/nvim
+fi
+
 
 # Install additional binaries if they're missing
 if !(rg --version &> /dev/null); then
