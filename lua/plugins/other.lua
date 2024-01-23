@@ -45,7 +45,20 @@ return {
 
   {
     'TimUntersberger/neogit',
-    config = function() require('configs.neogit') end
+    keys = {
+      {"<leader>gg", function() require('neogit').open() end} 
+    },
+    config = {
+      disable_commit_confirmation = true,
+      mappings = {
+        popup = {
+          ["F"] = "PullPopup",
+          ["p"] = "PushPopup"
+        }
+      },
+      kind = "split_above",
+      popup = {kind = "split_above"}
+    }
   },
   { 'lewis6991/gitsigns.nvim', config = function() require('configs.conf_gitsigns') end },
   { 'samoshkin/vim-mergetool', config = function() require('configs.vim-mergetool') end },
