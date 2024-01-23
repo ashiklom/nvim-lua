@@ -13,11 +13,12 @@ return {
   -- Python
   {
     'GCBallesteros/jupytext.vim',
-    config = function() require('configs.jupytext') end
+    config = function()
+      vim.g.jupytext_fmt = 'py'
+      vim.g.jupytext_style = 'hydrogen'
+    end
   },
   { 'Vimjas/vim-python-pep8-indent', ft = {"python"} },
-
-  { 'JuliaEditorSupport/julia-vim'},
 
   { 'bfredl/nvim-luadev' },
 
@@ -25,7 +26,7 @@ return {
 
   {
     'stevearc/oil.nvim',
-    opts = {},
+    config = true,
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
 
@@ -46,9 +47,9 @@ return {
   {
     'TimUntersberger/neogit',
     keys = {
-      {"<leader>gg", function() require('neogit').open() end} 
+      {"<leader>gg", function() require('neogit').open() end}
     },
-    config = {
+    opts = {
       disable_commit_confirmation = true,
       mappings = {
         popup = {
@@ -60,19 +61,44 @@ return {
       popup = {kind = "split_above"}
     }
   },
-  { 'lewis6991/gitsigns.nvim', config = function() require('configs.conf_gitsigns') end },
-  { 'samoshkin/vim-mergetool', config = function() require('configs.vim-mergetool') end },
+  {
+    'lewis6991/gitsigns.nvim',
+    on_attach = function()
+      vim.keymap.set("n", "]h", gs.next_hunk, {desc="Next hunk"})
+      vim.keymap.set("n", "[h", gs.prev_hunk, {desc="Previous hunk"})
+      vim.keymap.set({"n", "v"}, "<leader>hh", gs.preview_hunk, {desc="Preview hunk"})
+      vim.keymap.set({"n", "v"}, "<leader>hs", gs.stage_hunk, {desc="Stage hunk"})
+      vim.keymap.set({"n", "v"}, "<leader>hx", gs.reset_hunk, {desc="Reset hunk"})
+      vim.keymap.set({"n", "v"}, "<leader>hz", gs.undo_stage_hunk, {desc="Undo stage hunk"})
+      vim.keymap.set("n", "<leader>hb", gs.blame_line, {desc="Blame line"})
+    end
+  },
+
+  {
+    'samoshkin/vim-mergetool',
+    keys = {
+      {"<leader>xt", "[[<Plug>(MergetoolToggle)]]", silent = true}
+    },
+    config = function()
+      vim.g['mergetool_layout'] = 'mr'
+      vim.g['mergetool_prefer_revision'] = 'local'
+    end
+  },
 
   {
     'akinsho/nvim-toggleterm.lua',
     config = function() require('configs.nvim-toggleterm') end
   },
 
-  { 'vim-pandoc/vim-pandoc' },
-  { 'vim-pandoc/vim-pandoc-syntax' },
-
   { 'sainnhe/sonokai' },
-  { 'nvim-lualine/lualine.nvim', config = function() require('configs.lualine') end },
+  {
+    'nvim-lualine/lualine.nvim',
+    opts = {
+      sections = {
+        lualine_c = {{'filename', path = 1}}
+      }
+    }
+  },
 
   {
     'L3MON4D3/LuaSnip',
@@ -97,15 +123,6 @@ return {
       { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
       { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
-  },
-
-  {
-    'chrisbra/csv.vim',
-    ft = {'csv'}
-  },
-
-  { 'jxnblk/vim-mdx-js' },
-  { 'mracos/mermaid.vim', ft = {"mermaid"} },
-  { 'eigenfoo/stan-vim' }
+  }
 
 }

@@ -6,7 +6,7 @@ return {
 
   {
     'kylechui/nvim-surround',
-    config = function() require('nvim-surround').setup{} end
+    config = true
   },
   {
     'echasnovski/mini.splitjoin',
@@ -29,9 +29,7 @@ return {
   { 'editorconfig/editorconfig-vim' },
   {
     'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup{}
-    end
+    config = true
   },
   {
     'dhruvasagar/vim-table-mode',
