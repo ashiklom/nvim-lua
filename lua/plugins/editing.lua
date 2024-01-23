@@ -44,14 +44,6 @@ return {
     indent = {char = "┊"}
   }},
 
-  {
-    'dkarter/bullets.vim',
-    init = function() require('setups.bullets') end,
-    config = function() require('configs.bullets') end
-  },
-
-
-
   -- Fallbacks for argument selection and exchange
   { 'wellle/targets.vim' },
   { 'tommcdo/vim-exchange' }
