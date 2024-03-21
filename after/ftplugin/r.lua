@@ -33,6 +33,8 @@ map_rcall('n', '<localleader>vd', "devtools::document('.')")
 map_rcall('n', '<localleader>vi', "devtools::install('.')")
 map_rcall('n', '<localleader>vt', "devtools::test('.')")
 
+map_rcall('n', '<localleader>ro', 'httpgd::hgd(); hist(rnorm(100)); httpgd::hgd_browse()')
+
 map_rcall_cword('n', '<localleader>rg', 'dplyr::glimpse')
 map_rcall_cword('n', '<localleader>rs', 'str')
 map_rcall_cword('n', '<localleader>rS', 'summary')
