@@ -32,7 +32,7 @@ end
 
 local servers = {
   "bashls",
-  "pyright",
+  "ruff",
   "lua_ls",
   "r_language_server",
   "julials"
