@@ -6,7 +6,11 @@ local lspconfig = require('lspconfig')
 
 -- lsp_installer.setup{}
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
+  if client.name == 'ruff' then 
+    -- Disable hover in favor of pyright
+    client.server_capabilities.hoverProvider = false
+  end
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr')
   local nmap = function(lhs, rhs)
@@ -33,6 +37,7 @@ end
 local servers = {
   "bashls",
   "ruff",
+  "pyright",
   "lua_ls",
   "r_language_server",
   "julials"
