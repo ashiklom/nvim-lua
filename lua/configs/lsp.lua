@@ -7,7 +7,7 @@ local lspconfig = require('lspconfig')
 -- lsp_installer.setup{}
 
 local on_attach = function(client, bufnr)
-  if client.name == 'ruff' then 
+  if client.name == 'ruff' then
     -- Disable hover in favor of pyright
     client.server_capabilities.hoverProvider = false
   end
@@ -52,6 +52,19 @@ for _, server in pairs(servers) do
     opts.settings = {Lua = {diagnostics = {globals = {"vim"}}}}
   elseif server == "bashls" then
     opts.filetypes = {"sh", "zsh"}
+  elseif server == "pyright" then
+    -- Use ruff for all of this
+    opts.capabilities = (function()
+      local caps = vim.lsp.protocol.make_client_capabilities()
+      caps.textDocument.publishDiagnostics.tagSupport.valueSet = {2}
+      return caps
+    end)()
+    opts.settings = {
+      pyright = {
+        disableOrganizeImports = true
+      },
+      python = {analysis = {ignore = {'*'}}}
+    }
   end
   lspconfig[server].setup(opts)
 end
