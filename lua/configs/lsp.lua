@@ -53,17 +53,10 @@ for _, server in pairs(servers) do
   elseif server == "bashls" then
     opts.filetypes = {"sh", "zsh"}
   elseif server == "pyright" then
-    -- Use ruff for all of this
-    opts.capabilities = (function()
-      local caps = vim.lsp.protocol.make_client_capabilities()
-      caps.textDocument.publishDiagnostics.tagSupport.valueSet = {2}
-      return caps
-    end)()
     opts.settings = {
       pyright = {
         disableOrganizeImports = true
       },
-      python = {analysis = {ignore = {'*'}}}
     }
   end
   lspconfig[server].setup(opts)
