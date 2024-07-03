@@ -18,7 +18,7 @@ return {
   },
   { 'Vimjas/vim-python-pep8-indent', ft = {"python"} },
 
-  { 'bfredl/nvim-luadev' },
+  { 'bfredl/nvim-luadev', ft = {"lua"} },
 
   {'junegunn/fzf.vim', dependencies = {{'junegunn/fzf'}}},
 
