@@ -128,6 +128,19 @@ return {
       { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
       { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
+  },
+
+  {
+    'folke/trouble.nvim',
+    opts = {},
+    cmd = "Trouble",
+    keys = {
+      {"<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", desc = "Diagnostics"},
+      {"<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Buffer Diagnostics"},
+      {"<leader>cs", "<cmd>Trouble symbols toggle focus=false<CR>", desc = "Symbols"},
+      {"<leader>xc", "<cmd>Trouble qflist toggle<CR>", desc = "Quickfix list"},
+      {"<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Location list"},
+    }
   }
 
 }
