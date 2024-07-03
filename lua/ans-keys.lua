@@ -58,25 +58,28 @@ local tele_ok, tele = pcall(require, 'telescope')
 if tele_ok then
   local telef = tele.extensions.file_browser
   local teleb = require('telescope.builtin')
-  vim.keymap.set('n', '<leader> ', teleb.find_files, {desc="Telescope find files"})
-  vim.keymap.set('n', '<leader>ff', telef.file_browser, {desc="Telscope browse files"})
   vim.keymap.set(
     'n',
-    '<leader>fF',
-    function() telef.file_browser{ hidden=true, respect_gitignore=false, } end,
+    '<leader> ',
+    function() teleb.find_files{hidden=true} end,
+    {desc="Telescope find files"}
+  )
+  vim.keymap.set(
+    'n',
+    '<leader>ff',
+    function() telef.file_browser{ hidden=true, no_ignore=true } end,
     {desc="Telescope browse all files"}
   )
-  vim.keymap.set('n', '<leader>f~', function() telef.file_browser{cwd='~'} end, {desc="Telescope Home dir. files"})
-  vim.keymap.set('n', '<leader>fc', function() teleb.find_files{cwd="~/.config/nvim"}end, {desc="Telescope Nvim config files"})
-  vim.keymap.set('n', '<leader>fp', function() teleb.find_files{cwd="~/.local/share/nvim/lazy/"}end, {desc="Telescope Nvim package files"})
-  vim.keymap.set('n', '<leader>f?', teleb.oldfiles, {desc="Telescope recent files"})
+  vim.keymap.set('n', '<leader>fr', teleb.oldfiles, {desc="Telescope recent files"})
   vim.keymap.set('n', '<leader>bb', teleb.buffers, {desc="Telescope buffers"})
   vim.keymap.set('n', '<leader>bk', [[:bp|bd #<CR>]], {silent=true, desc="Delete buffer"})
   vim.keymap.set('n', '<leader>ht', teleb.help_tags, {desc="Telescope help tags"})
   vim.keymap.set('n', '<leader>hk', teleb.keymaps, {desc="Telescope keymaps"})
   vim.keymap.set('n', '<leader>ss', teleb.current_buffer_fuzzy_find, {desc="Telescope search buffer"})
   vim.keymap.set('n', '<leader>sd', teleb.grep_string, {desc="Telescope search current string"})
-  vim.keymap.set('n', '<leader>sp', teleb.live_grep, {desc="Telescope search project"})
+  -- vim.keymap.set('n', '<leader>sp', teleb.live_grep, {desc="Telescope search project"})
+  -- vim.keymap.set('n', '<leader>sp', [[:RG<CR>]], {desc="Telescope search project"})
+  vim.keymap.set('n', '<leader>sp', [[:FzfLua live_grep<CR>]], {desc="Search project"})
   vim.keymap.set('n', '<leader>s"', teleb.registers, {desc="Telescope registers"})
   vim.keymap.set('n', 'z=', teleb.spell_suggest, {desc="Telescope spelling"})
 

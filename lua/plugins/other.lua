@@ -20,7 +20,15 @@ return {
 
   { 'bfredl/nvim-luadev', ft = {"lua"} },
 
-  {'junegunn/fzf.vim', dependencies = {{'junegunn/fzf'}}},
+  {
+    'ibhagwan/fzf-lua',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      local config = require("fzf-lua.config")
+      local actions = require("trouble.sources.fzf").actions
+      config.defaults.actions.files["ctrl-t"] = actions.open
+    end
+  },
 
   {
     'stevearc/oil.nvim',
