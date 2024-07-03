@@ -34,6 +34,9 @@ vim.opt.listchars = "tab:>-,trail:-,nbsp:+"
 
 vim.opt.formatoptions = 'cqwj'
 
+-- Disable mouse
+vim.opt.mouse = ''
+
 -- vim.opt.isfname:remove('=')
 -- Doesn't work for some reason; fall back on vim CMD
 vim.cmd [[set isfname-==]]
