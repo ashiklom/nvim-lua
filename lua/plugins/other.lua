@@ -8,8 +8,6 @@ return {
     config = function() require('configs.iron') end
   },
 
-  { 'kassio/neoterm' },
-
   -- Python
   {
     'GCBallesteros/jupytext.vim',
@@ -102,8 +100,10 @@ return {
       sections = {
         lualine_c = {{'filename', path = 1}}
       }
-    }
+    },
+    enabled = false
   },
+  { 'echasnovski/mini.statusline' , opts = {}},
 
   {
     'L3MON4D3/LuaSnip',
