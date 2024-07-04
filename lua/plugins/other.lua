@@ -148,6 +148,7 @@ return {
       {"<leader>cs", "<cmd>Trouble symbols toggle focus=false<CR>", desc = "Symbols"},
       {"<leader>xc", "<cmd>Trouble qflist toggle<CR>", desc = "Quickfix list"},
       {"<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Location list"},
+      {"<leader>gr", "<cmd>Trouble lsp_references toggle<CR>", desc = "LSP references"},
     }
   }
 
