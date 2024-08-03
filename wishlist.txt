@@ -1,3 +1,9 @@
+# From LazyVim
+
+- Telescope keybindings
+- Buffer delete
+- Status line short-ish file path
+
 # Completion
 
 - Markdown citations 
