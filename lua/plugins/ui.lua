@@ -30,4 +30,11 @@ return {
     config = true,
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
+  {
+    "echasnovski/mini.bufremove",
+    opts = {},
+    keys = {
+      { "<leader>bd", function() MiniBufremove.delete() end, desc="Delete buffer"}
+    }
+  }
 }
