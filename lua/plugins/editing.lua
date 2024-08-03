@@ -28,10 +28,6 @@ return {
   },
   { 'editorconfig/editorconfig-vim' },
   {
-    'numToStr/Comment.nvim',
-    config = true
-  },
-  {
     'dhruvasagar/vim-table-mode',
     ft = {'markdown'},
     -- NOTE: init to run before
