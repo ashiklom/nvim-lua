@@ -1,8 +1,10 @@
 # From LazyVim
 
 - Telescope keybindings
+  - <leader>s...
 - Buffer delete
 - Status line short-ish file path
+- Next/previous diagnostic keys
 
 # Completion
 
