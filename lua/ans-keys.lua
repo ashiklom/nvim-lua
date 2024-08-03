@@ -11,7 +11,13 @@ vim.keymap.set({'n', 'v'}, 'gk', "v:count == 0 ? 'k' : 'gk'", { expr = true, sil
 vim.keymap.set({'n', 'v'}, 'gj', "v:count == 0 ? 'j' : 'gj'", { expr = true, silent = true })
 
 -- Most recent buffer
-vim.keymap.set('n', 'gb', '<C-^>')
+vim.keymap.set('n', ']b', ':bnext<CR>', {desc = "Next buffer", silent = true})
+vim.keymap.set('n', '[b', ':bprevious<CR>', {desc = "Previous buffer", silent = true})
+vim.keymap.set('n', 'gb', '<C-^>', {desc = "Most recent buffer"})
+
+-- Quickfix
+vim.keymap.set('n', ']q', function() pcall(vim.cmd.cnext) end, {desc = "Next quickfix"})
+vim.keymap.set('n', '[q', function() pcall(vim.cmd.cprev) end, {desc = "Previous quickfix"})
 
 -- Open current file
 vim.keymap.set('n', 'g<CR>', [[:!open <cWORD><CR>]], {silent=true})
