@@ -8,16 +8,6 @@ return {
     config = function() require('configs.iron') end
   },
 
-  -- Python
-  {
-    'GCBallesteros/jupytext.vim',
-    config = function()
-      vim.g.jupytext_fmt = 'py'
-      vim.g.jupytext_style = 'hydrogen'
-    end
-  },
-  { 'Vimjas/vim-python-pep8-indent', ft = {"python"} },
-
   { 'bfredl/nvim-luadev', ft = {"lua"} },
 
   {
@@ -25,15 +15,12 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       local config = require("fzf-lua.config")
-      local actions = require("trouble.sources.fzf").actions
-      config.defaults.actions.files["ctrl-t"] = actions.open
+      local has_trbl, _ = pcall(require, "trouble")
+      if has_trbl then
+        local actions = require("trouble.sources.fzf").actions
+        config.defaults.actions.files["ctrl-t"] = actions.open
+      end
     end
-  },
-
-  {
-    'stevearc/oil.nvim',
-    config = true,
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
 
   {

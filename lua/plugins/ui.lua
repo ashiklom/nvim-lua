@@ -24,6 +24,7 @@ return {
       { "<leader>snt", function() require('noice').cmd("pick") end, desc = "Noice Pick"},
     }
   },
+
   {
     'stevearc/oil.nvim',
     config = true,

@@ -79,7 +79,8 @@ if tele_ok then
   vim.keymap.set('n', '<leader>sd', teleb.grep_string, {desc="Telescope search current string"})
   -- vim.keymap.set('n', '<leader>sp', teleb.live_grep, {desc="Telescope search project"})
   -- vim.keymap.set('n', '<leader>sp', [[:RG<CR>]], {desc="Telescope search project"})
-  vim.keymap.set('n', '<leader>sp', [[:FzfLua live_grep<CR>]], {desc="Search project"})
+  vim.keymap.set('n', '<leader>/', [[:FzfLua live_grep<CR>]], {desc="Search project"})
+  vim.keymap.set('n', '<leader>:', [[:FzfLua command_history<CR>]], {desc="Command history"})
   vim.keymap.set('n', '<leader>s"', teleb.registers, {desc="Telescope registers"})
   vim.keymap.set('n', 'z=', teleb.spell_suggest, {desc="Telescope spelling"})
 
