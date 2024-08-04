@@ -1,5 +1,4 @@
 local tt = require('toggleterm')
-local utils = require('ans-utils')
 
 tt.setup{
   open_mapping = [[<c-\>]],
@@ -12,7 +11,8 @@ local function set_term_keymaps()
   vim.keymap.set('t', '<M-i>', [[<C-\><C-n>]], opts)
 end
 
-utils.augroup("Termkeys", "TermOpen", {
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = vim.api.nvim_create_augroup("ansauto_TermKeys", {clear = true}),
   pattern = {"term://*"},
   callback = set_term_keymaps
 })
