@@ -16,6 +16,7 @@ vim.keymap.set('n', '[b', ':bprevious<CR>', {desc = "Previous buffer", silent = 
 vim.keymap.set('n', 'gb', '<C-^>', {desc = "Most recent buffer"})
 
 -- Quickfix
+vim.keymap.set('n', '<leader>xq', vim.cmd.copen, {desc = "Quickfix open"})
 vim.keymap.set('n', ']q', function() pcall(vim.cmd.cnext) end, {desc = "Next quickfix"})
 vim.keymap.set('n', '[q', function() pcall(vim.cmd.cprev) end, {desc = "Previous quickfix"})
 

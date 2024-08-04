@@ -1,11 +1,5 @@
 local utils = {}
 
-function utils.augroup(group_name, event, definition)
-  local grp = vim.api.nvim_create_augroup(group_name, {clear = true})
-  definition["group"] = grp
-  vim.api.nvim_create_autocmd(event, definition)
-end
-
 function utils.buf_name()
   return vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
 end
