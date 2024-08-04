@@ -10,7 +10,7 @@ vim.keymap.set({'n', 'v'}, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, sile
 vim.keymap.set({'n', 'v'}, 'gk', "v:count == 0 ? 'k' : 'gk'", { expr = true, silent = true })
 vim.keymap.set({'n', 'v'}, 'gj', "v:count == 0 ? 'j' : 'gj'", { expr = true, silent = true })
 
--- Most recent buffer
+-- Buffer navigation
 vim.keymap.set('n', ']b', ':bnext<CR>', {desc = "Next buffer", silent = true})
 vim.keymap.set('n', '[b', ':bprevious<CR>', {desc = "Previous buffer", silent = true})
 vim.keymap.set('n', 'gb', '<C-^>', {desc = "Most recent buffer"})
@@ -18,6 +18,15 @@ vim.keymap.set('n', 'gb', '<C-^>', {desc = "Most recent buffer"})
 -- Quickfix
 vim.keymap.set('n', ']q', function() pcall(vim.cmd.cnext) end, {desc = "Next quickfix"})
 vim.keymap.set('n', '[q', function() pcall(vim.cmd.cprev) end, {desc = "Previous quickfix"})
+
+-- Diagnostics
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {desc = "Next diagnostic"})
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {desc = "Previous diagnostic"})
+vim.keymap.set('n', ']e', function() vim.diagnostic.goto_next({severity = "ERROR"}) end, {desc = "Next error"})
+vim.keymap.set('n', '[e', function() vim.diagnostic.goto_prev({severity = "ERROR"}) end, {desc = "Previous error"})
+vim.keymap.set('n', ']E', function() vim.diagnostic.goto_next({severity = "WARN"}) end, {desc = "Next warning"})
+vim.keymap.set('n', '[E', function() vim.diagnostic.goto_prev({severity = "WARN"}) end, {desc = "Previous warning"})
+vim.keymap.set('<leader>?', vim.diagnostic.open_float, {desc = "Current diagnostic"})
 
 -- Open current file
 vim.keymap.set('n', 'g<CR>', [[:!open <cWORD><CR>]], {silent=true})
