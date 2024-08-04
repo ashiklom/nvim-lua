@@ -3,7 +3,7 @@ local tconfig = require('nvim-treesitter.configs')
 tconfig.setup{
   indent = {
     enable=true,
-    disable = {"r", "python", "yaml"},
+    disable = {"r", "yaml"},
   },
   highlight = {
     enable=true,
