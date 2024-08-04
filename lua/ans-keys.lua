@@ -26,7 +26,7 @@ vim.keymap.set('n', ']e', function() vim.diagnostic.goto_next({severity = "ERROR
 vim.keymap.set('n', '[e', function() vim.diagnostic.goto_prev({severity = "ERROR"}) end, {desc = "Previous error"})
 vim.keymap.set('n', ']E', function() vim.diagnostic.goto_next({severity = "WARN"}) end, {desc = "Next warning"})
 vim.keymap.set('n', '[E', function() vim.diagnostic.goto_prev({severity = "WARN"}) end, {desc = "Previous warning"})
-vim.keymap.set('<leader>?', vim.diagnostic.open_float, {desc = "Current diagnostic"})
+vim.keymap.set('n', '<leader>?', vim.diagnostic.open_float, {desc = "Current diagnostic"})
 
 -- Open current file
 vim.keymap.set('n', 'g<CR>', [[:!open <cWORD><CR>]], {silent=true})
