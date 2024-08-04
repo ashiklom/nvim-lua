@@ -1,24 +1,13 @@
 local tconfig = require('nvim-treesitter.configs')
 
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.org = {
-  install_info = {
-    url = 'https://github.com/milisims/tree-sitter-org',
-    revision = 'main',
-    files = {'src/parser.c', 'src/scanner.cc'},
-  },
-  filetype = 'org'
-}
-
 tconfig.setup{
   indent = {
     enable=true,
-    disable = {"r", "python", "yaml", "org"},
+    disable = {"r", "python", "yaml"},
   },
   highlight = {
     enable=true,
-    disable={"r", "org"},
-    additional_vim_regex_highlighting = {"org"}
+    disable={"r"}
   },
   textobjects = {
     select = {
@@ -36,19 +25,19 @@ tconfig.setup{
       enable = true,
       set_jumps = true,
       goto_next_start = {
-        [']m'] = '@function.outer',
+        [']f'] = '@function.outer',
         [']c'] = '@class.outer'
       },
       goto_next_end = {
-        [']M'] = '@function.outer',
+        [']F'] = '@function.outer',
         [']C'] = '@class.outer'
       },
       goto_previous_start = {
-        ['[m'] = '@function.outer',
+        ['[f'] = '@function.outer',
         ['[c'] = '@class.outer'
       },
       goto_previous_end = {
-        ['[M'] = '@function.outer',
+        ['[F'] = '@function.outer',
         ['[C'] = '@class.outer'
       }
     },
