@@ -13,17 +13,19 @@ local on_attach = function(client, bufnr)
   end
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr')
-  local nmap = function(lhs, rhs)
-    local opts = { silent=true, buffer=bufnr }
+  local nmap = function(lhs, rhs, desc)
+    local opts = { silent=true, buffer=bufnr, desc=desc }
     vim.keymap.set('n', lhs, rhs, opts)
   end
-  nmap('gd', vim.lsp.buf.definition)
-  nmap('gD', vim.lsp.buf.declaration)
-  nmap('gr', vim.lsp.buf.rename)
-  nmap('K', vim.lsp.buf.hover)
-  nmap('<leader>?', vim.diagnostic.open_float)
+  nmap('gd', vim.lsp.buf.definition, "Goto definition")
+  nmap('gD', vim.lsp.buf.declaration, "Goto declaration")
+  nmap('gr', vim.lsp.buf.references, "References")
+  nmap('gy', vim.lsp.buf.type_definition, "Goto type definition")
+  nmap('gI', vim.lsp.buf.implementation, "Goto Implementation")
+  nmap('<leader>cr', vim.lsp.buf.rename, "Rename")
+  nmap('<leader>ca', vim.lsp.buf.code_action, "Code Action")
+  nmap('K', vim.lsp.buf.hover, "Hover")
   nmap('<C-k>', vim.lsp.buf.signature_help)
-  nmap('gm', vim.lsp.buf.implementation)
   nmap('<leader>so', require('telescope.builtin').lsp_document_symbols)
 end
 
