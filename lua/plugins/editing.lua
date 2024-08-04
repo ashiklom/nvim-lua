@@ -40,5 +40,10 @@ return {
 
   -- Fallbacks for argument selection and exchange
   { 'wellle/targets.vim' },
-  { 'tommcdo/vim-exchange' }
+  {
+    'tommcdo/vim-exchange',
+    keys = {
+      {'gx', '<Plug>(Exchange)', mode = 'x', desc = "Exchange", silent = true}
+    }
+  }
 }

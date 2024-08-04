@@ -28,17 +28,9 @@ vim.keymap.set('n', ']E', function() vim.diagnostic.goto_next({severity = "WARN"
 vim.keymap.set('n', '[E', function() vim.diagnostic.goto_prev({severity = "WARN"}) end, {desc = "Previous warning"})
 vim.keymap.set('n', '<leader>?', vim.diagnostic.open_float, {desc = "Current diagnostic"})
 
--- Open current file
+-- Open current file in system editor
 vim.keymap.set('n', 'g<CR>', [[:!open <cWORD><CR>]], {silent=true})
 vim.keymap.set('v', 'g<CR>', [[:w !xargs -0 open<CR>]], {silent=true})
--- vim.keymap.set('v', 'g<CR>', function()
---   local path = require('plenary.path')
---   local cword = vim.fn.expand('<cWORD>')
---   print(vim.inspect(cword))
---   local abspath = path:new(cword):expand()
---   print(vim.inspect(abspath))
---   -- vim.fn.system("open " .. abspath)
--- end)
 
 -- Toggle wrap long lines
 vim.keymap.set('n', '<leader>$', [[:setlocal wrap!<CR>]], {silent=true})
@@ -75,9 +67,6 @@ if tele_ok then
   vim.keymap.set('n', '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]], {silent=true, desc="Edit projects file"})
 end
 
--- Exchange
-vim.keymap.set('v', 'gx', [[<Plug>(Exchange)]], {silent=true})
-
 -- Change directory to file directory
 vim.keymap.set('n', '<leader>cd', function()
   local cmd = string.format("cd %s", utils.git_cwd())
@@ -100,10 +89,7 @@ vim.keymap.set('n', '<leader>ga',
 [[:if &fo=~'a' | setlocal fo-=a | echo "Autoformat disabled" | else | setlocal fo+=a | echo "Autoformat enabled" | endif <CR>]]
 )
 
--- Reload vimrc
-vim.keymap.set('n', '<leader>%r', utils.reload_vimrc, {silent=true})
-
-vim.keymap.set('n', '<leader>^', [[:setlocal list!<CR>]])
+vim.keymap.set('n', '<leader>^', [[:setlocal list!<CR>]], {silent=true})
 
 vim.cmd [[iab <expr> tdy strftime("%Y-%m-%d")]]
 vim.cmd [[iab <expr> tstamp strftime("%Y-%m-%d %H:%M")]]

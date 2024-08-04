@@ -50,17 +50,6 @@ if ok then
 
 end
 
-function utils.reload_vimrc()
-  -- Reset 'require' cache
-  package.loaded["ans-keys"] = nil
-  package.loaded["ans-utils"] = nil
-  package.loaded["ans-opt"] = nil
-  package.loaded["ans-event"] = nil
-  package.loaded["plugins"] = nil
-  vim.cmd [[luafile ~/.config/nvim/init.lua]]
-  print("Reloaded vimrc!")
-end
-
 local function bbind(mode, map, command)
   vim.keymap.set(mode, map, command, {silent=true, buffer=true})
 end
