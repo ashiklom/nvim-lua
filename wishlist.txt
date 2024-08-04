@@ -1,2 +1,4 @@
 - Status line short-ish file path
 - Markdown citations 
+- mini.ai?
+- grug.far?
