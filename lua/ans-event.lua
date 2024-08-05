@@ -4,7 +4,15 @@ end
 
 vim.api.nvim_create_autocmd("Filetype", {
   group = augroup("spelling"),
-  pattern = {"text,tex,markdown,plaintex,gitcommit,org"},
+  pattern = {
+    "gitcommit",
+    "markdown",
+    "org",
+    "plaintex",
+    "quarto",
+    "tex",
+    "text",
+  },
   command = "setlocal spell wrap"
 })
 

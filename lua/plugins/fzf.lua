@@ -26,7 +26,7 @@ return {
       {'<leader>sw', [[:FzfLua grep_cword<CR>]], desc="Current word"},
       {'<leader>sw', [[:FzfLua grep_cWORD<CR>]], desc="Current WORD"},
 
-      {'<leader>z=', [[:FzfLua spell_suggest<CR>]], desc="Spelling"}
+      {'z=', [[:FzfLua spell_suggest<CR>]], desc="Spelling"}
     },
     config = function()
       local config = require("fzf-lua.config")
