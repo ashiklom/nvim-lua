@@ -36,6 +36,16 @@ vim.keymap.set('v', 'g<CR>', [[:w !xargs -0 open<CR>]], {silent=true})
 -- Toggle wrap long lines
 vim.keymap.set('n', '<leader>$', [[:setlocal wrap!<CR>]], {silent=true})
 
+-- Terminal
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = vim.api.nvim_create_augroup("ansauto_TermKeys", {clear = true}),
+  pattern = {"term://*"},
+  callback = function()
+    local opts = {buffer=true, nowait=false}
+    vim.keymap.set('t', '<esc><esc>', [[<C-\><C-n>]], opts)
+  end
+})
+
 local winkeys = "jklh=xrRTJKLH"
 for i = 1, #winkeys do
   local key = winkeys:sub(i,i)
