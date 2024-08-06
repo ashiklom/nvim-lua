@@ -41,8 +41,10 @@ vim.api.nvim_create_autocmd("TermOpen", {
   group = vim.api.nvim_create_augroup("ansauto_TermKeys", {clear = true}),
   pattern = {"term://*"},
   callback = function()
-    local opts = {buffer=true, nowait=false}
-    vim.keymap.set('t', '<esc><esc>', [[<C-\><C-n>]], opts)
+    if not vim.bo.filetype == "fzf" then
+      local opts = {buffer=true, nowait=false}
+      vim.keymap.set('t', '<esc><esc>', [[<C-\><C-n>]], opts)
+    end
   end
 })
 
