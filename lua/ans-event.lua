@@ -2,7 +2,7 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("ansauto_" .. name, { clear = true })
 end
 
-vim.api.nvim_create_autocmd("Filetype", {
+vim.api.nvim_create_autocmd("FileType", {
   group = augroup("spelling"),
   pattern = {
     "gitcommit",
