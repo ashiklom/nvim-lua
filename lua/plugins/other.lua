@@ -72,7 +72,11 @@ return {
 
   {
     'akinsho/nvim-toggleterm.lua',
-    config = function() require('configs.nvim-toggleterm') end
+    opts = {
+      open_mapping = [[<c-\>]],
+      direction = "float",
+      hide_numbers = true
+    }
   },
 
   { 'sainnhe/sonokai' },
