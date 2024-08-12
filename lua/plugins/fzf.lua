@@ -13,7 +13,7 @@ return {
       {'<leader>fr', function() require('fzf-lua').oldfiles() end, desc="Recent files"},
 
       {'<leader>s"', function() require('fzf-lua').registers() end, desc="Registers"},
-      {'<leader>sb', function() require('fzf-lua').current_buffer_fuzzy_find() end, desc="Search buffer"},
+      {'<leader>sb', function() require('fzf-lua').lgrep_curbuf() end, desc="Search buffer"},
       {'<leader>sc', function() require('fzf-lua').commands() end, desc="Commands"},
       {'<leader>sd', function() require('fzf-lua').diagnostics_document() end, desc="Diagnostics (document)"},
       {'<leader>sD', function() require('fzf-lua').diagnistics_workspace() end, desc="Diagnostics (workspace)"},
