@@ -36,15 +36,21 @@ vim.keymap.set('v', 'g<CR>', [[:w !xargs -0 open<CR>]], {silent=true})
 -- Toggle wrap long lines
 vim.keymap.set('n', '<leader>$', [[:setlocal wrap!<CR>]], {silent=true})
 
--- Terminal
+-- Terminal -- escpae with <esc><esc>
 vim.api.nvim_create_autocmd("TermOpen", {
-  group = vim.api.nvim_create_augroup("ansauto_TermKeys", {clear = true}),
+  group = vim.api.nvim_create_augroup("ansauto_esc2", {clear = true}),
   pattern = {"term://*"},
   callback = function()
-    if not (vim.bo.filetype == "fzf") then
-      local opts = {buffer=true, nowait=false}
-      vim.keymap.set('t', '<esc><esc>', [[<C-\><C-n>]], opts)
-    end
+    vim.keymap.set('t', '<esc><esc>', [[<C-\><C-n>]], {buffer=true, nowait=true})
+  end
+})
+
+-- ...except for these filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("ansauto_noesc2", {clear = true}),
+  pattern = {"fzf"},
+  callback = function()
+    vim.keymap.del('t', '<esc><esc>', {buffer=true})
   end
 })
 
