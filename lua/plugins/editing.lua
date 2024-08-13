@@ -39,7 +39,15 @@ return {
   }},
 
   -- Fallbacks for argument selection and exchange
-  { 'wellle/targets.vim' },
+  {
+    'echasnovski/mini.ai',
+    opts = {
+      mappings = {
+        goto_left = 'gs[',
+        goto_right = 'gs]'
+      }
+    }
+  },
   {
     'tommcdo/vim-exchange',
     keys = {

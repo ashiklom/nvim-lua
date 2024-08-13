@@ -19,10 +19,6 @@ return {
     end,
     config = function() require('configs.treesitter') end
   },
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' }
-  },
 
   {
     'TimUntersberger/neogit',
