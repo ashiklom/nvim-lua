@@ -61,9 +61,8 @@ return {
   },
 
   {
-    'stevearc/oil.nvim',
-    config = true,
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
+    "echasnovski/mini.files",
+    opts = {}
   },
   {
     "echasnovski/mini.bufremove",
