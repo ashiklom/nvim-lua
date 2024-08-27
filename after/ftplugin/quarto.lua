@@ -1,3 +1,8 @@
+local ok, otter = pcall(require, 'otter')
+if ok then
+  otter.activate()
+end
+
 vim.keymap.set("n", "<localleader>pr", [[:!quarto render "%"<CR>]])
 
 -- Turn on wrapping by default
