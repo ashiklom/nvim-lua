@@ -14,16 +14,26 @@ return {
         signature = {auto_open = {enabled = false}}
       },
       routes = {
+        -- Show search notifications quietly
         {
           filter = {
             event = "msg_show",
             any = {
-              { find = "%d+L, %d+B" },
               { find = "; after #%d+" },
               { find = "; before #%d+" },
             },
           },
           view = "mini",
+        },
+        -- Suppress file write notifications
+        {
+          filter = {
+            event = "msg_show",
+            any = {
+              { find = "%d+L, %d+B" },
+            },
+          },
+          skip = true
         },
       }
     },
