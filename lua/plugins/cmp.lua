@@ -13,7 +13,8 @@ return {
     },
 
     config = function()
-      vim.opt.completeopt = "menu,menuone,noselect"
+      vim.opt.completeopt = {"menu", "menuone", "noselect"}
+      vim.opt.shortmess:append "c"
 
       local cmp = require("cmp")
       local luasnip = require('luasnip')
@@ -40,13 +41,22 @@ return {
           {name = 'nvim_lsp'},
           {name = 'path'},
           {name = 'calc'},
-          {name = 'nvim_lua'},
           {name = 'luasnip'},
-          {name = "pandoc_references"}
-        }, {
-          {name = "buffer"},
+          {name = "buffer"}
         })
       }
+
+      cmp.setup.filetype({"lua"}, {
+        sources = {
+          {name = "nvim_lua"}
+        }
+      })
+
+      cmp.setup.filetype({"markdown", "quarto"}, {
+        sources = {
+          {name = "pandoc_references"},
+        }
+      })
 
     end
   }
