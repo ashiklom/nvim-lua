@@ -24,7 +24,7 @@ return {
       {'<leader>sS', function() require('fzf-lua').lsp_workspace_symbols() end, desc="Symbols (workspace)"},
       {'<leader>sq', function() require('fzf-lua').quickfix() end, desc="Quickfix list"},
       {'<leader>sw', function() require('fzf-lua').grep_cword() end, desc="Current word"},
-      {'<leader>sw', function() require('fzf-lua').grep_cWORD() end, desc="Current WORD"},
+      {'<leader>sW', function() require('fzf-lua').grep_cWORD() end, desc="Current WORD"},
 
       {'z=', function() require('fzf-lua').spell_suggest() end, desc="Spelling"}
     },
