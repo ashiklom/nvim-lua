@@ -41,11 +41,10 @@ vim.opt.mouse = ''
 -- Doesn't work for some reason; fall back on vim CMD
 vim.cmd [[set isfname-==]]
 
-vim.cmd([[
-if exists('g:vv')
-  VVset fontfamily=JuliaMono,nonicons,Hack\ Nerd\ Font
-endif
-]])
+if vim.g.neovide then
+  vim.o.guifont="JuliaMono,Hack_Nerd_Font"
+  vim.g.neovide_cursor_animation_length = 0
+end
 
 -- Stolen from TJ Devries:
 -- https://github.com/tjdevries/config.nvim/blob/master/plugin/clipboard.lua
