@@ -4,10 +4,15 @@
 SRCROOT=$HOME/.local/src
 SRCDIR=$SRCROOT/neovim
 
+# Latest versions of things
+RGVERSION=14.1.1
+FDVERSION=10.2.0
+FZFVERSION=0.55.0
+
 mkdir -p $SRCDIR
 mkdir -p $HOME/.local/bin
 
-if [ $1 == "unsupported" ]; then
+if [ ${1:-"0"} == "unsupported" ]; then
   echo "Using unsupported release"
   URL="https://github.com/neovim/neovim-releases/releases/download/nightly/nvim-linux64.tar.gz"
   SRCFILE=$SRCDIR/nvim-linux64.tar.gz
@@ -30,9 +35,9 @@ fi
 # Install additional binaries if they're missing
 if !(rg --version &> /dev/null); then
   case $(uname) in
-    "Darwin") URL=https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-apple-darwin.tar.gz ;;
-    "Linux")  URL=https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz ;;
-    *)        URL=https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz ;;
+    "Darwin") URL=https://github.com/BurntSushi/ripgrep/releases/download/$RGVERSION/ripgrep-$RGVERSION-x86_64-apple-darwin.tar.gz ;;
+    "Linux")  URL=https://github.com/BurntSushi/ripgrep/releases/download/$RGVERSION/ripgrep-$RGVERSION-x86_64-unknown-linux-musl.tar.gz ;;
+    *)        URL=https://github.com/BurntSushi/ripgrep/releases/download/$RGVERSION/ripgrep-$RGVERSION-x86_64-unknown-linux-musl.tar.gz ;;
   esac
   pushd $SRCROOT
   TGZ=ripgrep.tar.gz
@@ -46,9 +51,9 @@ fi
 
 if !(fd --version &> /dev/null); then
   case $(uname) in
-    "Darwin") URL=https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-x86_64-apple-darwin.tar.gz ;;
-    "Linux")  URL=https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-x86_64-unknown-linux-musl.tar.gz ;;
-    *)        URL=https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-x86_64-unknown-linux-musl.tar.gz ;;
+    "Darwin") URL=https://github.com/sharkdp/fd/releases/download/v$FDVERSION/fd-v$FDVERSION-x86_64-apple-darwin.tar.gz ;;
+    "Linux")  URL=https://github.com/sharkdp/fd/releases/download/v$FDVERSION/fd-v$FDVERSION-x86_64-unknown-linux-musl.tar.gz ;;
+    *)        URL=https://github.com/sharkdp/fd/releases/download/v$FDVERSION/fd-v$FDVERSION-x86_64-unknown-linux-musl.tar.gz ;;
   esac
   pushd $SRCROOT
   TGZ=fd.tar.gz
@@ -56,6 +61,21 @@ if !(fd --version &> /dev/null); then
   TARTARGET=$(tar --list -f $TGZ | grep '/fd$')
   tar -xf $TGZ
   ln -fs $(pwd -P)/$TARTARGET $HOME/.local/bin/fd
+  rm $TGZ
+  popd
+fi
+
+if !(fzf --version &> /dev/null); then
+  case $(uname) in
+    "Darwin") URL=https://github.com/junegunn/fzf/releases/download/v$FZFVERSION/fzf-$FZFVERSION-darwin_amd64.tar.gz ;;
+    "Linux")  URL=https://github.com/junegunn/fzf/releases/download/v$FZFVERSION/fzf-$FZFVERSION-linux_amd64.tar.gz ;;
+    *)        URL=https://github.com/junegunn/fzf/releases/download/v$FZFVERSION/fzf-$FZFVERSION-linux_amd64.tar.gz ;;
+  esac
+  pushd $SRCROOT
+  TGZ=fzf.tar.gz
+  curl -L $URL -o $TGZ
+  tar -xf $TGZ
+  ln -fs $(pwd -P)/fzf $HOME/.local/bin/fzf
   rm $TGZ
   popd
 fi
