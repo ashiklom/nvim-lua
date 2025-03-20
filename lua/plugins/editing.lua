@@ -24,7 +24,8 @@ return {
   },
   {
     'windwp/nvim-autopairs',
-    config = function() require('configs.nvim-autopairs') end
+    event = "InsertEnter",
+    opts = {fast_wrap = { map = "<C-l>" }},
   },
   { 'editorconfig/editorconfig-vim' },
   {
