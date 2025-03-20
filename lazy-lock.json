@@ -48,6 +48,7 @@
   "rename.vim": { "branch": "master", "commit": "f133763b0bbd79039f4e071a467ea8fc27d97dbd" },
   "sonokai": { "branch": "master", "commit": "9679341d4141ed81376f2bdf5e69b78dc348d212" },
   "stan-vim": { "branch": "master", "commit": "d14f7f5f96e802c48bd2b6e087cf7956054d9f38" },
+  "substitute.nvim": { "branch": "main", "commit": "97f49d16f8eea7967d41db4f657dd63af53eeba1" },
   "telescope-bibtex.nvim": { "branch": "master", "commit": "289a6f86ebec06e8ae1590533b732b9981d84900" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "626998e5c1b71c130d8bc6cf7abb6709b98287bb" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "1f08ed60cafc8f6168b72b80be2b2ea149813e55" },
@@ -55,7 +56,6 @@
   "telescope.nvim": { "branch": "master", "commit": "814f102cd1da3dc78c7d2f20f2ef3ed3cdf0e6e4" },
   "toggle-lsp-diagnostics.nvim": { "branch": "main", "commit": "4c515b1625433306807e4a47756592fde0b83c82" },
   "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
-  "vim-exchange": { "branch": "master", "commit": "d6c1e9790bcb8df27c483a37167459bbebe0112e" },
   "vim-mdx-js": { "branch": "master", "commit": "17179d7f2a73172af5f9a8d65b01a3acf12ddd50" },
   "vim-mergetool": { "branch": "master", "commit": "0275a85256ad173e3cde586d54f66566c01b607f" },
   "vim-table-mode": { "branch": "master", "commit": "e4365bde024f73e205eefa2fb78e3029ddb92ea9" }

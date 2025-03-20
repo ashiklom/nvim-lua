@@ -49,9 +49,12 @@ return {
     }
   },
   {
-    'tommcdo/vim-exchange',
+    "gbprod/substitute.nvim",
     keys = {
-      {'gx', '<Plug>(Exchange)', mode = 'x', desc = "Exchange", silent = true}
-    }
+      {"gx", function() require('substitute.exchange').visual() end, mode="x", noremap=true},
+      {"gx", function() require('substitute.exchange').operator() end, noremap=true},
+      {"gX", function() require('substitute.exchange').line() end, noremap=true}
+    },
+    opts = {}
   }
 }
