@@ -78,10 +78,6 @@ return {
       {"<leader>fO", "<CMD>Oil %:h --float<CR>", desc="Open file directory"}
     }
   },
-  -- {
-  --   "echasnovski/mini.files",
-  --   opts = {}
-  -- },
   {
     "echasnovski/mini.bufremove",
     opts = {},
