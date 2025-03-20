@@ -69,11 +69,15 @@ return {
       end,
     }
   },
-
+  
   {
-    "echasnovski/mini.files",
+    "stevearc/oil.nvim",
     opts = {}
   },
+  -- {
+  --   "echasnovski/mini.files",
+  --   opts = {}
+  -- },
   {
     "echasnovski/mini.bufremove",
     opts = {},
