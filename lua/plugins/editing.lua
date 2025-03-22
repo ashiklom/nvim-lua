@@ -23,7 +23,12 @@ return {
     end
   },
   {
+    'echasnovski/mini.pairs',
+    opts = {}
+  },
+  {
     'windwp/nvim-autopairs',
+    enabled = false,
     event = "InsertEnter",
     opts = {fast_wrap = { map = "<C-l>" }},
   },
