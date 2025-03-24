@@ -42,7 +42,8 @@ local servers = {
   "pyright",
   "lua_ls",
   "r_language_server",
-  "julials"
+  "julials",
+  "terraformls"
 }
 
 for _, server in pairs(servers) do
