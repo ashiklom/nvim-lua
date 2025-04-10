@@ -27,6 +27,9 @@ local on_attach = function(client, bufnr)
   nmap('K', vim.lsp.buf.hover, "Hover")
   nmap('<C-k>', vim.lsp.buf.signature_help)
   nmap('<leader>so', require('telescope.builtin').lsp_document_symbols)
+  nmap('<leader>tld', function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+  end, "Toggle LSP diagnostics")
 end
 
 -- Update capabilities
