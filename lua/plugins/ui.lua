@@ -74,8 +74,8 @@ return {
     "stevearc/oil.nvim",
     opts = {},
     keys = {
-      {"<leader>fo", "<CMD>Oil . --float<CR>", desc="Open working directory"},
-      {"<leader>fO", "<CMD>Oil %:h --float<CR>", desc="Open file directory"}
+      {"<leader>fo", "<CMD>Oil .<CR>", desc="Open working directory"},
+      {"<leader>fO", "<CMD>Oil %:h<CR>", desc="Open file directory"}
     }
   },
   {
