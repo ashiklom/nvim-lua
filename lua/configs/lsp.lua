@@ -11,10 +11,15 @@ local on_attach = function(client, bufnr)
     -- Disable hover in favor of pyright
     client.server_capabilities.hoverProvider = false
   end
+
   if client:supports_method("textDocument/completion") then
     vim.lsp.completion.enable(true, client.id, bufnr)
   end
+
   vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr')
+
+  vim.diagnostic.config({ virtual_text = true })
+
   local nmap = function(lhs, rhs, desc)
     local opts = { silent=true, buffer=bufnr, desc=desc }
     vim.keymap.set('n', lhs, rhs, opts)
