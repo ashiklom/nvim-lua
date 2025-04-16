@@ -62,5 +62,20 @@ return {
       {"gX", function() require('substitute.exchange').line() end, noremap=true}
     },
     opts = {}
+  },
+  {
+    "stevearc/conform.nvim",
+    keys = {
+      {"<leader>fm", function() require('conform').format({async = true}) end, desc = "Format buffer"}
+    },
+    opts = {
+      formatters_by_ft = {
+        lua = {"stylua"},
+        python = {"isort", "black"}
+      },
+      default_format_opts = {
+        lsp_format = "fallback"
+      }
+    }
   }
 }
