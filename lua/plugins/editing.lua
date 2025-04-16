@@ -71,7 +71,9 @@ return {
     opts = {
       formatters_by_ft = {
         lua = {"stylua"},
-        python = {"isort", "black"}
+        python = {"isort", "black"},
+        r = {"air"},
+        hcl = {"hclfmt"}
       },
       default_format_opts = {
         lsp_format = "fallback"
