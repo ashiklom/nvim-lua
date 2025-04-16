@@ -73,7 +73,8 @@ return {
         lua = {"stylua"},
         python = {"isort", "black"},
         r = {"air"},
-        hcl = {"hclfmt"}
+        hcl = {"hclfmt"},
+        sh = {"shfmt"}
       },
       default_format_opts = {
         lsp_format = "fallback"
