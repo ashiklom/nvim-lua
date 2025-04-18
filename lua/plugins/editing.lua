@@ -80,5 +80,37 @@ return {
         lsp_format = "fallback"
       }
     }
+  },
+  {
+    "magicduck/grug-far.nvim",
+    opts = {},
+    keys = {
+      {
+        "<leader>rf",
+        function() require('grug-far').open({ prefills = { paths = vim.fn.expand("%") } }) end,
+        desc = "Find-replace current file"
+      },
+      {
+        "<leader>rp",
+        function() require('grug-far').open() end,
+        desc = "Find-replace current project"
+      },
+      {
+        "<leader>rf",
+        function() require('grug-far').with_visual_selection({
+          prefills = { search = vim.fn.expand("<cword>"), paths = vim.fn.expand("%") }
+        }) end,
+        mode = "x",
+        desc = "Find-replace selection"
+      },
+      {
+        "<leader>rp",
+        function() require('grug-far').with_visual_selection({
+          prefills = { search = vim.fn.expand("<cword>") }
+        }) end,
+        mode = "x",
+        desc = "Find-replace selection"
+      },
+    }
   }
 }

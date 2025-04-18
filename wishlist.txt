@@ -3,4 +3,3 @@
 
 - Status line short-ish file path
 - Markdown citations 
-- grug.far?
