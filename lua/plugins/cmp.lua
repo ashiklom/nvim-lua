@@ -1,6 +1,14 @@
 return {
   {
+    "saghen/blink.cmp",
+    version = '1.*',
+    opts = {
+      keymap = { preset = "super-tab" }
+    }
+  },
+  {
     "hrsh7th/nvim-cmp",
+    enabled = false,
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
