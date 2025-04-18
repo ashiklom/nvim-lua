@@ -72,10 +72,12 @@ return {
   
   {
     "stevearc/oil.nvim",
+    dependencies = {
+      "echasnovski/mini.bufremove"
+    },
     opts = {},
     keys = {
-      {"<leader>fo", "<CMD>Oil .<CR>", desc="Open working directory"},
-      {"<leader>fO", "<CMD>Oil %:h<CR>", desc="Open file directory"}
+      {"<leader>fo", function() require('oil').open() end, desc="Open file directory"}
     }
   },
   {

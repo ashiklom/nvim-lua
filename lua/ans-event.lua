@@ -42,6 +42,20 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup('bufdelete_with_q'),
+  pattern = {
+    "oil"
+  },
+  callback = function(event)
+    vim.keymap.set("n", "q", function() MiniBufremove.delete() end, {
+      buffer = event.buf,
+      silent = true,
+      desc = "Quit buffer"
+    })
+  end
+})
+
 -- utils.augroup("Pandoc", {'BufNewFile', 'BufFilePre', 'BufRead'}, {
 --   pattern = {"*.md"},
 --   command = "set filetype=markdown.pandoc"
