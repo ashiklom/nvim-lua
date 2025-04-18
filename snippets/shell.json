@@ -1,0 +1,52 @@
+{
+  "#!/usr/bin/env bash": {
+    "prefix": "#!",
+    "body": "#!/usr/bin/env bash",
+    "description": "Shebang for bash"
+  },
+  {
+    "sbatch": {
+      "prefix": "sbatch",
+      "body": [
+        "#SBATCH --account=s3673",
+        "#SBATCH --constraint='sky|hasw'",
+        "#SBATCH --time=01:00",
+        "#SBATCH --output=slurm-%j-%a.log"
+      ],
+      "description": "Common sbatch configs for Discover"
+    },
+    "args": {
+      "prefix": "args",
+      "body": [
+        "POSITIONAL_ARGS=()",
+        "while [[ $# -gt 0 ]]; do",
+        "  case \$1 in",
+        "    -a|--arg1)",
+        "      ARG1=\"\$2\"",
+        "      shift",
+        "      shift",
+        "      ;;",
+        "    -b|--arg2)",
+        "      ARG2=\"\$2\"",
+        "      shift",
+        "      shift",
+        "      ;;",
+        "    -f|--flag)",
+        "      FLAG=value",
+        "      shift",
+        "      ;;",
+        "    -*|--*)",
+        "      echo \"Unknown option \$1\"",
+        "      exit 1",
+        "      ;;",
+        "    *)",
+        "      POSITIONAL_ARGS+=(\"\$1\")",
+        "      shift",
+        "      ;;",
+        "    esac",
+        "done"
+      ],
+      "description": "Bash argument parsing"
+    }
+  }
+}

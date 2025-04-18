@@ -4,6 +4,7 @@
   "conform.nvim": { "branch": "master", "commit": "6632e7d788a85bf8405ea0c812d343fc308b7b8c" },
   "csv.vim": { "branch": "master", "commit": "b8eb7f67babce96168e7f6b93b2ba8328b72a390" },
   "editorconfig-vim": { "branch": "master", "commit": "91bd0b0a2c6a72a110ab9feae335e1224480c233" },
+  "friendly-snippets": { "branch": "main", "commit": "31f2a2657b6261724313281fe0d8ba6f43f4a4fa" },
   "fzf-lua": { "branch": "main", "commit": "47b85a25c0c0b2c20b4e75199ed01bb71e7814f5" },
   "gitsigns.nvim": { "branch": "main", "commit": "17ab794b6fce6fce768430ebc925347e349e1d60" },
   "grug-far.nvim": { "branch": "main", "commit": "1c9325f6ab18fc8ac4d4c57e765aa845af148277" },

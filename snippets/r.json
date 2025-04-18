@@ -1,0 +1,26 @@
+{
+  "function": {
+    "prefix": "fn",
+    "body": [
+      "$1 <- function($2) {",
+        "  $0",
+      "}"
+    ],
+    "description": "Function"
+  },
+  "requireNamespace": {
+    "prefix": "rn",
+    "body": "requireNamespace",
+    "description": "requireNamespace"
+  },
+  "TRUE": {
+    "prefix": "t",
+    "body": "TRUE",
+    "description": "TRUE"
+  },
+  "FALSE": {
+    "prefix": "f",
+    "body": "FALSE",
+    "description": "FALSE"
+  }
+}

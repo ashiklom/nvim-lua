@@ -1,0 +1,19 @@
+{
+  "name": "my-snippets",
+  "contributes": {
+    snippets: [
+      {
+        "language": "python",
+        "path": "./python.json"
+      },
+      {
+        "language": "r",
+        "path": "./r.json"
+      },
+      {
+        "language": ["shellscript", "shell", "sh", "zsh"],
+        "path": "./shell.json"
+      }
+    ]
+  }
+}
