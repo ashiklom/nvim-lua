@@ -60,9 +60,12 @@ return {
   },
   {
     'williamboman/mason-lspconfig.nvim',
-    dependencies = {
-      "williamboman/mason.nvim",
-      "neovim/nvim-lspconfig"
-    }
+    dependencies = {"williamboman/mason.nvim"},
+    opts = {}
+  },
+  {
+    'williamboman/mason.nvim',
+    cmd = "Mason",
+    opts = {}
   }
 }
