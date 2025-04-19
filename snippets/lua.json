@@ -1,0 +1,7 @@
+{
+  "inline function": {
+    "prefix": "fni",
+    "body": "function() $0 end",
+    "description": "Inline function"
+  }
+}
