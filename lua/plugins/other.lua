@@ -88,32 +88,6 @@ return {
   { 'echasnovski/mini.statusline' , opts = {}},
 
   {
-    'L3MON4D3/LuaSnip',
-    enabled = false,
-    config = function()
-      require("luasnip.loaders.from_lua").lazy_load()
-      require("luasnip.loaders.from_snipmate").lazy_load()
-    end,
-    -- keys = {
-    --   {
-    --     "<tab>",
-    --     function()
-    --       -- return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-    --       local lsp = require('luasnip')
-    --       if lsp.expand_or_jumpable() then
-    --         return "<Plug>luasnip-expand-or-jump"
-    --       else
-    --         return "<tab>"
-    --       end
-    --     end,
-    --     expr = true, silent = true, mode = "i",
-    --   },
-    --   { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-    --   { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
-    -- },
-  },
-
-  {
     'folke/trouble.nvim',
     opts = {},
     cmd = "Trouble",

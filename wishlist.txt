@@ -1,5 +1,4 @@
 - Streamline LSP config for nvim 0.11
-- Replace cmp.nvim with blink.cmp?
 
 - Status line short-ish file path
-- Markdown citations 
+- Markdown citations with blink (maybe using `jmbuhr/cmp-pandoc-references`)
