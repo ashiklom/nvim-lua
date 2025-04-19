@@ -12,7 +12,7 @@ return {
         pyright = {
           settings = { pyright = { disableOrganizeImports = true } }
         },
-        loa_ls = {
+        lua_ls = {
           settings = { Lua = {diagnostics = {globals = {"vim"}}} }
         },
         air = {},
