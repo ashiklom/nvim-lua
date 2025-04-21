@@ -6,7 +6,7 @@ return {
     },
     version = '1.*',
     opts = {
-      keymap = { preset = "super-tab" }
+      keymap = { preset = "enter" }
     }
   }
 }
