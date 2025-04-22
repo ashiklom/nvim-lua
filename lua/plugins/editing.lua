@@ -82,8 +82,29 @@ return {
   },
   {
     "stevearc/conform.nvim",
+    init = function ()
+      -- Set buffer formatting 
+      vim.g.disable_autoformat = true
+      vim.api.nvim_create_autocmd("BufRead", {
+        group = vim.api.nvim_create_augroup("ansauto_autoformat", { clear = true }),
+        pattern = "*",
+        callback = function (event)
+          vim.b[event.buf].disable_autoformat = vim.g.disable_autoformat
+        end
+      })
+    end,
     keys = {
-      {"<leader>fm", function() require('conform').format({async = true}) end, desc = "Format buffer"}
+      {"<leader>fm", function() require('conform').format({async = true}) end, desc = "Format buffer"},
+      {"<leader>fM", function ()
+        vim.b.disable_autoformat = not(vim.b.disable_autoformat)
+        local text = (vim.b.disable_autoformat and "disabled" or "enabled")
+        vim.notify("Buffer autoformatting is " .. text)
+      end, desc = "Toggle format on save (buffer)"},
+      {"<leader>FM", function ()
+        vim.g.disable_autoformat = not(vim.g.disable_autoformat)
+        local text = (vim.g.disable_autoformat and "disabled" or "enabled")
+        vim.notify("Global autoformatting is " .. text)
+      end, desc = "Toggle format on save (global)"}
     },
     opts = {
       formatters_by_ft = {
@@ -95,7 +116,13 @@ return {
       },
       default_format_opts = {
         lsp_format = "fallback"
-      }
+      },
+      format_on_save = function (bufnr)
+        if vim.b[bufnr].disable_autoformat then
+          return
+        end
+        return { timeout_ms = 500, lsp_format = "fallback" }
+      end
     }
   },
   {
