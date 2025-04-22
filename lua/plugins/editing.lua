@@ -99,7 +99,12 @@ return {
       })
     end,
     keys = {
-      {"<leader>fm", function() require('conform').format({async = true}) end, desc = "Format buffer"},
+      {
+        "<leader>fm",
+        function() require('conform').format({async = true}) end,
+        mode = {"n", "x"},
+        desc = "Format buffer",
+      },
       {"<leader>fM", function ()
         vim.b.disable_autoformat = not(vim.b.disable_autoformat)
         local text = (vim.b.disable_autoformat and "disabled" or "enabled")
