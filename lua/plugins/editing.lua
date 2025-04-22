@@ -51,6 +51,11 @@ return {
       local ai = require("mini.ai")
       return {
         n_lines = 500,
+        mappings = {
+          -- Custom mappings to avoid conflicts with mini.splitjoin
+          goto_left = "gs[",
+          goto_right = "gs]"
+        },
         custom_textobjects = {
           o = ai.gen_spec.treesitter({ -- code block
             a = { "@block.outer", "@conditional.outer", "@loop.outer" },
