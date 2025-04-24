@@ -17,7 +17,8 @@ return {
         },
         air = {},
         julials = {},
-        terraformls = {}
+        terraformls = {},
+        ansiblels = {}
       },
       on_attach = function(client, bufnr)
         if client.name == 'ruff' then
