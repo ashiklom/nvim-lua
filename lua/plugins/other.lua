@@ -22,9 +22,27 @@ return {
 
   {
     'TimUntersberger/neogit',
+    dependencies = {
+      "sindrets/diffview.nvim"
+    },
     keys = {
       {"<leader>gg", function() require('neogit').open() end}
     },
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup('ansauto_diffview', { clear = true }),
+        pattern = {
+          "DiffViewFiles"
+        },
+        callback = function (event)
+          vim.keymap.set("n", "q", "<cmd>DiffviewClose<cr>", {
+            buffer = event.buf,
+            silent =  true,
+            desc = "Close diffview"
+          })
+        end
+      })
+    end,
     opts = {
       disable_commit_confirmation = true,
       mappings = {
