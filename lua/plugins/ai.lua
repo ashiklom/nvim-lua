@@ -2,8 +2,9 @@ return {
   {
     "olimorris/codecompanion.nvim",
     keys = {
-      { "<leader>ac", function() require("codecompanion").toggle() end },
-      { "<leader>aa", function() require("codecompanion").actions() end }
+      { "<leader>aa", function() require("codecompanion").toggle() end, desc = "Codecompanion toggle chat"},
+      { "<leader>ac", function() require("codecompanion").actions() end, desc = "Codecompanion actions"},
+      { "<leader>aa", ':CodeCompanion ', mode = "x", desc = "Codecompanion inline"},
     },
     opts = {
       strategies = {
