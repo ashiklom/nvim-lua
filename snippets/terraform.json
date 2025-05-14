@@ -1,10 +1,1 @@
-{
-  "tf-aws":{
-    "body":["provider \"aws\" {","  region = \"us-west-2\"","}"],
-    "prefix":"tf-aws"
-  },
-  "tf-terraform":{
-    "prefix":"tf-terraform",
-    "body":["terraform {","  required_version = \">= 1.10.0, <2.0.0\"","}"]
-  }
-}
+{"tf-aws":{"prefix":"paws","body":["provider \"aws\" {","  region = \"us-west-2\"","}"]},"tf-terraform":{"prefix":"tfr","body":["terraform {","  required_version = \">= 1.10.0, <2.0.0\"","}"]},"assume":{"prefix":["assume","role"],"body":["resource \"aws_iam_role\" \"${1}\" {","  name = \"${1}\"","  assume_role_policy = data.aws_iam_policy_document.${1}.json","}","","data \"aws_iam_policy_document\" \"${1}\" {","  statement {","","    principals {","      type = \"Service\"","      identifiers = [\"${2:ec2}.amazonaws.com\"]","    }","","    actions = [\"sts:AssumeRole\"]","  }","}"]}}
