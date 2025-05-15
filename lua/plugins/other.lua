@@ -3,11 +3,6 @@ return {
 
   { 'danro/rename.vim' },
 
-  {
-    'hkupty/iron.nvim',
-    config = function() require('configs.iron') end
-  },
-
   { 'bfredl/nvim-luadev', ft = {"lua"} },
 
   {
@@ -42,15 +37,7 @@ return {
   },
 
   { 'sainnhe/sonokai' },
-  {
-    'nvim-lualine/lualine.nvim',
-    opts = {
-      sections = {
-        lualine_c = {{'filename', path = 1}}
-      }
-    },
-    enabled = false
-  },
+
   { 'echasnovski/mini.statusline' , opts = {}},
 
   {

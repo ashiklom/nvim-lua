@@ -53,37 +53,6 @@ utils.bbind = bbind
 function utils.register_iron_keys(print_pattern)
   local iron = require('iron.core')
 
-  local ctrlc = string.char(03)
-
-  bbind('n', '<localleader>rf', [[:IronRepl<CR>]])
-  bbind('n', '<localleader>rr', iron.repl_restart)
-  bbind('n', '<localleader>rq', iron.close_repl)
-
-  bbind('n', '<localleader>l', iron.send_line)
-  bbind('n', '<localleader>x', function() iron.send(nil, ctrlc) end)
-
-  bbind('v', '<localleader>ss', iron.visual_send)
-
-  -- Send paragraph
-  bbind('n', '<localleader>pp', function()
-    vim.api.nvim_feedkeys('m0', 'n', false)
-    vim.api.nvim_feedkeys('vip', 'n', false)
-    iron.visual_send()
-    vim.api.nvim_feedkeys('`0', 'n', false)
-  end)
-
-  -- Send entire file
-  bbind('n', '<localleader>aa', function()
-    -- Save the current view...
-    local view = vim.fn.winsaveview()
-    vim.api.nvim_feedkeys('m0', 'n', false)
-    vim.api.nvim_feedkeys('ggVG', 'n', false)
-    iron.visual_send()
-    vim.api.nvim_feedkeys('`0', 'n', false)
-    -- ...and restore it after running the command.
-    vim.fn.winrestview(view)
-  end)
-
   -- Send all lines before current
   bbind('n', '<localleader>ak', function()
     local view = vim.fn.winsaveview()
