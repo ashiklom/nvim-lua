@@ -19,7 +19,7 @@ return {
       {'<leader>sD', function() require('fzf-lua').diagnistics_workspace() end, desc="Diagnostics (workspace)"},
       {'<leader>sh', function() require('fzf-lua').helptags() end, desc="Help tags"},
       {'<leader>sk', function() require('fzf-lua').keymaps() end, desc="Keymaps"},
-      {'<leader>sR', function() require('fzf-lua').resume() end, desc="Resume"},
+      {'<leader>sr', function() require('fzf-lua').resume() end, desc="Resume"},
       {'<leader>ss', function() require('fzf-lua').lsp_document_symbols() end, desc="Symbols (document)"},
       {'<leader>sS', function() require('fzf-lua').lsp_workspace_symbols() end, desc="Symbols (workspace)"},
       {'<leader>sq', function() require('fzf-lua').quickfix() end, desc="Quickfix list"},
