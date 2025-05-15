@@ -1,12 +1,12 @@
 return {
   {
     'ggandor/leap.nvim',
-    config = function() require('configs.leap') end
+    config = function() require('leap').set_default_keymaps() end
   },
 
   {
     'kylechui/nvim-surround',
-    config = true
+    opts = {}
   },
   {
     'echasnovski/mini.splitjoin',
@@ -26,19 +26,19 @@ return {
     'echasnovski/mini.pairs',
     opts = {}
   },
-  {
-    'windwp/nvim-autopairs',
-    enabled = false,
-    event = "InsertEnter",
-    opts = {fast_wrap = { map = "<C-l>" }},
-  },
+
   { 'editorconfig/editorconfig-vim' },
+
   {
     'dhruvasagar/vim-table-mode',
     ft = {'markdown'},
     -- NOTE: init to run before
-    init = function() require('setups.vim-table-mode') end,
-    config = function() require('configs.vim-table-mode') end
+    init = function()
+      vim.g["table_mode_map_prefix"] = "<localleader>t"
+    end,
+    config = function ()
+      vim.keymap.set('n', '<localleader>tr', [[:call tablemode#table#Realign('.')<CR>]], {desc="Table realign", silent=true})
+    end
   },
 
   -- Fallbacks for argument selection and exchange

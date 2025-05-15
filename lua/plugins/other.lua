@@ -1,29 +1,38 @@
 return {
   { 'nvim-lua/plenary.nvim' },
 
-  { 'danro/rename.vim' },
-
   { 'bfredl/nvim-luadev', ft = {"lua"} },
 
   {
     'folke/snacks.nvim',
     lazy = false,
     priority = 1000,
+    init = function ()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "OilActionsPost",
+        callback = function(event)
+          if event.data.actions.type == "move" then
+            Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
+          end
+        end,
+      })
+    end,
     opts = {
       quickfile = {enabled = true},
       bigfile = {enabled = true},
       statuscolumn = {enabled = true},
+      rename = {enabled = true},
       indent = {
         enabled = true,
         animate = {enabled = false},
         scope = {
-          only_current = true,
-          underline = true
+          only_current = true
         }
       }
     },
     keys = {
       {"<leader>z", function() Snacks.zen.zoom() end, desc = "Toggle zoom"},
+      {"<leader>fR", function() Snacks.rename.rename_file() end, mode = {"n", "x"}, desc = "Rename file"},
       {"<leader>9", function() Snacks.scratch() end, desc = "Toggle scratch buffer"},
       {"<leader>(", function() Snacks.scratch.select() end, desc = "Search scratch buffer"}
     }
