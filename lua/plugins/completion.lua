@@ -4,7 +4,7 @@ return {
     dependencies = { "chrisgrieser/nvim-scissors" },
     version = "1.*",
     opts = {
-      keymap = { preset = "enter" },
+      keymap = { preset = "super-tab" },
     },
   },
   {
