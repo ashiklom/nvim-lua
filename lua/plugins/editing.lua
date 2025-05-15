@@ -40,9 +40,6 @@ return {
     init = function() require('setups.vim-table-mode') end,
     config = function() require('configs.vim-table-mode') end
   },
-  {'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {
-    indent = {char = "┊"}
-  }},
 
   -- Fallbacks for argument selection and exchange
   {

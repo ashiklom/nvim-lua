@@ -6,6 +6,30 @@ return {
   { 'bfredl/nvim-luadev', ft = {"lua"} },
 
   {
+    'folke/snacks.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      quickfile = {enabled = true},
+      bigfile = {enabled = true},
+      statuscolumn = {enabled = true},
+      indent = {
+        enabled = true,
+        animate = {enabled = false},
+        scope = {
+          only_current = true,
+          underline = true
+        }
+      }
+    },
+    keys = {
+      {"<leader>z", function() Snacks.zen.zoom() end, desc = "Toggle zoom"},
+      {"<leader>9", function() Snacks.scratch() end, desc = "Toggle scratch buffer"},
+      {"<leader>(", function() Snacks.scratch.select() end, desc = "Search scratch buffer"}
+    }
+  },
+
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ":TSUpdate",
     opts = {
