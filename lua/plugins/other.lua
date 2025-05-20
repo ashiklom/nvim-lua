@@ -42,8 +42,14 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ":TSUpdate",
     opts = {
-      auto_install = false
-    }
+      auto_install = false,
+      indent = {enable = true},
+      highlight = {enable = true},
+      textobjects = {enable = true}
+    },
+    config = function (_, opts)
+      require('nvim-treesitter.configs').setup(opts)
+    end
   },
 
   {
