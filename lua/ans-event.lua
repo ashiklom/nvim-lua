@@ -16,13 +16,6 @@ vim.api.nvim_create_autocmd("FileType", {
   command = "setlocal spell wrap"
 })
 
--- Auto-resize window splits when vim screen changes size
-vim.api.nvim_create_autocmd("VimResized", {
-  group = augroup("resize"),
-  pattern="*",
-  command="wincmd ="
-})
-
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup('close_with_q'),
   pattern = {

@@ -52,6 +52,7 @@ return {
 
   {
     "rcarriga/nvim-notify",
+    event = "VeryLazy",
     keys = {
       { "<leader>snD", function() require('notify').dismiss({ silent = true, pending = true }) end }
     },
@@ -69,7 +70,6 @@ return {
       end,
     }
   },
-  
   {
     "stevearc/oil.nvim",
     dependencies = {
@@ -85,6 +85,25 @@ return {
     opts = {},
     keys = {
       { "<leader>bd", function() MiniBufremove.delete() end, desc="Delete buffer"}
+    }
+  },
+  {
+    "mrjones2014/smart-splits.nvim",
+    event = "VeryLazy",
+    keys = {
+      { "<leader>wh", function() require('smart-splits').move_cursor_left() end },
+      { "<leader>wj", function() require('smart-splits').move_cursor_down() end },
+      { "<leader>wl", function() require('smart-splits').move_cursor_right() end },
+      { "<leader>wk", function() require('smart-splits').move_cursor_up() end },
+      { "<leader>ww", function() require('smart-splits').move_cursor_previous() end },
+      { "<leader>w]", function() require('smart-splits').resize_right() end },
+      { "<leader>w[", function() require('smart-splits').resize_left() end  },
+      { "<leader>w<Up>", function() require('smart-splits').resize_up() end },
+      { "<leader>w<Down>", function() require('smart-splits').resize_down() end },
+      { "<leader>wH", function() require('smart-splits').swap_buf_left() end },
+      { "<leader>wJ", function() require('smart-splits').swap_buf_down() end },
+      { "<leader>wL", function() require('smart-splits').swap_buf_right() end },
+      { "<leader>wK", function() require('smart-splits').swap_buf_up() end }
     }
   }
 }

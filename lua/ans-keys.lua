@@ -54,23 +54,18 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
-local winkeys = "jklh=xrRTJKLH"
-for i = 1, #winkeys do
-  local key = winkeys:sub(i,i)
-  vim.keymap.set('n', '<leader>w'..key, string.format([[:wincmd %s<cr>]], key), {silent=true})
-end
+vim.keymap.set('n', '<leader>wf', function() vim.cmd.wincmd("f") end, {desc = "Open file under cursor in new window"})
+vim.keymap.set('n', '<leader>wF', function() vim.cmd.wincmd("F") end, {desc = "Open file (with line) under cursor in new window"})
+vim.keymap.set('n', '<leader>w=', function() vim.cmd.wincmd("=") end, {desc = "Equalize window sizes"})
+vim.keymap.set('n', '<leader>wr', function() vim.cmd.wincmd("r") end, {desc = "Rotate windows down"})
+vim.keymap.set('n', '<leader>wR', function() vim.cmd.wincmd("R") end, {desc = "Rotate windows up"})
+vim.keymap.set('n', '<leader>wT', function() vim.cmd.wincmd("T") end, {desc = "Move window to new tab"})
 
-vim.keymap.set('n', '<leader>ww', [[:wincmd p<cr>]], {silent=true})
-vim.keymap.set('n', '<leader>w+', [[:5 wincmd +<cr>]], {silent=true})
-vim.keymap.set('n', '<leader>w_', [[:5 wincmd -<cr>]], {silent=true})
-vim.keymap.set('n', '<leader>w]', [[:vertical resize +5<cr>]], {silent=true})
-vim.keymap.set('n', '<leader>w[', [[:vertical resize -5<cr>]], {silent=true})
-vim.keymap.set('n', '<leader>w-', [[:split<cr>]], {silent=true})
-vim.keymap.set('n', '<leader>w\\', [[:vsplit<cr>]], {silent=true})
-vim.keymap.set('n', '<leader>wd', [[:close<cr>]], {silent=true})
-vim.keymap.set('n', '<leader>wo', [[:Windows<CR>]], {silent=true})
+vim.keymap.set('n', '<leader>w-', function() vim.cmd.split() end, {desc = "Split window down"})
+vim.keymap.set('n', '<leader>w\\',function() vim.cmd.vsplit() end, {desc = "Split window right"})
+vim.keymap.set('n', '<leader>wd', function() vim.cmd.close() end, {desc = "Close window"})
 
-vim.keymap.set('n', '<leader>fs', [[:write<cr>]], {silent=true, desc="Save"})
+vim.keymap.set('n', '<leader>fs', function() vim.cmd.write() end, {silent=true, desc="Save file"})
 vim.keymap.set('n', '<leader>fK', [[:call delete(expand('%')) | bdelete!<cr>]], {desc="Delete buffer and file"})
 vim.cmd([[cnoreabbrev W w]])
 
