@@ -5,6 +5,16 @@ return {
     version = "1.*",
     opts = {
       keymap = { preset = "super-tab" },
+      completion = {
+        list = {
+          selection = {
+            preselect = function (_)
+              -- Prevents accidental completions while navigating a snippet
+              return not require('blink.cmp').snippet_active({ direction = 1 })
+            end
+          }
+        }
+      }
     },
   },
   {

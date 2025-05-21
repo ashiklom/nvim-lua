@@ -6,3 +6,4 @@
 - Global list (JSON, by system?) of files that are autoformatted + key to add current file to that list.
 - Projects (neovim-project?)
 - octo.nvim for GitHub code reviews
+- Session manager
