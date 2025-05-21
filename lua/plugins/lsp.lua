@@ -3,6 +3,24 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = { "blink.cmp" },
+    init = function ()
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("ansauto_lsp", {clear = true}),
+        callback = function (_)
+          vim.diagnostic.config({ virtual_text = true })
+          local nmap = function(lhs, rhs, desc)
+            local opts = { silent=true, buffer=0, desc=desc }
+            vim.keymap.set({"n", "x"}, lhs, rhs, opts)
+          end
+          nmap('gd', vim.lsp.buf.definition, "Goto definition")
+          nmap('gD', vim.lsp.buf.declaration, "Goto declaration")
+          nmap('gry', vim.lsp.buf.type_definition, "Goto type definition")
+          nmap('<leader>gz', function()
+            vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+          end, "Toggle LSP diagnostics")
+        end
+      })
+    end,
     opts = {
       servers = {
         bashls = {
@@ -19,37 +37,13 @@ return {
         julials = {},
         terraformls = {},
         ansiblels = {}
-      },
-      on_attach = function(client, bufnr)
-        if client.name == 'ruff' then
-          -- Disable hover in favor of pyright
-          client.server_capabilities.hoverProvider = false
-        end
-
-        if client:supports_method("textDocument/completion") then
-          vim.lsp.completion.enable(true, client.id, bufnr)
-        end
-        vim.diagnostic.config({ virtual_text = true })
-        local nmap = function(lhs, rhs, desc)
-          local opts = { silent=true, buffer=bufnr, desc=desc }
-          vim.keymap.set('n', lhs, rhs, opts)
-        end
-        nmap('gd', vim.lsp.buf.definition, "Goto definition")
-        nmap('gD', vim.lsp.buf.declaration, "Goto declaration")
-        nmap('gry', vim.lsp.buf.type_definition, "Goto type definition")
-        nmap('<leader>so', require('telescope.builtin').lsp_document_symbols)
-        nmap('<leader>tld', function()
-          vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-        end, "Toggle LSP diagnostics")
-      end
+      }
     },
     config = function(_, opts)
-      local lspconfig = require('lspconfig')
       for server, config in pairs(opts.servers) do
-        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
+        vim.lsp.config(server, config)
+        vim.lsp.enable(server)
       end
-
     end
   },
   {
