@@ -1,9 +1,6 @@
-- Streamline LSP config for nvim 0.11
-
 - Status line short-ish file path
 - Markdown citations with blink (maybe using `jmbuhr/cmp-pandoc-references`)
 
 - Global list (JSON, by system?) of files that are autoformatted + key to add current file to that list.
 - Projects (neovim-project?)
 - octo.nvim for GitHub code reviews
-- Session manager

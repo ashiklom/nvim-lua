@@ -101,6 +101,18 @@ return {
       -- Required by gist.nvim
       vim.g.unception_block_while_host_edits = true
     end
+  },
+  {
+    'folke/persistence.nvim',
+    event = "BufReadPre",
+    opts = {},
+    keys = {
+      {"<leader>qs", function() require('persistence').load() end, desc = "Load session (working directory)"},
+      {"<leader>qS", function() require('persistence').select() end, desc = "Load session (select)"},
+      {"<leader>ql", function() require('persistence').load({last = true}) end, desc = "Load session (last)"},
+      {"<leader>qd", function() require('persistence').stop() end, desc = "Stop persistence"},
+      {"<leader>qq", function() vim.cmd.quitall() end, desc = "Quit all"}
+    }
   }
 
 }
