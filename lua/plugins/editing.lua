@@ -19,7 +19,7 @@ return {
           join = 'g}'
         }
       }
-      vim.keymap.set('i', '<C-e>', ms.toggle, {desc="Toggle splitjoin"})
+      vim.keymap.set('i', '<C-]>', ms.toggle, {desc="Toggle splitjoin"})
     end
   },
   {
