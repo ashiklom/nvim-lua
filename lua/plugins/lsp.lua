@@ -1,3 +1,5 @@
+
+
 return {
   -- Languageserver
   {
@@ -36,8 +38,19 @@ return {
         air = {},
         julials = {},
         terraformls = {},
-        ansiblels = {}
-      }
+        ansiblels = {},
+        dockerls = {
+          capabilities = {
+            textDocument = {
+              completion = {
+                completionItem = {
+                  snippetSupport = false
+                }
+              }
+            }
+          }
+        }
+      },
     },
     config = function(_, opts)
       for server, config in pairs(opts.servers) do
