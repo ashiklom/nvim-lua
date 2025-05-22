@@ -36,6 +36,7 @@ return {
             sh = { command = { "bash" } },
             -- ps1 = { command = { "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe" } },
             ps1 = { command = { "powershell" } },
+            terraform = { command = { "terraform", "console" } }
           },
         },
         keymaps = {
