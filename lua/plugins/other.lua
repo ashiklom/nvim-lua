@@ -20,7 +20,7 @@ return {
     opts = {
       quickfile = {enabled = true},
       bigfile = {enabled = true},
-      statuscolumn = {enabled = true},
+      statuscolumn = {enabled = false},
       rename = {enabled = true},
       indent = {
         enabled = true,
