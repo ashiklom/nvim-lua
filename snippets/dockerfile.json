@@ -1,0 +1,1 @@
+{"apt":{"prefix":"apt","body":["RUN apt-get update && \\","  apt-get install -y --no-install-recommends \\","  ${1:} \\","  && rm -rf /var/lib/apt/lists/*"]}}
