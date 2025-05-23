@@ -26,6 +26,21 @@ return {
     'echasnovski/mini.pairs',
     opts = {}
   },
+  {
+    'echasnovski/mini.move',
+    opts = {
+      mappings = {
+        left = "<S-left>",
+        right = "<S-right>",
+        up = "<S-up>",
+        down = "<S-down>",
+        line_left = "<S-left>",
+        line_right = "<S-right>",
+        line_up = "<S-up>",
+        line_down = "<S-down>"
+      }
+    },
+  },
 
   { 'editorconfig/editorconfig-vim' },
 
