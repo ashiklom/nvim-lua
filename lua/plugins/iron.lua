@@ -17,26 +17,35 @@ return {
         return vim.tbl_map(remove_indent, lines)
       end
 
+      local function python_config()
+        if vim.fn.executable("ipython") then
+          return {
+            command = { "ipython", "--no-autoindent", "--no-confirm-exit" },
+            format = require("iron.fts.common").bracketed_paste_python,
+          }
+        end
+        return {
+          command = { "python3" },
+          format = function(lines, extras)
+            local unindented = unindent_block(lines)
+            -- Note: Simplify the formatting, so just use `bracketed_paste` (not bracketed_paste_python) here
+            return require("iron.fts.common").bracketed_paste(unindented, extras)
+          end,
+        }
+      end
+
       require("iron.core").setup({
         config = {
           repl_open_cmd = "botright 15 split",
           buflisted = true,
           repl_definition = {
-            python = {
-              -- command = { "ipython", "--no-autoindent", "--no-confirm-exit" },
-              command = { "python3" },
-              format = function(lines, extras)
-                local unindented = unindent_block(lines)
-                -- Note: Simplify the formatting, so just use `bracketed_paste` (not bracketed_paste_python) here
-                return require("iron.fts.common").bracketed_paste(unindented, extras)
-              end,
-            },
+            python = python_config(),
             r = { command = { "R" } },
             julia = { command = { "julia" } },
             sh = { command = { "bash" } },
             -- ps1 = { command = { "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe" } },
             ps1 = { command = { "powershell" } },
-            terraform = { command = { "terraform", "console" } }
+            terraform = { command = { "terraform", "console" } },
           },
         },
         keymaps = {
