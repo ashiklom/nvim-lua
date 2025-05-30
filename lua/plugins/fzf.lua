@@ -31,12 +31,22 @@ return {
       {'z=', function() require('fzf-lua').spell_suggest() end, desc="Spelling"}
     },
     config = function()
-      local config = require("fzf-lua.config")
-      local has_trbl, _ = pcall(require, "trouble")
-      if has_trbl then
-        local actions = require("trouble.sources.fzf").actions
-        config.defaults.actions.files["ctrl-t"] = actions.open
-      end
+      require('fzf-lua').setup({
+        keymap = {
+          builtin = {
+            ["<C-0>"] = "toggle-preview",
+            ["<C-=>"] = "toggle-fullscreen",
+            ["<C-.>"] = "toggle-preview-cw",
+            ["<C-,>"] = "toggle-preview-ccw",
+            ["<C-/>"] = "toggle-help",
+          }
+        },
+        winopts = {
+          preview = {
+            layout = "vertical"
+          }
+        }
+      })
     end
   },
 }
