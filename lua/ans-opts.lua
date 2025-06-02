@@ -2,8 +2,6 @@
 vim.cmd [[filetype plugin indent on]]
 vim.cmd [[syntax enable]]
 
-pcall(vim.cmd, [[colorscheme sonokai]])
-
 local indent = 2
 
 vim.opt.tabstop = indent
@@ -23,7 +21,6 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.hidden = true
-vim.opt.termguicolors = true
 vim.opt.scrolloff = 2
 vim.opt.swapfile = false
 vim.opt.signcolumn = "yes"

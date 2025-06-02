@@ -75,7 +75,23 @@ return {
     }
   },
 
+  -- Colorschemes
   { 'sainnhe/sonokai' },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    config = function ()
+      require('catppuccin').setup({
+        integrations = {
+          grug_far = true,
+          leap = true,
+          blink_cmp = true
+        }
+      })
+      vim.cmd.colorscheme('catppuccin')
+    end
+  },
 
   { 'echasnovski/mini.statusline' , opts = {}},
 
