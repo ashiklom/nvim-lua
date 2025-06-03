@@ -1,6 +1,19 @@
 - Status line short-ish file path
-- Markdown citations with blink (maybe using `jmbuhr/cmp-pandoc-references`)
+- [Blink] Markdown citations with blink (maybe using `jmbuhr/cmp-pandoc-references`)
+- [Blink] Blink completion from disction
 
 - Global list (JSON, by system?) of files that are autoformatted + key to add current file to that list.
 - Projects (neovim-project?)
 - octo.nvim for GitHub code reviews
+
+- Function to add to wishlist
+Something like:
+
+```
+function utils.add_to_wishlist(string)
+  return vim.fn.writefile(string, vim.fn.stdpath("config") .. "/wishlist.txt", "w")
+end
+
+vim.api.nvim_create_user_command("Wishlist", ...)
+```
+
