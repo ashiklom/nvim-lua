@@ -29,14 +29,14 @@ vim.opt.completeopt:remove("preview")
 vim.opt.listchars = "tab:>-,trail:-,nbsp:+"
 -- vim.opt.wildignore:append({'*.o', '*.so', '*.html'})
 
-vim.opt.formatoptions = 'cqwj'
+vim.opt.formatoptions:remove("t")
+vim.opt.formatoptions:append("w")
 
 -- Disable mouse
 vim.opt.mouse = ''
 
--- vim.opt.isfname:remove('=')
--- Doesn't work for some reason; fall back on vim CMD
-vim.cmd [[set isfname-==]]
+-- Complete file names after `=`
+vim.opt.isfname:remove('=')
 
 if vim.g.neovide then
   vim.o.guifont="JuliaMono,Hack_Nerd_Font"

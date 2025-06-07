@@ -50,6 +50,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup('formatoptions'),
+  callback = function()
+    vim.opt_local.formatoptions:remove({"o"})
+  end
+})
+
 -- utils.augroup("Pandoc", {'BufNewFile', 'BufFilePre', 'BufRead'}, {
 --   pattern = {"*.md"},
 --   command = "set filetype=markdown.pandoc"
