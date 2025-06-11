@@ -69,11 +69,10 @@ return {
       })
     end,
     opts = {
-      open_mapping = [[<c-\>]],
-      direction = "float",
-      hide_numbers = true
+      direction = "horizontal"
     },
     keys = {
+      {"<C-\\>", function() require("toggleterm").toggle() end, mode = {"n"}, desc = "Send line to term"},
       {"<leader>mt", function() require("toggleterm").send_lines_to_terminal("single_line", true) end, mode = {"n"}, desc = "Send line to term"},
       {"<leader>mt", function() require("toggleterm").send_lines_to_terminal("visual_selection", true) end, mode = {"x"}, desc = "Send selection to term"}
     }
