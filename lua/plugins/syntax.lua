@@ -23,7 +23,7 @@ return {
     },
     keys = {
       {
-        "<localleader>t",
+        "<localleader>T",
         function()
           require("csvview").toggle()
         end,

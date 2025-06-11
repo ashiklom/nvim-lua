@@ -72,6 +72,10 @@ return {
       open_mapping = [[<c-\>]],
       direction = "float",
       hide_numbers = true
+    },
+    keys = {
+      {"<leader>mt", function() require("toggleterm").send_lines_to_terminal("single_line", true) end, mode = {"n"}, desc = "Send line to term"},
+      {"<leader>mt", function() require("toggleterm").send_lines_to_terminal("visual_selection", true) end, mode = {"x"}, desc = "Send selection to term"}
     }
   },
 
