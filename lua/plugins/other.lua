@@ -72,9 +72,24 @@ return {
       direction = "horizontal"
     },
     keys = {
-      {"<C-\\>", function() require("toggleterm").toggle() end, mode = {"n"}, desc = "Send line to term"},
-      {"<leader>mt", function() require("toggleterm").send_lines_to_terminal("single_line", true) end, mode = {"n"}, desc = "Send line to term"},
-      {"<leader>mt", function() require("toggleterm").send_lines_to_terminal("visual_selection", true) end, mode = {"x"}, desc = "Send selection to term"}
+      {
+        "<C-\\>",
+        function() require("toggleterm").toggle() end,
+        mode = {"n"},
+        desc = "Send line to term"
+      },
+      {
+        "<leader>mt",
+        function() require("toggleterm").send_lines_to_terminal("single_line", true, { args = vim.v.count }) end,
+        mode = {"n"},
+        desc = "Send line to term"
+      },
+      {
+        "<leader>mt",
+        function() require("toggleterm").send_lines_to_terminal("visual_selection", true, { args = vim.v.count }) end,
+        mode = {"x"},
+        desc = "Send selection to term"
+      }
     }
   },
 
