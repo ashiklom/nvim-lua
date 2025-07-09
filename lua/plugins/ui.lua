@@ -72,6 +72,7 @@ return {
   },
   {
     "stevearc/oil.nvim",
+    lazy = false,
     dependencies = {
       "echasnovski/mini.bufremove"
     },
