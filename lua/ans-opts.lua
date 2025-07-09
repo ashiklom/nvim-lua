@@ -39,8 +39,8 @@ vim.opt.mouse = ''
 vim.opt.isfname:remove('=')
 
 if vim.g.neovide then
-  vim.o.guifont="JuliaMono,Hack_Nerd_Font"
   vim.g.neovide_cursor_animation_length = 0
+  vim.o.guifont = "JetBrains Mono"
 end
 
 -- Stolen from TJ Devries:
