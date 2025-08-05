@@ -14,6 +14,17 @@ return {
             end
           }
         }
+      },
+      sources = {
+        providers = {
+          path = {
+            opts = {
+              get_cwd = function (_)
+                return vim.fn.getcwd()
+              end
+            }
+          }
+        }
       }
     },
   },
