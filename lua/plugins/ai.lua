@@ -12,6 +12,8 @@ return {
       vim.keymap.set('i', '<Left>', '<Plug>(copilot-dismiss)')
       vim.keymap.set('i', '<C-l>', '<Plug>(copilot-suggest)')
       vim.g.copilot_no_tab_map = true
+      -- Disable copilot for all filetypes by default
+      vim.g.copilot_filetypes = { ['*'] = false }
     end
   },
   {
