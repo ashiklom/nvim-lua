@@ -1,6 +1,22 @@
 return {
   {
+    "github/copilot.vim",
+    event = "VeryLazy",
+    config = function ()
+      vim.keymap.set('i', '<Right>', 'copilot#Accept("\\<CR>")', {
+        expr = true,
+        replace_keycodes = false
+      })
+      vim.keymap.set('i', '<Down>', '<Plug>(copilot-next)')
+      vim.keymap.set('i', '<Up>', '<Plug>(copilot-previous)')
+      vim.keymap.set('i', '<Left>', '<Plug>(copilot-dismiss)')
+      vim.keymap.set('i', '<C-l>', '<Plug>(copilot-suggest)')
+      vim.g.copilot_no_tab_map = true
+    end
+  },
+  {
     "olimorris/codecompanion.nvim",
+    dependencies = { "github/copilot.vim" },
     keys = {
       { "<leader>ai", function() require("codecompanion").toggle() end, desc = "Codecompanion toggle chat"},
       { "<leader>aI", function() require("codecompanion").actions() end, desc = "Codecompanion actions"},
@@ -8,9 +24,9 @@ return {
     },
     opts = {
       strategies = {
-        chat = { adapter = "nasa_ai" },
-        inline = { adapter = "nasa_ai" },
-        cmd = { adapter = "nasa_ai" }
+        chat = { adapter = "copilot" },
+        inline = { adapter = "copilot" },
+        cmd = { adapter = "copilot" }
       },
       adapters = {
         nasa_ai = function ()

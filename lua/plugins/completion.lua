@@ -4,8 +4,27 @@ return {
     dependencies = { "chrisgrieser/nvim-scissors" },
     version = "1.*",
     opts = {
-      keymap = { preset = "super-tab" },
+      keymap = {
+        preset = "super-tab",
+        ['<C-space>'] = { function(cmp) cmp.show() end}
+      },
       completion = {
+        menu = {
+          -- If copilot is enabled, do not show the menu
+          auto_show = function(_) 
+            if vim.fn["copilot#Enabled"]() == 0 then
+              -- Manually disabled, so auto-complete.
+              return true
+            end
+            -- Enabled but possibly not on *yet*. Look for it in the LSP clients.
+            for _, client in ipairs(vim.lsp.get_clients()) do
+              if client.name == "GitHub Copilot" then
+                return false
+              end
+            end
+            return true
+          end
+        },
         list = {
           selection = {
             preselect = function (_)
