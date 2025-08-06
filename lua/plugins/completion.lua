@@ -11,7 +11,7 @@ return {
       completion = {
         menu = {
           -- If copilot is enabled, do not show the menu
-          auto_show = function(_) 
+          auto_show = function(_)
             if vim.fn["copilot#Enabled"]() == 0 then
               -- Manually disabled, so auto-complete.
               return true

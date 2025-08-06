@@ -28,7 +28,9 @@ return {
       {'<leader>sk', function() require('fzf-lua').keymaps() end, desc="Keymaps"},
       {'<leader>sq', function() require('fzf-lua').quickfix() end, desc="Quickfix list"},
 
-      {'z=', function() require('fzf-lua').spell_suggest() end, desc="Spelling"}
+      {'z=', function() require('fzf-lua').spell_suggest() end, desc="Spelling"},
+
+      {'<C-f>', function() require('fzf-lua').complete_path() end, mode="i", desc="Complete path"}
     },
     config = function()
       require('fzf-lua').setup({
