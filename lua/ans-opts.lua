@@ -45,7 +45,7 @@ end
 
 -- Stolen from TJ Devries:
 -- https://github.com/tjdevries/config.nvim/blob/master/plugin/clipboard.lua
-if vim.env.SSH_CONNECTION then
+if vim.env.SSH_CONNECTION or vim.env.WSL_VERSION then
   local function vim_paste()
     local content = vim.fn.getreg('"')
     return vim.split(content, "\n")
