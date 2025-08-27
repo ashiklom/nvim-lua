@@ -1,13 +1,5 @@
 return {
   {
-    "yetone/avante.nvim",
-    enabled = false,
-    dependencies = { "zbirenbaum/copilot.lua" },
-    event = "VeryLazy",
-    version = false,
-    provider = "copilot"
-  },
-  {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     opts = {
@@ -17,6 +9,7 @@ return {
     },
     keys = {
       { '<leader>ap', function() vim.cmd('Copilot') end, desc = "Copilot activate" },
+      {'<leader>aP', function() require('copilot.suggestion').toggle_auto_trigger() end, desc = "Copilot toggle auto-trigger"},
       { '<C-l>', function() require('copilot.suggestion').next() end, mode = "i", desc = "Copilot next"},
       { '<Right>', function() require('copilot.suggestion').accept() end, mode = "i", desc = "Copilot accept"},
       { '<Left>', function() require('copilot.suggestion').dismiss() end, mode = "i", desc = "Copilot dismiss"},

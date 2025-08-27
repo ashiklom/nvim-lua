@@ -10,22 +10,8 @@ return {
       },
       completion = {
         menu = {
-          -- If copilot is enabled, do not show the menu
-          auto_show = function(_)
-            if vim.fn.exists("copilot#Enabled") ~= 1 then
-              return true
-            end
-            if vim.fn["copilot#Enabled"]() == 0 then
-              -- Manually disabled, so auto-complete.
-              return true
-            end
-            -- Enabled but possibly not on *yet*. Look for it in the LSP clients.
-            for _, client in ipairs(vim.lsp.get_clients()) do
-              if client.name == "GitHub Copilot" then
-                return false
-              end
-            end
-            return true
+          auto_show = function()
+            return not vim.tbl_contains({"markdown"}, vim.bo.filetype)
           end
         },
         list = {
