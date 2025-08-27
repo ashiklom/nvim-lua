@@ -1,24 +1,31 @@
 return {
   {
-    "github/copilot.vim",
+    "yetone/avante.nvim",
+    enabled = false,
+    dependencies = { "zbirenbaum/copilot.lua" },
     event = "VeryLazy",
-    config = function ()
-      vim.keymap.set('i', '<Right>', 'copilot#Accept("\\<CR>")', {
-        expr = true,
-        replace_keycodes = false
-      })
-      vim.keymap.set('i', '<Down>', '<Plug>(copilot-next)')
-      vim.keymap.set('i', '<Up>', '<Plug>(copilot-previous)')
-      vim.keymap.set('i', '<Left>', '<Plug>(copilot-dismiss)')
-      vim.keymap.set('i', '<C-l>', '<Plug>(copilot-suggest)')
-      vim.g.copilot_no_tab_map = true
-      -- Disable copilot for all filetypes by default
-      vim.g.copilot_filetypes = { ['*'] = false }
-    end
+    version = false,
+    provider = "copilot"
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    opts = {
+      suggestion = {
+        enabled = true,
+      }
+    },
+    keys = {
+      { '<leader>ap', function() vim.cmd('Copilot') end, desc = "Copilot activate" },
+      { '<C-l>', function() require('copilot.suggestion').next() end, mode = "i", desc = "Copilot next"},
+      { '<Right>', function() require('copilot.suggestion').accept() end, mode = "i", desc = "Copilot accept"},
+      { '<Left>', function() require('copilot.suggestion').dismiss() end, mode = "i", desc = "Copilot dismiss"},
+      { '<Up>', function() require('copilot.suggestion').dismiss() end, mode = "i", desc = "Copilot previous"},
+    }
   },
   {
     "olimorris/codecompanion.nvim",
-    dependencies = { "github/copilot.vim" },
+    dependencies = { "zbirenbaum/copilot.lua" },
     keys = {
       { "<leader>ai", function() require("codecompanion").toggle() end, desc = "Codecompanion toggle chat"},
       { "<leader>aI", function() require("codecompanion").actions() end, desc = "Codecompanion actions"},
