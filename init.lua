@@ -17,6 +17,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup('plugins')
 
+if vim.g.neovide then
+  require('ans-neovide')
+end
+
 require('ans-keys')
 require('ans-opts')
 require('ans-event')

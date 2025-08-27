@@ -38,11 +38,6 @@ vim.opt.mouse = ''
 -- Complete file names after `=`
 vim.opt.isfname:remove('=')
 
-if vim.g.neovide then
-  vim.g.neovide_cursor_animation_length = 0
-  vim.o.guifont = "JetBrains Mono"
-end
-
 -- Stolen from TJ Devries:
 -- https://github.com/tjdevries/config.nvim/blob/master/plugin/clipboard.lua
 if vim.env.SSH_CONNECTION or vim.env.WSL_VERSION then
