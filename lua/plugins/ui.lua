@@ -76,7 +76,13 @@ return {
     dependencies = {
       "echasnovski/mini.bufremove"
     },
-    opts = {},
+    opts = {
+      buf_options = {
+        buflisted = true,
+        bufhidden = nil
+      },
+      cleanup_delay_ms = false,
+    },
     keys = {
       {"<leader>fo", function() require('oil').open() end, desc="Open file directory"}
     }
