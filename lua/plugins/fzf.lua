@@ -32,23 +32,21 @@ return {
 
       {'<C-f>', function() require('fzf-lua').complete_path() end, mode="i", desc="Complete path"}
     },
-    config = function()
-      require('fzf-lua').setup({
-        keymap = {
-          builtin = {
-            ["<C-0>"] = "toggle-preview",
-            ["<C-=>"] = "toggle-fullscreen",
-            ["<C-.>"] = "toggle-preview-cw",
-            ["<C-,>"] = "toggle-preview-ccw",
-            ["<C-/>"] = "toggle-help",
-          }
-        },
-        winopts = {
-          preview = {
-            layout = "vertical"
-          }
+    opts = {
+      keymap = {
+        builtin = {
+          ["<C-0>"] = "toggle-preview",
+          ["<C-=>"] = "toggle-fullscreen",
+          ["<C-.>"] = "toggle-preview-cw",
+          ["<C-,>"] = "toggle-preview-ccw",
+          ["<C-/>"] = "toggle-help",
         }
-      })
-    end
+      },
+      winopts = {
+        preview = {
+          layout = "vertical"
+        }
+      }
+    }
   },
 }
