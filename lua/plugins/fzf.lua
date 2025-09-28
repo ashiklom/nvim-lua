@@ -35,11 +35,11 @@ return {
     opts = {
       keymap = {
         builtin = {
-          ["<C-0>"] = "toggle-preview",
-          ["<C-=>"] = "toggle-fullscreen",
-          ["<C-.>"] = "toggle-preview-cw",
-          ["<C-,>"] = "toggle-preview-ccw",
-          ["<C-/>"] = "toggle-help",
+          ["<M-0>"] = "toggle-preview",
+          ["<M-=>"] = "toggle-fullscreen",
+          ["<M-.>"] = "toggle-preview-cw",
+          ["<M-,>"] = "toggle-preview-ccw",
+          ["<M-/>"] = "toggle-help",
         }
       },
       winopts = {
