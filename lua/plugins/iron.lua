@@ -34,7 +34,25 @@ return {
         }
       end
 
-      require("iron.core").setup({
+      local iron = require("iron.core")
+      local common = require("iron.fts.common")
+
+      -- For haskell, wrap multiline statements in :{ ... :}
+      local function haskell_fmt(lines)
+        local cr = "\13"
+        if #lines == 1 then
+          return { lines[1] .. cr }
+        end
+        local result = {}
+        table.insert(result, ":{")
+        for _, line in ipairs(lines) do
+          table.insert(result, line)
+        end
+        table.insert(result, ":}" .. cr)
+        return result
+      end
+
+      iron.setup({
         config = {
           repl_open_cmd = "botright 15 split",
           buflisted = true,
@@ -46,6 +64,7 @@ return {
             -- ps1 = { command = { "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe" } },
             ps1 = { command = { "powershell" } },
             terraform = { command = { "terraform", "console" } },
+            haskell = { command = { "ghci" }, format = haskell_fmt }
           },
         },
         keymaps = {
