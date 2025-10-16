@@ -57,6 +57,67 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
+-- Automatically detect virtual environment
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("ansauto_venv", { clear = true }),
+  pattern = { "python" },
+  callback = function()
+    if vim.env.VIRTUAL_ENV then
+      return
+    end
+    local venv = vim.fn.getcwd() .. "/.venv"
+    if not vim.fn.isdirectory(venv) then
+      return
+    end
+    vim.env.VIRTUAL_ENV = venv
+    vim.env.PYTHONHOME = nil
+    vim.env.PATH = venv .. "/bin:" .. vim.env.PATH
+    vim.notify("Set venv to " .. venv)
+    -- Restart LSP to register new changes
+    vim.defer_fn(function() 
+      vim.cmd("LspRestart")
+    end, 1000)
+  end
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("ansauto_pixi", { clear = true }),
+  callback = function()
+    -- Don't set if a virtual environment is active
+    if vim.env.VIRTUAL_ENV then
+      return
+    end
+    -- ...or if pixi is already active.
+    if vim.env.PIXI_PROJECT_NAME then
+      return
+    end
+    -- ...or if the pixi directory doesn't exist.
+    local cwd = vim.fn.getcwd()
+    local pixidir = cwd .. "/.pixi"
+    if not vim.fn.isdirectory(pixidir) then
+      return
+    end
+    local pixiproj = vim.fn.fnamemodify(cwd, ":t")
+    vim.env.PATH = pixidir .. "/envs/default/bin:" .. vim.env.PATH
+    vim.env.CONDA_SHLVL = 1
+    vim.env.CONDA_PREFIX = pixidir .. "/envs/default"
+    -- vim.env.PIXI_PROJECT_MANIFEST = cwd .. "/pyproject.toml"
+    -- vim.env.PIXI_PROJECT_VERSION = "0.1.0"
+    vim.env.PIXI_IN_SHELL = 1
+    vim.env.PIXI_PROJECT_ROOT = cwd
+    vim.env.PIXI_PROJECT_NAME = pixiproj
+    vim.env.PIXI_EXE = pixidir .. "/bin/pixi"
+    vim.env.CONDA_DEFAULT_ENV = pixiproj
+    -- vim.env.PIXI_ENVIRONMENT_NAME=default
+    -- vim.env.PIXI_ENVIRONMENT_PLATFORMS=linux-64
+    vim.notify("Activated pixi env in " .. pixidir)
+    -- Restart LSP to register new changes
+    vim.defer_fn(function() 
+      vim.cmd("LspRestart")
+    end, 1000)
+  end
+})
+
 -- utils.augroup("Pandoc", {'BufNewFile', 'BufFilePre', 'BufRead'}, {
 --   pattern = {"*.md"},
 --   command = "set filetype=markdown.pandoc"
