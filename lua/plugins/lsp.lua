@@ -1,3 +1,18 @@
+-- Run LSP inside a venv (using uv) or pixi if appropriate
+local function try_pixi_venv(cmd)
+  local hasuv = vim.fn.executable("uv") == 1
+  local haspixi = vim.fn.executable("pixi") == 1
+  local venvdir = "./.venv"
+  local pixidir = "./.pixi"
+  if hasuv and (vim.fn.isdirectory(venvdir) == 1) then
+    return vim.list_extend({"uv", "run"}, cmd)
+  end
+  if haspixi and (vim.fn.isdirectory(pixidir) == 1) then
+    return vim.list_extend({"pixi", "run"}, cmd)
+  end
+  return cmd
+end
+
 return {
   -- Languageserver
   {
@@ -26,8 +41,14 @@ return {
         bashls = {
           filetypes = {"sh", "zsh"}
         },
-        ruff = {},
+        ruff = {
+          cmd = try_pixi_venv({"ruff", "server"})
+        },
+        ty = {
+          cmd = try_pixi_venv({"ty", "server"})
+        },
         pyright = {
+          cmd = try_pixi_venv({"pyright-langserver", "--stdio"}),
           settings = { pyright = { disableOrganizeImports = true } }
         },
         lua_ls = {
