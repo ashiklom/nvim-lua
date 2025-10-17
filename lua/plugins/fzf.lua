@@ -15,6 +15,7 @@ return {
 
       {'<leader>ff', function() require('fzf-lua').builtin() end, desc ="FzfLua"},
       {'<leader>,', function() require('fzf-lua').resume() end, desc="Resume"},
+      {'<leader>;', function() require('fzf-lua').commands() end, desc="Commands"},
       {'<leader>:', function() require('fzf-lua').command_history() end, desc="Command history"},
 
       {'<leader>gd', function() require('fzf-lua').lsp_definitions() end, mode = {"n", "x"}, desc = "LSP definitions"},

@@ -64,11 +64,6 @@ return {
   {
     "Rawnly/gist.nvim",
     cmd = { "GistCreate", "GistCreateFromFile", "GistsList" },
-    opts = {},
-    keys = {
-      {"<leader>gl", "<cmd>GistList<cr>", mode = {"n"}, desc = "List gists"},
-      {"<leader>gc", "<cmd>GistCreateFromFile<cr>", mode = {"n"}, desc = "Create gist from current buffer"},
-      {"<leader>gc", "<cmd>GistCreate<cr>", mode = {"x"}, desc = "Create gist from selection"}
-    }
+    opts = {}
   }
 }
