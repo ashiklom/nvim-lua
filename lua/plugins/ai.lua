@@ -31,21 +31,23 @@ return {
         cmd = { adapter = "copilot" }
       },
       adapters = {
-        nasa_ai = function ()
-          return require("codecompanion.adapters").extend("openai_compatible", {
-            env = {
-              url = "https://bedrock-code-api.genai.mcp.nasa.gov",
-              api_key = nil,
-              chat_url = "/v1/chat/completions",
-              models_endpoint = "/v1/models"
-            },
-            schema = {
-              model = {
-                default = "bedrock-claude-3.5-sonnet"
+        http = {
+          nasa_ai = function ()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "https://bedrock-code-api.genai.mcp.nasa.gov",
+                api_key = nil,
+                chat_url = "/v1/chat/completions",
+                models_endpoint = "/v1/models"
+              },
+              schema = {
+                model = {
+                  default = "bedrock-claude-3.5-sonnet"
+                }
               }
-            }
-          })
-        end
+            })
+          end
+        }
       }
     }
   }
