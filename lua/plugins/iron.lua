@@ -35,7 +35,6 @@ return {
       end
 
       local iron = require("iron.core")
-      local common = require("iron.fts.common")
 
       -- For haskell, wrap multiline statements in :{ ... :}
       local function haskell_fmt(lines)
