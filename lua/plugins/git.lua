@@ -65,5 +65,17 @@ return {
     "Rawnly/gist.nvim",
     cmd = { "GistCreate", "GistCreateFromFile", "GistsList" },
     opts = {}
+  },
+  {
+    'pwntester/octo.nvim',
+    cmd = { "Octo" },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'ibhagwan/fzf-lua',
+      'nvim-tree/nvim-web-devicons'
+    },
+    opts = {
+      picker = "fzf-lua"
+    }
   }
 }
