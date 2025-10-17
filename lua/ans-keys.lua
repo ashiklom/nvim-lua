@@ -21,12 +21,12 @@ vim.keymap.set('n', ']q', function() pcall(vim.cmd.cnext) end, {desc = "Next qui
 vim.keymap.set('n', '[q', function() pcall(vim.cmd.cprev) end, {desc = "Previous quickfix"})
 
 -- Diagnostics
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {desc = "Next diagnostic"})
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {desc = "Previous diagnostic"})
-vim.keymap.set('n', ']e', function() vim.diagnostic.goto_next({severity = "ERROR"}) end, {desc = "Next error"})
-vim.keymap.set('n', '[e', function() vim.diagnostic.goto_prev({severity = "ERROR"}) end, {desc = "Previous error"})
-vim.keymap.set('n', ']E', function() vim.diagnostic.goto_next({severity = "WARN"}) end, {desc = "Next warning"})
-vim.keymap.set('n', '[E', function() vim.diagnostic.goto_prev({severity = "WARN"}) end, {desc = "Previous warning"})
+local err = vim.diagnostic.severity.ERROR
+local warn = vim.diagnostic.severity.WARN
+vim.keymap.set('n', ']e', function() vim.diagnostic.jump({count=1, severity = err}) end, {desc = "Next error"})
+vim.keymap.set('n', '[e', function() vim.diagnostic.jump({count=-1, severity = err}) end, {desc = "Previous error"})
+vim.keymap.set('n', ']E', function() vim.diagnostic.jump({count=1, severity = warn}) end, {desc = "Next warning"})
+vim.keymap.set('n', '[E', function() vim.diagnostic.jump({count=-1, severity = warn}) end, {desc = "Previous warning"})
 vim.keymap.set('n', '<leader>?', vim.diagnostic.open_float, {desc = "Current diagnostic"})
 
 -- Open current file in system editor

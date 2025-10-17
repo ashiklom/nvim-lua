@@ -55,9 +55,7 @@ return {
         pyright = {
           cmd = try_pixi_venv({"pyright-langserver", "--stdio"}),
           handlers = {
-            ["textDocument/publishDiagnostics"] = function() end,
-            ["textDocument/definition"] = function() end,
-            ["textDocument/declaration"] = function() end
+            ["textDocument/publishDiagnostics"] = function() end
           },
           on_attach = function(client, _)
             client.server_capabilities.renameProvider = true
