@@ -11,7 +11,7 @@ return {
       completion = {
         menu = {
           auto_show = function()
-            return not vim.tbl_contains({"markdown"}, vim.bo.filetype)
+            return not vim.tbl_contains({"markdown", "quarto"}, vim.bo.filetype)
           end
         },
         list = {
