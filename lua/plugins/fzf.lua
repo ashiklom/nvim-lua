@@ -22,7 +22,6 @@ return {
       {'<leader>gD', function() require('fzf-lua').lsp_declarations() end, mode = {"n", "x"}, desc = "LSP definitions"},
 
       {'<leader>s"', function() require('fzf-lua').registers() end, desc="Registers"},
-      {'<leader>sc', function() require('fzf-lua').commands() end, desc="Commands"},
       {'<leader>sd', function() require('fzf-lua').diagnostics_document() end, desc="Diagnostics (document)"},
       {'<leader>sD', function() require('fzf-lua').diagnostics_workspace() end, desc="Diagnostics (workspace)"},
       {'<leader>sh', function() require('fzf-lua').helptags() end, desc="Help tags"},
