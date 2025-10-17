@@ -47,10 +47,10 @@ return {
         ty = {
           cmd = try_pixi_venv({"ty", "server"})
         },
-        pyright = {
-          cmd = try_pixi_venv({"pyright-langserver", "--stdio"}),
-          settings = { pyright = { disableOrganizeImports = true } }
-        },
+        -- pyright = {
+        --   cmd = try_pixi_venv({"pyright-langserver", "--stdio"}),
+        --   settings = { pyright = { disableOrganizeImports = true } }
+        -- },
         lua_ls = {
           settings = { Lua = {diagnostics = {globals = {"vim"}}} }
         },
