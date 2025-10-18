@@ -6,7 +6,8 @@ return {
     opts = {
       keymap = {
         preset = "super-tab",
-        ['<C-space>'] = { function(cmp) cmp.show() end}
+        ['<C-space>'] = { function(cmp) cmp.show() end},
+        ['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
       },
       completion = {
         menu = {
@@ -32,6 +33,12 @@ return {
               end
             }
           }
+        }
+      },
+      signature = {
+        enabled = true,
+        trigger = {
+          enabled = false
         }
       }
     },
