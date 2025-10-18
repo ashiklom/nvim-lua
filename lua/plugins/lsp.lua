@@ -42,9 +42,6 @@ return {
           filetypes = {"sh", "zsh"}
         },
         -- Use ty for most things.
-        ty = {
-          cmd = try_pixi_venv({"ty", "server"})
-        },
         ruff = {
           cmd = try_pixi_venv({"ruff", "server"}),
           on_attach = function (client, _)
@@ -52,20 +49,26 @@ return {
             client.server_capabilities.hoverProvider = false
           end
         },
-        pyright = {
-          cmd = try_pixi_venv({"pyright-langserver", "--stdio"}),
-          handlers = {
-            ["textDocument/publishDiagnostics"] = function() end
-          },
-          on_attach = function(client, _)
-            client.server_capabilities.renameProvider = true
-            -- Explicitly disable some capabilities
-            client.server_capabilities.hoverProvider = false
-            client.server_capabilities.definitionProvider = false
-            client.server_capabilities.declarationProvider = false
-          end,
-          settings = { pyright = { disableOrganizeImports = true } }
+        pyrefly = {
+          cmd = try_pixi_venv({"pyrefly", "lsp"})
         },
+        -- ty = {
+        --   cmd = try_pixi_venv({"ty", "server"})
+        -- },
+        -- pyright = {
+        --   cmd = try_pixi_venv({"pyright-langserver", "--stdio"}),
+        --   handlers = {
+        --     ["textDocument/publishDiagnostics"] = function() end
+        --   },
+        --   on_attach = function(client, _)
+        --     client.server_capabilities.renameProvider = true
+        --     -- Explicitly disable some capabilities
+        --     client.server_capabilities.hoverProvider = false
+        --     client.server_capabilities.definitionProvider = false
+        --     client.server_capabilities.declarationProvider = false
+        --   end,
+        --   settings = { pyright = { disableOrganizeImports = true } }
+        -- },
         lua_ls = {
           settings = { Lua = {diagnostics = {globals = {"vim"}}} }
         },
