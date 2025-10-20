@@ -19,8 +19,16 @@ return {
 
       local function python_config()
         if vim.fn.executable("ipython") then
+          local cmd
+          if vim.fn.isdirectory(".venv") and vim.fn.executable("uv") then
+            cmd = { "uv", "run", "ipython", "--no-autoindent", "--no-confirm-exit" }
+          elseif vim.fn.isdirectory(".pixi") and vim.fn.executable("pixi") then
+            cmd = { "pixi", "run", "ipython", "--no-autoindent", "--no-confirm-exit" }
+          else
+            cmd = { "ipython", "--no-autoindent", "--no-confirm-exit" }
+          end
           return {
-            command = { "ipython", "--no-autoindent", "--no-confirm-exit" },
+            command = cmd,
             format = require("iron.fts.common").bracketed_paste_python,
           }
         end
