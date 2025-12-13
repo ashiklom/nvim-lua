@@ -53,6 +53,7 @@
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
   "quarto-nvim": { "branch": "main", "commit": "0e9491509b38efbd83d3f41dbfacc7fc4bd40191" },
   "r-vim-runtime": { "branch": "update", "commit": "f0108ec8aed522457b450c871899ff406563e450" },
+  "rustaceanvim": { "branch": "master", "commit": "88575b98bb9937fb9983ddec5e532b67e75ce677" },
   "smart-splits.nvim": { "branch": "master", "commit": "3ee3d37d82ee6b7813a8de2087e8020c0811b701" },
   "snacks.nvim": { "branch": "main", "commit": "fe7cfe9800a182274d0f868a74b7263b8c0c020b" },
   "sonokai": { "branch": "master", "commit": "a796676c1347ef2316c9b9d209ad52af6b6bbb51" },
