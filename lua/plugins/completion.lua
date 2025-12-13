@@ -1,7 +1,10 @@
 return {
   {
     "saghen/blink.cmp",
-    dependencies = { "chrisgrieser/nvim-scissors" },
+    dependencies = {
+      "chrisgrieser/nvim-scissors",
+      "jmbuhr/cmp-pandoc-references"
+    },
     version = "1.*",
     opts = {
       keymap = {
@@ -25,6 +28,9 @@ return {
         }
       },
       sources = {
+        per_filetype = {
+          quarto = { inherit_defaults = true, 'references' }
+        },
         providers = {
           path = {
             opts = {
@@ -32,6 +38,10 @@ return {
                 return vim.fn.getcwd()
               end
             }
+          },
+          references = {
+            name = "pandoc_references",
+            module = "cmp-pandoc-references.blink"
           }
         }
       },
