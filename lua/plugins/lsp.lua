@@ -7,7 +7,8 @@ local function try_pixi_venv(cmd)
   if hasuv and (vim.fn.isdirectory(venvdir) == 1) then
     return vim.list_extend({"uv", "run"}, cmd)
   end
-  if haspixi and (vim.fn.isdirectory(pixidir) == 1) then
+  -- NOTE: Also skip home directory (which has a `.pixi` folder, but with a different purpose)
+  if haspixi and (vim.fn.isdirectory(pixidir) == 1) and (vim.fn.getcwd() ~= vim.env.HOME) then
     return vim.list_extend({"pixi", "run"}, cmd)
   end
   return cmd
