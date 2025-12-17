@@ -23,17 +23,16 @@ local function map_rcall_cword(mode, lhs, rcall)
   map(mode, lhs, rhs)
 end
 
-vim.g.R_assign_map = '<M-->'
+-- Unmap default RInsertPipe mapping -- it's annoying!
+vim.keymap.del('i', '<localleader>,', {buffer = true})
 
-map('i', "<M-m>", " %>%")
-map('i', "<M-.>", " |>")
-map('n', 'K', [[:call RAction('help')<CR>]])
+map('i', "<M-.>", require('r.edit').pipe)
 map_rcall('n', '<localleader>vl', "devtools::load_all('.')")
 map_rcall('n', '<localleader>vd', "devtools::document('.')")
 map_rcall('n', '<localleader>vi', "devtools::install('.')")
 map_rcall('n', '<localleader>vt', "devtools::test('.')")
 
-map_rcall('n', '<localleader>ro', 'httpgd::hgd(); hist(rnorm(100)); httpgd::hgd_browse()')
+-- map_rcall('n', '<localleader>ro', 'httpgd::hgd(); hist(rnorm(100)); httpgd::hgd_browse()')
 
 map_rcall_cword('n', '<localleader>rg', 'dplyr::glimpse')
 map_rcall_cword('n', '<localleader>rs', 'str')
