@@ -71,6 +71,13 @@ return {
           settings = { Lua = {diagnostics = {globals = {"vim"}}} }
         },
         air = {},
+        r_language_server = {
+          on_attach = function(client, _)
+            -- Disable formatting; that should be handled by `air`
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end
+        },
         julials = {},
         terraformls = {},
         ansiblels = {},
