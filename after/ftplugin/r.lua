@@ -1,39 +1,23 @@
 -- Indentation rules
-vim.g.r_indent_align_args = 1
-vim.g.r_indent_rstudio = 1
-vim.api.nvim_buf_set_option(0, "tabstop", 2)
+vim.opt_local.tabstop = 2
 
--- Nvim-R configuration
-vim.g.R_nvim_wd = 1
-vim.g.R_clear_line = 1
-vim.g.R_setwidth = 2
+-- Don't add space at end of `gw`
+vim.opt_local.formatoptions:remove('w')
 
 local function map(mode, lhs, rhs)
   local opts = {buffer = true, silent=true}
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-local function map_rcall(mode, lhs, rcall)
-  local rhs = string.format([[:call g:SendCmdToR("%s")<CR>]], rcall)
-  map(mode, lhs, rhs)
-end
-
-local function map_rcall_cword(mode, lhs, rcall)
-  local rhs = string.format([[:call g:SendCmdToR("%s(".expand("<cword>").")")<CR>]], rcall)
-  map(mode, lhs, rhs)
-end
-
 -- Unmap default RInsertPipe mapping -- it's annoying!
 vim.keymap.del('i', '<localleader>,', {buffer = true})
 
 map('i', "<M-.>", require('r.edit').pipe)
-map_rcall('n', '<localleader>vl', "devtools::load_all('.')")
-map_rcall('n', '<localleader>vd', "devtools::document('.')")
-map_rcall('n', '<localleader>vi', "devtools::install('.')")
-map_rcall('n', '<localleader>vt', "devtools::test('.')")
+map('n', '<localleader>vl', function() require('r.send').cmd("devtools::load_all('.')") end)
+map('n', '<localleader>vd', function() require('r.send').cmd("devtools::document('.')") end)
+map('n', '<localleader>vi', function() require('r.send').cmd("devtools::install('.')") end)
+map('n', '<localleader>vt', function() require('r.send').cmd("devtools::test('.')") end)
 
 -- map_rcall('n', '<localleader>ro', 'httpgd::hgd(); hist(rnorm(100)); httpgd::hgd_browse()')
 
-map_rcall_cword('n', '<localleader>rg', 'dplyr::glimpse')
-map_rcall_cword('n', '<localleader>rs', 'str')
-map_rcall_cword('n', '<localleader>rS', 'summary')
+map('n', '<localleader>rG', function() require('r.run').action('dplyr::glimpse') end)
