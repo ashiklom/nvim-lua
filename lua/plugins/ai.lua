@@ -25,7 +25,7 @@ return {
       { "<leader>ai", ':CodeCompanion ', mode = "x", desc = "Codecompanion inline"},
     },
     opts = {
-      strategies = {
+      interactions = {
         chat = { adapter = "copilot" },
         inline = { adapter = "copilot" },
         cmd = { adapter = "copilot" }
