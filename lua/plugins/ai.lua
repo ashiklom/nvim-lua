@@ -26,12 +26,26 @@ return {
     },
     opts = {
       interactions = {
-        chat = { adapter = "copilot" },
-        inline = { adapter = "copilot" },
-        cmd = { adapter = "copilot" }
+        chat = { adapter = "openrouter" },
+        inline = { adapter = "openrouter" },
+        cmd = { adapter = "openrouter" }
       },
       adapters = {
         http = {
+          openrouter = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "https://openrouter.ai/api",
+                api_key = "OPENROUTER_API_KEY",
+                chat_url = "/v1/chat/completions"
+              },
+              schema = {
+                model = {
+                  default = "z-ai/glm-4.5-air:free"
+                }
+              }
+            })
+          end,
           nasa_ai = function ()
             return require("codecompanion.adapters").extend("openai_compatible", {
               env = {
