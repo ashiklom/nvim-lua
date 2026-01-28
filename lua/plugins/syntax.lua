@@ -1,5 +1,14 @@
 return {
-  { "JuliaEditorSupport/julia-vim" },
+  {
+    -- It causes all kinds of problems. Just use LSP + Treesitter instead.
+    "JuliaEditorSupport/julia-vim",
+    enabled = false,
+    -- init = function()
+    --   vim.g.latex_to_unicode_tab = "off"
+    --   vim.g.latex_to_unicode_suggestions = 0
+    --   vim.g.latex_to_unicode_auto = 1
+    -- end
+  },
 
   { "vim-pandoc/vim-pandoc", enabled = false },
   { "vim-pandoc/vim-pandoc-syntax", enabled = false },
