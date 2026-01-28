@@ -1,3 +1,21 @@
+-- Install treesitter parsers if not installed
+vim.g.treesitter_checked_parsers = vim.g.treesitter_checked_parsers or {}
+
+local required_parsers = { "r", "markdown", "rnoweb", "yaml" }
+local parsers = require("nvim-treesitter.parsers")
+local ts_install = require("nvim-treesitter.install")
+
+for _, parser in ipairs(required_parsers) do
+  if not vim.g.treesitter_checked_parsers[parser] then
+    local parser_config = parsers.get_parser_configs()[parser]
+    if parser_config and not parsers.has_parser(parser) then
+      ts_install.ensure_installed(parser)
+      vim.notify("Installing Tree-sitter parser for " .. parser, vim.log.levels.INFO)
+    end
+    vim.g.treesitter_checked_parsers[parser] = true
+  end
+end
+
 -- Indentation rules
 vim.opt_local.tabstop = 2
 
