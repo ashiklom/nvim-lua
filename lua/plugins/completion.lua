@@ -11,6 +11,7 @@ return {
         preset = "super-tab",
         ['<C-space>'] = { function(cmp) cmp.show() end},
         ['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
+        ['<C-k>'] = false
       },
       completion = {
         menu = {
