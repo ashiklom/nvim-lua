@@ -81,7 +81,7 @@ return {
           send_line = "<localleader>l",
           send_paragraph = "<localleader>pp",
           interrupt = "<localleader>x",
-          clear = "<localleader>X",
+          clear = "<localleader>rr",
           send_file = "<localleader>aa",
           visual_send = "<localleader>ss",
         },

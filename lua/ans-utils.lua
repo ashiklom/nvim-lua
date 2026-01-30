@@ -51,10 +51,27 @@ end
 utils.bbind = bbind
 
 function utils.register_iron_keys(print_pattern)
+  -- Match the mappings in R.nvim (`:RMapsDesc`)
   local iron = require('iron.core')
+  local function nlmap(map, description, cmd)
+    local opts = {desc=description, silent=true, buffer=true}
+    local mmap = '<localleader>'..map
+    vim.keymap.set('n', mmap, cmd, opts)
+  end
+
+  nlmap('ld','Send line and down', function()
+    iron.send_line()
+    vim.api.nvim_feedkeys('+', 'n', false)
+  end)
+
+  nlmap('pd','Send paragraph and down', function()
+    vim.api.nvim_feedkeys('vip', 'n', false)
+    iron.visual_send()
+    vim.api.nvim_feedkeys('2}{+', 'n', false)
+  end)
 
   -- Send all lines before current
-  bbind('n', '<localleader>ak', function()
+  bbind('n', '<localleader>su', function()
     local view = vim.fn.winsaveview()
     vim.api.nvim_feedkeys('m0', 'n', false)
     vim.api.nvim_feedkeys('-Vgg', 'n', false)
@@ -64,7 +81,7 @@ function utils.register_iron_keys(print_pattern)
   end)
 
   -- Send all lines after current
-  bbind('n', '<localleader>aj', function()
+  bbind('n', '<localleader>sj', function()
     local view = vim.fn.winsaveview()
     vim.api.nvim_feedkeys('m0', 'n', false)
     vim.api.nvim_feedkeys('+VG', 'n', false)
