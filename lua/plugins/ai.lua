@@ -34,7 +34,7 @@ return {
         return require("opencode").operator("@this ") .. "_"
       end, { expr = true, desc = "Opencode add line" })
 
-      vim.keymap.set("x", "<leader>ab", function()
+      vim.keymap.set("n", "<leader>ab", function()
         return require("opencode").prompt("@buffer")
       end, { expr = true, desc = "Opencode add buffer" })
 
