@@ -45,9 +45,14 @@ return {
       vim.keymap.set("n", "<leader>a-", function()
         require("opencode").command("session.half.page.up")
       end, { desc = "Opencode scroll up" })
+
       vim.keymap.set("n", "<leader>a=", function()
         require("opencode").command("session.half.page.down")
       end, { desc = "Opencode scroll down" })
+      
+      vim.keymap.set("n", "<leader>a0", function()
+        require("opencode").command("session.last")
+      end, { desc = "Opencode scroll bottom" })
 
       -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o…".
       -- vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
