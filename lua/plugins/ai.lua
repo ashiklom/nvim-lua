@@ -1,54 +1,57 @@
 return {
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    opts = {
-      suggestion = {
-        enabled = true,
-      }
+    "NickvanDyke/opencode.nvim",
+    dependencies = {
+      ---@module 'snacks'
+      { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
     },
     keys = {
-      { '<leader>ap', function() vim.cmd('Copilot') end, desc = "Copilot activate" },
-      {'<leader>aP', function() require('copilot.suggestion').toggle_auto_trigger() end, desc = "Copilot toggle auto-trigger"},
-      { '<C-l>', function() require('copilot.suggestion').next() end, mode = "i", desc = "Copilot next"},
-      { '<Right>', function() require('copilot.suggestion').accept() end, mode = "i", desc = "Copilot accept"},
-      { '<Left>', function() require('copilot.suggestion').dismiss() end, mode = "i", desc = "Copilot dismiss"},
-      { '<Up>', function() require('copilot.suggestion').dismiss() end, mode = "i", desc = "Copilot previous"},
-    }
-  },
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = { "zbirenbaum/copilot.lua" },
-    keys = {
-      { "<leader>ai", function() require("codecompanion").toggle() end, desc = "Codecompanion toggle chat"},
-      { "<leader>aI", function() require("codecompanion").actions() end, desc = "Codecompanion actions"},
-      { "<leader>ai", ':CodeCompanion ', mode = "x", desc = "Codecompanion inline"},
-    },
-    opts = {
-      interactions = {
-        chat = { adapter = "copilot" },
-        inline = { adapter = "copilot" },
-        cmd = { adapter = "copilot" }
+      {
+        "<leader>ai",
+        function()
+          require("opencode").toggle()
+        end,
+        desc = "Opencode toggle chat",
       },
-      adapters = {
-        http = {
-          nasa_ai = function ()
-            return require("codecompanion.adapters").extend("openai_compatible", {
-              env = {
-                url = "https://bedrock-code-api.genai.mcp.nasa.gov",
-                api_key = nil,
-                chat_url = "/v1/chat/completions",
-                models_endpoint = "/v1/models"
-              },
-              schema = {
-                model = {
-                  default = "bedrock-claude-3.5-sonnet"
-                }
-              }
-            })
-          end
-        }
-      }
-    }
-  }
+    },
+    config = function()
+      -- Required for `opts.events.reload`.
+      vim.o.autoread = true
+
+      vim.keymap.set({"n", "x"}, "<leader>ap", function()
+        require("opencode").select()
+      end, { desc = "Opencode execute action" })
+
+      vim.keymap.set("x", "<leader>ai", function()
+        require("opencode").ask("@this: ", { submit = true })
+      end, { desc = "Opencode ask this" })
+
+      vim.keymap.set("x", "<leader>ao", function()
+        return require("opencode").operator("@this ")
+      end, { expr = true, desc = "Opencode add range" })
+
+      vim.keymap.set("x", "<leader>al", function()
+        return require("opencode").operator("@this ") .. "_"
+      end, { expr = true, desc = "Opencode add line" })
+
+      vim.keymap.set("x", "<leader>ab", function()
+        return require("opencode").prompt("@buffer")
+      end, { expr = true, desc = "Opencode add buffer" })
+
+      vim.keymap.set("n", "<leader>a<tab>", function()
+        require("opencode").command("agent.cycle")
+      end, { desc = "Opencode toggle agent" })
+
+      vim.keymap.set("n", "<leader>a-", function()
+        require("opencode").command("session.half.page.up")
+      end, { desc = "Opencode scroll up" })
+      vim.keymap.set("n", "<leader>a=", function()
+        require("opencode").command("session.half.page.down")
+      end, { desc = "Opencode scroll down" })
+
+      -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o…".
+      -- vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
+      -- vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
+    end,
+  },
 }
