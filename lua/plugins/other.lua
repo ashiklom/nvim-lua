@@ -40,13 +40,8 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter',
-    build = ":TSUpdate",
-    opts = {
-      auto_install = false,
-      indent = {enable = true},
-      highlight = {enable = true},
-      textobjects = {enable = true}
-    }
+    lazy = false,
+    build = ":TSUpdate"
   },
 
   {
