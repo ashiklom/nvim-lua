@@ -49,7 +49,7 @@ return {
       vim.keymap.set("n", "<leader>a=", function()
         require("opencode").command("session.half.page.down")
       end, { desc = "Opencode scroll down" })
-      
+
       vim.keymap.set("n", "<leader>a0", function()
         require("opencode").command("session.last")
       end, { desc = "Opencode scroll bottom" })
