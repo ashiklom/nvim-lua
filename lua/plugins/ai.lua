@@ -18,6 +18,13 @@ return {
       -- Required for `opts.events.reload`.
       vim.o.autoread = true
 
+      vim.g.opencode_opts = {
+        provider = {
+          enabled = "wezterm",
+          wezterm = {}
+        }
+      }
+
       vim.keymap.set({"n", "x"}, "<leader>ap", function()
         require("opencode").select()
       end, { desc = "Opencode execute action" })
