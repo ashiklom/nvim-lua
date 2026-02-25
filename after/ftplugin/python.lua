@@ -1,3 +1,5 @@
+require("nvim-treesitter").install({ "python" })
+
 local utils = require('ans-utils')
 utils.register_iron_keys('print(%s)')
 
