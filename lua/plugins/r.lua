@@ -1,6 +1,11 @@
 return {
   {
     'R-nvim/R.nvim',
-    lazy = false
+    lazy = false,
+    opts = {
+      compl_data = {
+        max_depth = 0
+      }
+    }
   }
 }
