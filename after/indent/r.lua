@@ -7,7 +7,7 @@ local function get_custom_r_indent()
   if closer_match then
     local first_char = closer_match:sub(1,1)
     local opener = (first_char == ")") and "(" or (first_char == "]" and "[" or "{")
-    
+
     local match_lnum = vim.fn.searchpair(opener, "", first_char, "bWn")
     if match_lnum > 0 then
       return vim.fn.indent(match_lnum)
@@ -20,26 +20,73 @@ local function get_custom_r_indent()
 
   -- Save cursor position for searchpair
   local save_cursor = vim.fn.getpos(".")
-  
+
   -- Use built-in GetRIndent as base
   local base_indent = vim.fn.GetRIndent()
   local sw = vim.fn.shiftwidth()
   local prev_indent = vim.fn.indent(prev_lnum)
+  local prev_trimmed = prev_line:gsub("%s*,?%s*$", "")
 
-  -- Fix 1: Cap multi-opener indentation (e.g., list(list())
-  -- Tidyverse style prefers 1 shiftwidth even if multiple openers on prev line.
+  -- Fix 1: Cap lines after nested openers to one shiftwidth.
+  -- Tidyverse style prefers a single indent step after `list(list(`-style lines.
+  -- Example:
+  -- x <- list(list(
+  --   a = 1
+  -- ))
   if base_indent > prev_indent + sw then
     if prev_line:match("[%(%{%[].*[%(%{%[]") or prev_line:match("[%(%{%[]%s*$") then
       base_indent = prev_indent + sw
     end
   end
 
-  -- Fix 2: Reset indentation after a completed statement that ended in a closer.
-  -- Built-in GetRIndent often stays at the opener's level if it was part of a pipe chain.
+  -- Fix 2: Keep the next sibling aligned after an item ending in `)` or `]`.
+  -- This avoids jumping back to the outer opener inside list-like constructs.
+  -- Example:
+  -- list(
+  --   fn(a),
+  --   next_item
+  -- )
+  local prev_last_char = prev_trimmed:sub(-1)
+  if base_indent == 0 and (prev_last_char == ")" or prev_last_char == "]") then
+    local opener = (prev_last_char == ")") and "(" or "["
+
+    vim.fn.cursor(prev_lnum, #prev_trimmed)
+    local match_lnum = vim.fn.searchpair(opener, "", prev_last_char, "bWn")
+    if match_lnum > 0 then
+      local match_indent = vim.fn.indent(match_lnum)
+      if match_indent > base_indent then
+        base_indent = match_indent
+      end
+    end
+  end
+
+  -- Fix 3: Keep pipe continuation indented after a standalone `)`/`] |> ` line.
+  -- This preserves the chain indent when a step ends with a closing delimiter.
+  -- Example:
+  -- x |>
+  --   fn(
+  --     a
+  --   ) |>
+  --   next_step()
+  if base_indent <= prev_indent then
+    if prev_line:match("^%s*%)%s*|>%s*$") or prev_line:match("^%s*%)%s*%%>%%%s*$")
+      or prev_line:match("^%s*%]%s*|>%s*$") or prev_line:match("^%s*%]%s*%%>%%%s*$") then
+      base_indent = prev_indent + sw
+    end
+  end
+
+  -- Fix 4: Reset to the pipe-chain indent after a completed `)` or `]` step.
+  -- Built-in `GetRIndent()` can otherwise stick to the matched opener's column.
+  -- Example:
+  -- x |>
+  --   fn(
+  --     a
+  --   )
+  -- next_call()
   if base_indent > 0 and (prev_line:match("%)%s*$") or prev_line:match("%]%s*$")) then
     local last_char = prev_line:gsub("%s*$", ""):sub(-1)
     local opener = (last_char == ")") and "(" or "["
-    
+
     -- Move cursor to end of prev_line for searchpair
     vim.fn.cursor(prev_lnum, #prev_line)
     local match_lnum = vim.fn.searchpair(opener, "", last_char, "bWn")

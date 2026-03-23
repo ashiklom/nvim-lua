@@ -59,3 +59,21 @@ tibble::tribble(
   ~this, ~that, ~the_other,
   "something", "something_else", 3.56
 )
+
+list(
+  targets::tar_target(
+    something,
+    something_else
+  ),
+  targets::tar_target(
+    tibble::tibble(
+      a = something,
+      b = something_else
+    ) |>
+      dplyr::distinct() |>
+      dplyr::mutate(
+        c = a + b
+      )
+  ),
+  NULL
+)
