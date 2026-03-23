@@ -37,6 +37,22 @@ end)
 
 -- map_rcall('n', '<localleader>ro', 'httpgd::hgd(); hist(rnorm(100)); httpgd::hgd_browse()')
 
-map("R: dplyr::glimpse", "n", "<localleader>rG", function()
+map("R: dplyr::glimpse", "n", "<localleader>rg", function()
   require("r.run").action("dplyr::glimpse")
+end)
+
+map("R: targets::tar_load", "n", "<localleader>tl", function()
+  require("r.run").action("targets::tar_load")
+end)
+
+map("R: targets::tar_make(target)", "n", "<localleader>tm", function()
+  require("r.run").action("targets::tar_make")
+end)
+
+map("R: targets::tar_invalidate", "n", "<localleader>ti", function()
+  require("r.run").action("targets::tar_invalidate")
+end)
+
+map("R: targets::tar_make()", "n", "<localleader>tM", function()
+  require("r.send").cmd("targets::tar_make()")
 end)
