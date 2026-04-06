@@ -58,7 +58,15 @@ settings <- PEcAn.settings::as.Settings(list(
 tibble::tribble(
   ~this, ~that, ~the_other,
   "something", "something_else", 3.56
-)
+) |>
+  do_more(
+    something,
+    something_else
+  ) |>
+  do_more_stuff(
+    yet, more, stuff,
+    to, do
+  )
 
 list(
   targets::tar_target(
