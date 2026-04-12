@@ -52,8 +52,6 @@ return {
     },
   },
 
-  { 'editorconfig/editorconfig-vim' },
-
   {
     'dhruvasagar/vim-table-mode',
     ft = {'markdown'},
