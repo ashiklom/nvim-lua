@@ -1,5 +1,4 @@
 return {
-  { 'nvim-lua/plenary.nvim' },
 
   { 'bfredl/nvim-luadev', ft = {"lua"} },
 
