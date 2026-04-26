@@ -1,3 +1,5 @@
+require('nvim-treesitter').install({"lua"})
+
 local function map(mode, lhs, rhs, noremap)
   local opts = {silent=true, noremap=noremap}
   local lhs2 = '<localleader>'..lhs
