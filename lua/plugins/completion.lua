@@ -30,7 +30,8 @@ return {
       },
       sources = {
         per_filetype = {
-          quarto = { inherit_defaults = true, 'references' }
+          quarto = { inherit_defaults = true, 'references' },
+          lua = {  inherit_defaults = true, 'lazydev' }
         },
         providers = {
           path = {
@@ -43,6 +44,11 @@ return {
           references = {
             name = "pandoc_references",
             module = "cmp-pandoc-references.blink"
+          },
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100
           }
         }
       },

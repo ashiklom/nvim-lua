@@ -91,7 +91,8 @@ return {
     "echasnovski/mini.bufremove",
     opts = {},
     keys = {
-      { "<leader>bd", function() MiniBufremove.delete() end, desc="Delete buffer"}
+      { "<leader>bd", function() MiniBufremove.delete() end, desc="Delete buffer"},
+      { "<leader>bD", function() MiniBufremove.wipeout() end, desc="Delete buffer"}
     }
   },
   {
