@@ -78,10 +78,10 @@ return {
     },
     opts = {
       buf_options = {
-        buflisted = true,
-        bufhidden = nil
+        buflisted = false,
+        bufhidden = "hide"
       },
-      cleanup_delay_ms = false,
+      cleanup_delay_ms = 2000,
     },
     keys = {
       {"<leader>fo", function() require('oil').open() end, desc="Open file directory"}
