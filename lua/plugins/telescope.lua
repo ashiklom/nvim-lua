@@ -9,7 +9,6 @@ return {
     }
   },
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
-  {'nvim-telescope/telescope-project.nvim'},
   {'nvim-telescope/telescope-file-browser.nvim'},
   {
     'nvim-telescope/telescope-bibtex.nvim',

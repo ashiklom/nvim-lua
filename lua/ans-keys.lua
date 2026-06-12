@@ -69,14 +69,6 @@ vim.keymap.set('n', '<leader>fs', function() vim.cmd.write() end, {silent=true, 
 vim.keymap.set('n', '<leader>fK', [[:call delete(expand('%')) | bdelete!<cr>]], {desc="Delete buffer and file"})
 vim.cmd([[cnoreabbrev W w]])
 
-vim.keymap.set('n', 'z.', [[:<C-u>normal! zszH<CR>]], {silent=true})
-
--- Telescope mappings
-local tele_ok, tele = pcall(require, 'telescope')
-if tele_ok then
-  vim.keymap.set('n', '<leader>po', tele.extensions.project.project, {desc="Telescope project"})
-  vim.keymap.set('n', '<leader>pL', [[:e ~/.local/share/nvim/telescope-projects.txt<cr>]], {silent=true, desc="Edit projects file"})
-end
 
 -- Change directory to file directory
 vim.keymap.set('n', '<leader>cd', function()
