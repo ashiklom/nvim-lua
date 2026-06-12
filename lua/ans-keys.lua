@@ -69,6 +69,15 @@ vim.keymap.set('n', '<leader>fs', function() vim.cmd.write() end, {silent=true, 
 vim.keymap.set('n', '<leader>fK', [[:call delete(expand('%')) | bdelete!<cr>]], {desc="Delete buffer and file"})
 vim.cmd([[cnoreabbrev W w]])
 
+vim.keymap.set(
+  'n', 'z.', [[:<C-u>normal! zszH<CR>]],
+  { desc = "Center horizontally on current character", silent = true }
+)
+
+vim.keymap.set(
+  'x', '<leader>p', [["_dP]],
+  {desc = "Paste without overwriting register"}
+)
 
 -- Change directory to file directory
 vim.keymap.set('n', '<leader>cd', function()
