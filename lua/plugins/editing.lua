@@ -34,7 +34,8 @@ return {
   },
   {
     'echasnovski/mini.pairs',
-    opts = {}
+    opts = {},
+    enabled = false
   },
   {
     'echasnovski/mini.move',
