@@ -2,6 +2,14 @@ return {
   {
     'ibhagwan/fzf-lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    init = function()
+      -- Neovim on macOS rejects fzf-lua's relative RPC socket path.
+      local address = vim.fn.stdpath("run") .. "/fzf-lua." .. vim.fn.getpid()
+      local ok, server = pcall(vim.fn.serverstart, address)
+      if ok then
+        vim.g.fzf_lua_server = server
+      end
+    end,
     keys = {
       {'<leader> ', function() require('fzf-lua').files() end, desc = "Files"},
       {'<leader>fr', function() require('fzf-lua').oldfiles() end, desc="Recent files"},
