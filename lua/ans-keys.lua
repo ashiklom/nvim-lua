@@ -105,3 +105,13 @@ vim.keymap.set('n', '<leader>^', [[:setlocal list!<CR>]], {silent=true})
 
 vim.cmd [[iab <expr> tdy strftime("%Y-%m-%d")]]
 vim.cmd [[iab <expr> tstamp strftime("%Y-%m-%d %H:%M")]]
+
+-- Toggle autopairs
+vim.keymap.set('n', '<leader>*', function()
+  vim.b.minipairs_disable = not vim.b.minipairs_disable
+  if vim.b.minipairs_disable then
+    vim.notify("Mini.pairs disabled", vim.log.levels.INFO)
+  else
+    vim.notify("Mini.pairs enabled", vim.log.levels.INFO)
+  end
+end, {silent=true, desc="Toggle mini.pairs"})
