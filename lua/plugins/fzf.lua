@@ -38,7 +38,8 @@ return {
 
       {'z=', function() require('fzf-lua').spell_suggest() end, desc="Spelling"},
 
-      {'<C-f>', function() require('fzf-lua').complete_path() end, mode="i", desc="Complete path"}
+      {'<C-.>', function() require('fzf-lua').complete_path({word_pattern="[^%s\"'`]*"}) end, mode="i", desc="Complete path"}
+
     },
     opts = {
       keymap = {
