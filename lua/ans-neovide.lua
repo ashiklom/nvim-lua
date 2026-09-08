@@ -6,7 +6,7 @@ vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
 -- vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
 vim.keymap.set('i', '<D-v>', '<C-R>+') -- Paste insert mode
 
-vim.o.guifont = "JetBrains Mono NL"
+vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono"
 
 -- Disable animations
 vim.g.neovide_cursor_animation_length = 0
