@@ -95,6 +95,27 @@ return {
       },
     },
     config = function(_, opts)
+      -- 1. Intercept the low-level RPC dispatch callback where INVALID_SERVER_MESSAGE is logged
+      -- This is a workaround around an r_language_server issue.
+      local orig_rpc_start = vim.lsp.rpc.start
+      vim.lsp.rpc.start = function(cmd, dispatchers, extra_spawn_params)
+        if dispatchers and dispatchers.on_error then
+          local orig_on_error = dispatchers.on_error
+          dispatchers.on_error = function(code, err, ...)
+            -- Suppress error code 1 (INVALID_SERVER_MESSAGE) containing superseded request errors
+            if type(err) == "table" and err.error and err.error.code == -32800 then
+              return
+            end
+            if type(err) == "string" and err:find("superseded") then
+              return
+            end
+            orig_on_error(code, err, ...)
+          end
+        end
+        return orig_rpc_start(cmd, dispatchers, extra_spawn_params)
+      end
+
+      -- Enable configured servers
       for server, config in pairs(opts.servers) do
         vim.lsp.config(server, config)
         vim.lsp.enable(server)
